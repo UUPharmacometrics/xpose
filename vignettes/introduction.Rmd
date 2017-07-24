@@ -13,7 +13,7 @@ vignette: >
 library(xpose)
 
 xpdb <- xpdb_ex_pk %>% 
-  set_vars_type(idv = 'TIME')
+  set_var_types(idv = 'TIME')
 
 knitr::opts_chunk$set(fig.dpi = 96,
 fig.align = 'center', 
@@ -68,7 +68,7 @@ xpdb %>%
 
 # After IDV reassignment
 xpdb %>% 
-  set_vars_type(idv = 'TAD') %>% 
+  set_var_types(idv = 'TAD') %>% 
   dv_vs_idv()
 ```
 

@@ -6,27 +6,27 @@
 #' @param problem The problem number to which the edits will be applied.
 #' @param ... Specifications of the edits to be made to the xpdb index. Edits are made as 
 #' type and variable pairs e.g. idv = 'TAD' will assign TAD to the type idv (independent variable).
-#' @param auto_factor With \code{set_vars_type} only. If \code{TRUE} new columns assigned to the type 'catcov' will be converted to
+#' @param auto_factor With \code{set_var_types} only. If \code{TRUE} new columns assigned to the type 'catcov' will be converted to
 #' factor.
 #' @param quiet Logical, if \code{FALSE} messages are printed to the console.
 #' 
 #' @section Recognized variable types:
 #' \itemize{
 #'   \item amt: Dose amount
-#'   \item catcov: Categorical covariates
-#'   \item contcov: Continuous covariates
+#'   \item catcov: Categorical covariate
+#'   \item contcov: Continuous covariate
 #'   \item dv: Dependent variable
 #'   \item dvid: DV identifier
 #'   \item eta: Eta
 #'   \item evid: Event identifier
 #'   \item id: Subject identifier
 #'   \item idv: Independent variable
-#'   \item ipred: Model individual predictions
+#'   \item ipred: Individual model predictions
 #'   \item mdv: Missing dependent variable
 #'   \item na: Not attributed
 #'   \item occ: Occasion flag
 #'   \item param: Model parameter
-#'   \item pred: Model typical predictions
+#'   \item pred: Typical model predictions
 #'   \item res: Residuals
 #'  }
 #'  
@@ -34,17 +34,17 @@
 #' @seealso \code{\link{list_vars}}
 #' @examples
 #' # Change variable type
-#' xpdb_2 <- set_vars_type(xpdb_ex_pk, problem = 1, idv = 'TAD')
+#' xpdb_2 <- set_var_types(xpdb_ex_pk, problem = 1, idv = 'TAD')
 #' 
 #' # Change labels
-#' xpdb_2 <- set_vars_label(xpdb_2, problem = 1, ALAG1 = 'Lag time', CL = 'Clearance', V = 'Volume')
+#' xpdb_2 <- set_var_labels(xpdb_2, problem = 1, ALAG1 = 'Lag time', CL = 'Clearance', V = 'Volume')
 #' 
 #' # Change units
-#' xpdb_2 <- set_vars_units(xpdb_2, problem = 1, ALAG1 = 'h', CL = 'L/h', V = 'L')
+#' xpdb_2 <- set_var_units(xpdb_2, problem = 1, ALAG1 = 'h', CL = 'L/h', V = 'L')
 #' 
 #' @name set_vars
 #' @export
-set_vars_type <- function(xpdb, problem = NULL, ..., auto_factor = TRUE, quiet) {
+set_var_types <- function(xpdb, problem = NULL, ..., auto_factor = TRUE, quiet) {
   # Check input
   check_xpdb(xpdb, check = 'data')
   if (missing(quiet)) quiet <- xpdb$options$quiet
@@ -157,14 +157,14 @@ set_var_generic <- function(xpdb, problem = NULL, what = NULL, ..., quiet) {
 
 #' @rdname set_vars
 #' @export
-set_vars_label <- function(xpdb, problem = NULL, ..., quiet) {
+set_var_labels <- function(xpdb, problem = NULL, ..., quiet) {
   set_var_generic(xpdb = xpdb, problem = problem, 
                   quiet = quiet, what = 'label', ...)
 }
 
 #' @rdname set_vars
 #' @export
-set_vars_units <- function(xpdb, problem = NULL, ..., quiet) {
+set_var_units <- function(xpdb, problem = NULL, ..., quiet) {
   set_var_generic(xpdb = xpdb, problem = problem, 
                   quiet = quiet, what = 'units', ...)
 }
