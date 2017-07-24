@@ -1,0 +1,60 @@
+---
+title: "Creating interactive plots"
+author: "Benjamin Guiastrennec"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Customizing plots}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+### Warning
+**Please note that this feature is experimental and not all aspects of ggplot2 are supported by ploty!**
+
+To learn more about plotly you visit this [page](https://plot.ly).
+
+### Install plotly
+This command is only required for the first use.
+```{r, eval=FALSE}
+install.packages("plotly")
+```
+
+### Load packages
+Start by loading the plotly and xpose packages.
+```{r load packages, results = 'hide', message = FALSE, warning = FALSE}
+library(plotly)
+library(xpose)
+```
+
+### Generate a plot with xpose
+Then generate any plot in xpose and store it in an object.
+```{r create graph}
+gof_plot <- dv_vs_ipred(xpdb_ex_pk, type = 'pl',
+                        aes(point_color = SEX, 
+                            line_color = SEX)) +
+             labs(color = 'Sex', title = 'DV vs IPRED')
+```
+
+### Convert the plot from ggplot2 to plotly
+The ggplot2 object is now automatically conveted to a plotly graph. The scales can now be changed interactively, groups can be hidden by clicking on the legend
+
+```{r render plotly, fig.width = 6, fig.height = 5, out.width = '100%', warning = FALSE, message=FALSE}
+plotly::ggplotly(gof_plot)
+```
+
+### Other examples
+#### A distribution
+```{r distribution example, fig.width = 6, fig.height = 5, out.width = '100%', warning = FALSE, message=FALSE}
+xpdb_ex_pk %>% 
+  eta_distrib(title = 'Eta distribution') %>% 
+  plotly::ggplotly()
+```
+
+#### VPC
+```{r vpc example, fig.width = 6, fig.height = 5, out.width = '100%', warning = FALSE, message=FALSE}
+xpdb_ex_pk %>% 
+  vpc_data(stratify = 'OCC') %>% 
+  vpc(title = 'Visual predictive checks', type = 'alpr') %>% 
+  plotly::ggplotly()
+```

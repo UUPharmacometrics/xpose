@@ -24,15 +24,15 @@ Useful links:
 
 Authors:
 \itemize{
-  \item Anna Olofsson
-  \item Andrew C. Hooker \email{andrew.hooker@farmbio.uu.se}
-  \item Mats O. Karlsson \email{mats.karlsson@farmbio.uu.se}
+  \item Andrew C. Hooker \email{andrew.hooker@farmbio.uu.se} [copyright holder]
+  \item Anna Olofsson [copyright holder]
+  \item Sebastian Ueckert \email{sebastian.ueckert@farmbio.uu.se} [copyright holder]
   \item Ron Keizer \email{ronkeizer@gmail.com}
+  \item Mats O. Karlsson \email{mats.karlsson@farmbio.uu.se} [copyright holder]
 }
 
 Other contributors:
 \itemize{
-  \item Sebastian Ueckert [contributor]
   \item Kajsa Harling [contributor]
   \item Mike K. Smith [contributor]
   \item Elodie Plan [contributor]

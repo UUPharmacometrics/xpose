@@ -1,34 +1,29 @@
 Package: xpose
 Type: Package
 Title: Graphical diagnostics for pharmacometric models
-Version: 0.2
+Version: 0.2.1
 Authors@R: c(
-      person('Benjamin', 'Guiastrennec'
-             , role = c('aut','cre', 'cph')
-             , email = 'guiastrennec@gmail.com'),
-      person('Anna', 'Olofsson'
-             , role = 'aut'),
+      person('Benjamin', 'Guiastrennec',
+             role = c('aut', 'cre', 'cph'),
+             email = 'guiastrennec@gmail.com'),
       person('Andrew C.', 'Hooker', 
-             role = 'aut',
-             email='andrew.hooker@farmbio.uu.se'),
-      person('Mats O.', 'Karlsson',
-             role = 'aut',
-             email='mats.karlsson@farmbio.uu.se'),
+             role = c('aut', 'cph'),
+             email = 'andrew.hooker@farmbio.uu.se'),
+      person('Anna', 'Olofsson', role = c('aut', 'cph')),
+      person('Sebastian', 'Ueckert',
+             role = c('aut', 'cph'),
+             email = 'sebastian.ueckert@farmbio.uu.se'),
       person('Ron', 'Keizer', 
              role = 'aut',
-             email='ronkeizer@gmail.com'),
-      person('Sebastian', 'Ueckert'
-             , role = 'ctb'),
-      person('Kajsa', 'Harling'
-             , role = 'ctb'),
-      person('Mike K.', 'Smith'
-             , role = 'ctb'),
-      person('Elodie', 'Plan'
-             , role = 'ctb'),
-      person('Pharmetheus'
-             , role = 'ctb'),
-      person('Pfizer'
-             , role = 'ctb'))
+             email = 'ronkeizer@gmail.com'),
+      person('Kajsa', 'Harling', role = 'ctb'),
+      person('Mike K.', 'Smith', role = 'ctb'),
+      person('Elodie', 'Plan', role = 'ctb'),
+      person('Mats O.', 'Karlsson',
+             role = c('aut', 'cph'),
+             email = 'mats.karlsson@farmbio.uu.se'),
+      person('Pharmetheus', role = 'ctb'),
+      person('Pfizer', role = 'ctb'))
 Description: Automated generation of graphical diagnostics for non-linear mixed effect models.
 Depends:
   R (>= 3.1.2),
@@ -47,8 +42,11 @@ Imports:
   stats,
   vpc
 Suggests:
+  rmarkdown,
   knitr,
-  testthat
+  testthat,
+  plotly,
+  webshot
 Remotes:
  ronkeizer/vpc
 License: LGPL-3 + file LICENSE
