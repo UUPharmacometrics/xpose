@@ -2,16 +2,16 @@
 % Please edit documentation in R/vars_set.R
 \name{set_vars}
 \alias{set_vars}
-\alias{set_vars_type}
-\alias{set_vars_label}
-\alias{set_vars_units}
+\alias{set_var_types}
+\alias{set_var_labels}
+\alias{set_var_units}
 \title{Set variable type, label or units}
 \usage{
-set_vars_type(xpdb, problem = NULL, ..., auto_factor = TRUE, quiet)
+set_var_types(xpdb, problem = NULL, ..., auto_factor = TRUE, quiet)
 
-set_vars_label(xpdb, problem = NULL, ..., quiet)
+set_var_labels(xpdb, problem = NULL, ..., quiet)
 
-set_vars_units(xpdb, problem = NULL, ..., quiet)
+set_var_units(xpdb, problem = NULL, ..., quiet)
 }
 \arguments{
 \item{xpdb}{An \code{xpose_data} object.}
@@ -21,7 +21,7 @@ set_vars_units(xpdb, problem = NULL, ..., quiet)
 \item{...}{Specifications of the edits to be made to the xpdb index. Edits are made as 
 type and variable pairs e.g. idv = 'TAD' will assign TAD to the type idv (independent variable).}
 
-\item{auto_factor}{With \code{set_vars_type} only. If \code{TRUE} new columns assigned to the type 'catcov' will be converted to
+\item{auto_factor}{With \code{set_var_types} only. If \code{TRUE} new columns assigned to the type 'catcov' will be converted to
 factor.}
 
 \item{quiet}{Logical, if \code{FALSE} messages are printed to the console.}
@@ -36,33 +36,33 @@ Function designed to change the type, label or unit associated with variables.
 
 \itemize{
   \item amt: Dose amount
-  \item catcov: Categorical covariates
-  \item contcov: Continuous covariates
+  \item catcov: Categorical covariate
+  \item contcov: Continuous covariate
   \item dv: Dependent variable
   \item dvid: DV identifier
   \item eta: Eta
   \item evid: Event identifier
   \item id: Subject identifier
   \item idv: Independent variable
-  \item ipred: Model individual predictions
+  \item ipred: Individual model predictions
   \item mdv: Missing dependent variable
   \item na: Not attributed
   \item occ: Occasion flag
   \item param: Model parameter
-  \item pred: Model typical predictions
+  \item pred: Typical model predictions
   \item res: Residuals
  }
 }
 
 \examples{
 # Change variable type
-xpdb_2 <- set_vars_type(xpdb_ex_pk, problem = 1, idv = 'TAD')
+xpdb_2 <- set_var_types(xpdb_ex_pk, problem = 1, idv = 'TAD')
 
 # Change labels
-xpdb_2 <- set_vars_label(xpdb_2, problem = 1, ALAG1 = 'Lag time', CL = 'Clearance', V = 'Volume')
+xpdb_2 <- set_var_labels(xpdb_2, problem = 1, ALAG1 = 'Lag time', CL = 'Clearance', V = 'Volume')
 
 # Change units
-xpdb_2 <- set_vars_units(xpdb_2, problem = 1, ALAG1 = 'h', CL = 'L/h', V = 'L')
+xpdb_2 <- set_var_units(xpdb_2, problem = 1, ALAG1 = 'h', CL = 'L/h', V = 'L')
 
 }
 \seealso{

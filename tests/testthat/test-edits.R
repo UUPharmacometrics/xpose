@@ -17,3 +17,9 @@ test_that("filter works error properly", {
                  get_file(ext = 'phi'), 
                xpdb_ex_pk %>% get_file(ext = 'phi') %>% filter(.$ID == 110))
 })
+
+test_that("variable added with mutate is available in all problems", {
+  xpdb_mod <- mutate.xpose_data(xpdb_ex_pk, VAR=1)
+  expect_true(exists("VAR", xpdb_mod$data$data[[1]]))
+  expect_true(exists("VAR", xpdb_mod$data$data[[2]]))
+})
