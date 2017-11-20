@@ -52,15 +52,6 @@ dplyr::summarise
 purrr::`%>%`
 
 
-#' @importFrom ggforce facet_wrap_paginate
-#' @export
-ggforce::facet_wrap_paginate
-
-
-#' @importFrom ggforce facet_grid_paginate
-#' @export
-ggforce::facet_grid_paginate
-
 
 #' Test for xpose_theme class
 #' 

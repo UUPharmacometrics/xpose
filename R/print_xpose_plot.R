@@ -43,7 +43,7 @@ print.xpose_plot <- function(x, page, ...) {
   if (class(x$facet)[1] %in% c('FacetWrapPaginate', 'FacetGridPaginate')) {
     
     # Get total number of pages
-    page_tot <- ggforce::n_pages(repair_facet(x))
+    page_tot <- n_pages(repair_facet(x))
     
     # Get and check the page number to be drawn
     if (!missing(page)) {
