@@ -50,7 +50,6 @@ Imports:
   dplyr (>= 0.7.0),
   ggforce,
   grDevices,
-  gridExtra,
   purrr (>= 0.2.0),
   readr,
   rlang (>= 0.1.2),
@@ -61,6 +60,7 @@ Imports:
   stats,
   vpc (>= 1.0.0)
 Suggests:
+  gridExtra,
   rmarkdown,
   knitr,
   testthat,

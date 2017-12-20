@@ -1,5 +1,9 @@
 context('Check xpose_data')
 
+
+# Load helper files -------------------------------------------------------
+load(file = file.path('data', 'theme_readable_221.Rdata'))
+
 # Tests start here --------------------------------------------------------
 
 test_that('error is returned when missing file and runno arguments', {
@@ -27,26 +31,32 @@ test_that('error is returned for bad themes input', {
 
 
 test_that('properly creates the xpdb when using the file argument', {
-  xpdb_1 <- xpose_data(file = 'run001.lst', dir = 'data', quiet = TRUE)
+  xpdb_1 <- xpose_data(file = 'run001.lst', dir = 'data', 
+                       gg_theme = theme_readable_221, quiet = TRUE)
   expect_true(inherits(xpdb_1, 'xpose_data'))
   
   # Correct path and quiet option for identical comparison with xpdb_ex_pk
+  skip_on_cran()
   xpdb_1$summary$value[xpdb_1$summary$label == 'dir'] <- 'analysis/models/pk/' 
   xpdb_1$options$dir <- 'analysis/models/pk/'
   attr(xpdb_1$code, 'dir') <- 'analysis/models/pk/'
+  attr(xpdb_1$gg_theme, 'theme') <- 'theme_readable'
   xpdb_1$options$quiet <- FALSE
   xpdb_1$xp_theme$labeller <- xpdb_ex_pk$xp_theme$labeller
   expect_identical(xpdb_1, xpdb_ex_pk)
 })
 
 test_that('properly creates the xpdb when using the runno argument', {
-  xpdb_2 <- xpose_data(runno = '001', ext = '.lst', dir = 'data', quiet = TRUE)
+  xpdb_2 <- xpose_data(runno = '001', ext = '.lst', dir = 'data', 
+                       gg_theme = theme_readable_221, quiet = TRUE)
   expect_true(inherits(xpdb_2, 'xpose_data'))
   
   # Correct path and quiet option for identical comparison with xpdb_ex_pk
+  skip_on_cran()
   xpdb_2$summary$value[xpdb_2$summary$label == 'dir'] <- 'analysis/models/pk/'
   xpdb_2$options$dir <- 'analysis/models/pk/'
   attr(xpdb_2$code, 'dir') <- 'analysis/models/pk/'
+  attr(xpdb_2$gg_theme, 'theme') <- 'theme_readable'
   xpdb_2$options$quiet <- FALSE
   xpdb_2$xp_theme$labeller <- xpdb_ex_pk$xp_theme$labeller
   expect_identical(xpdb_2, xpdb_ex_pk)

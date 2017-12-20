@@ -1,3 +1,8 @@
+# xpose 0.4.1
+### General
+* Improved compatibility with upcoming ggplot2 v2.2.2
+* Improved compatibility with xpose.nlmixr
+
 # xpose 0.4.0
 ### General
 * Added xpdb memory usage to `print.xpose_data()`

@@ -44,6 +44,7 @@ test_that('vpc_data works properly with xpdb tables', {
 })
 
 test_that('vpc_data works properly with psn_folder', {
+  skip_on_cran()
   # Check psn_vpc_parser
   parsed_psn_vpc <- psn_vpc_parser(xpdb = xpdb_ex_pk, psn_folder = 'data/psn_vpc/', 
                                    psn_bins = TRUE, opt = vpc_opt(), quiet = TRUE)

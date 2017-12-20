@@ -43,7 +43,7 @@ print.xpose_plot <- function(x, page, ...) {
   if (class(x$facet)[1] %in% c('FacetWrapPaginate', 'FacetGridPaginate')) {
     
     # Get total number of pages
-    page_tot <- ggforce::n_pages(repair_facet(x))
+    page_tot <- n_pages(repair_facet(x))
     
     # Get and check the page number to be drawn
     if (!missing(page)) {
@@ -102,11 +102,10 @@ print.xpose_plot <- function(x, page, ...) {
     if (!missing(page)) warning('Faceting not set. Ignoring `page` argument.', call. = FALSE)
     
     # Warn for big plots
-    n_panels <- ggplot2::ggplot_build(x) %>% 
-    {nrow(.$layout$panel_layout)}
+    panel_tot <- n_panels(x)
     
-    if (n_panels > 20) {
-      msg(c('The faceting resulted in ', n_panels, 
+    if (panel_tot > 20) {
+      msg(c('The faceting resulted in ', panel_tot, 
             ' panels. The plot may take a while to render.'), 
           quiet = x$xpose$quiet)
     }
@@ -142,4 +141,32 @@ repair_facet <- function(x) {
     x$facet$params$nrow <- x$facet$params$max_row
   }
   x
+}
+
+# Calculate the total number of pages
+n_pages <- function(plot) {
+  if (utils::packageVersion('ggplot2') <= '2.2.1') {
+    page <- ggplot_build(plot)$layout$panel_layout$page
+  } else {
+    page <- ggplot_build(plot)$layout$layout$page
+  }
+  if (!is.null(page)) {
+    max(page)
+  } else {
+    0L
+  }
+}
+
+# Calculate the total number of panels
+n_panels <- function(plot) {
+  if (utils::packageVersion('ggplot2') <= '2.2.1') {
+    page <- ggplot_build(plot)$layout$panel_layout
+  } else {
+    page <- ggplot_build(plot)$layout$layout
+  }
+  if (!is.null(page)) {
+    nrow(page)
+  } else {
+    0L
+  }
 }
