@@ -10,7 +10,7 @@ load(file = file.path('data', 'ctrl_special.RData'))
 
 # ctrl_psn_vpc_dat <- psn_vpc_parser(xpdb = xpdb_ex_pk, psn_folder = 'data/psn_vpc/',
 #                                    psn_bins = TRUE, opt = vpc_opt(), quiet = TRUE)
-# save(ctrl_psn_vpc_dat, file = 'data/ctrl_psn_vpc.RData', compress = 'xz')
+                                        # save(ctrl_psn_vpc_dat, file = 'data/ctrl_psn_vpc.RData', compress = 'xz')
 load(file = file.path('data', 'ctrl_psn_vpc.RData'))
 
 
@@ -22,19 +22,19 @@ test_psn_vpc <- vpc_data(xpdb_ex_pk, psn_folder = 'data/psn_vpc/', quiet = TRUE)
 
 # Tests start here --------------------------------------------------------
 test_that('vpc_opt works properly', {
-  expect_equal(vpc_opt(), 
-               list(bins = 'jenks', n_bins = 'auto', bin_mid = 'mean', pred_corr = FALSE, 
-                    pred_corr_lower_bnd = 0, pi = c(0.025, 0.975),  ci = c(0.025, 0.975),  
-                    lloq = NULL,  uloq = NULL, rtte = FALSE, rtte_calc_diff = TRUE, 
-                    events = NULL, kmmc = NULL, reverse_prob = FALSE, 
+  expect_equal(vpc_opt(),
+               list(bins = 'jenks', n_bins = 'auto', bin_mid = 'mean', pred_corr = FALSE,
+                    pred_corr_lower_bnd = 0, pi = c(0.025, 0.975),  ci = c(0.025, 0.975),
+                    lloq = NULL,  uloq = NULL, rtte = FALSE, rtte_calc_diff = TRUE,
+                    events = NULL, kmmc = NULL, reverse_prob = FALSE,
                     as_percentage = TRUE, usr_call = NULL))
 })
 
 test_that('vpc_data properly check input', {
   expect_error(vpc_data(), regexp = 'argument \"xpdb\" is missing')
-  expect_error(vpc_data(xpdb_ex_pk, psn_folder = '.', quiet = TRUE), 
+  expect_error(vpc_data(xpdb_ex_pk, psn_folder = '.', quiet = TRUE),
                  regexp = 'No table files could be found')
-  expect_error(vpc_data(xpdb_ex_pk, psn_folder = 'fake', quiet = TRUE), 
+  expect_error(vpc_data(xpdb_ex_pk, psn_folder = 'fake', quiet = TRUE),
                regexp = 'fake could not be found')
 })
 
@@ -44,11 +44,11 @@ test_that('vpc_data works properly with xpdb tables', {
 })
 
 test_that('vpc_data works properly with psn_folder', {
-  
+
   skip_on_cran() # Skip to avoid issue with no long double
-  
+
   # Check psn_vpc_parser
-  parsed_psn_vpc <- psn_vpc_parser(xpdb = xpdb_ex_pk, psn_folder = 'data/psn_vpc/', 
+  parsed_psn_vpc <- psn_vpc_parser(xpdb = xpdb_ex_pk, psn_folder = 'data/psn_vpc/',
                                    psn_bins = TRUE, opt = vpc_opt(), quiet = TRUE)
   expect_equal(parsed_psn_vpc, ctrl_psn_vpc_dat)
   expect_true(is.xpdb(test_psn_vpc))
@@ -57,11 +57,11 @@ test_that('vpc_data works properly with psn_folder', {
 
 
 test_that('vpc plot properly check input', {
-  expect_error(vpc())
-  expect_error(vpc(xpdb = 1, quiet = FALSE), regexp = 'Bad input')
-  expect_error(vpc(xpdb_ex_pk, quiet = FALSE), regexp = 'No `special` slot')
-  expect_error(vpc(ctrl_special, quiet = FALSE), regexp = 'Several VPC data')
-  expect_error(vpc(ctrl_special, vpc_type = 'unknown', quiet = FALSE), 
+  expect_error(plot_vpc())
+  expect_error(plot_vpc(xpdb = 1, quiet = FALSE), regexp = 'Bad input')
+  expect_error(plot_vpc(xpdb_ex_pk, quiet = FALSE), regexp = 'No `special` slot')
+  expect_error(plot_vpc(ctrl_special, quiet = FALSE), regexp = 'Several VPC data')
+  expect_error(plot_vpc(ctrl_special, vpc_type = 'unknown', quiet = FALSE),
                regexp = 'should be one of')
   expect_error(test_psn_vpc %>% vpc(vpc_type = 'cens'),
                regexp = 'Change `vpc_type` to continuous')
@@ -70,7 +70,7 @@ test_that('vpc plot properly check input', {
 test_that('vpc plot are properly generated', {
   p_cont  <- vpc(ctrl_special, vpc_type = 'continuous', type = 'alrpt', quiet = FALSE)
   p_cont2 <- vpc(ctrl_special, vpc_type = 'continuous', facets = ~group)
-  p_cens  <- vpc(ctrl_special, vpc_type = 'censored', smooth = FALSE, facets = 'group', 
+  p_cens  <- vpc(ctrl_special, vpc_type = 'censored', smooth = FALSE, facets = 'group',
                  type = 'alr', quiet = FALSE)
   expect_true(is.xpose.plot(p_cont))
   expect_true(is.xpose.plot(p_cens))
@@ -88,6 +88,6 @@ test_that('vpc plot are properly generated', {
   expect_equal(p_cens$xpose$fun, 'vpc_censored')
   expect_equal(p_cont$xpose$problem, 3)
   expect_equal(p_cens$xpose$problem, 4)
-  expect_equal(p_cont$xpose$summary$value[p_cont$xpose$summary$label %in% c('vpcdir', 'vpcnsim', 'vpcci', 'vpcpi')], 
+  expect_equal(p_cont$xpose$summary$value[p_cont$xpose$summary$label %in% c('vpcdir', 'vpcnsim', 'vpcci', 'vpcpi')],
               c('analysis/models/pk/', '20', '95', '95'))
 })

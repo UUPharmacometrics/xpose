@@ -280,6 +280,7 @@ plot_vpc <- function(xpdb,
 }
 
 ##' @export
+##' @method vpc xpose_data
 ##' @rdname plot_vpc
 vpc.xpose_data <- function(sim, ...){
     plot_vpc(xpdb=sim, ...);

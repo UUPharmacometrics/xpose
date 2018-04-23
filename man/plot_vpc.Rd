@@ -12,7 +12,7 @@ plot_vpc(xpdb, vpc_type = NULL, mapping = NULL, smooth = TRUE,
   facets, quiet, area_fill = c("steelblue3", "grey60", "steelblue3"),
   line_linetype = c("93", "solid", "93"), ...)
 
-vpc.xpose_data(sim, ...)
+\method{vpc}{xpose_data}(sim, ...)
 }
 \arguments{
 \item{xpdb}{An xpose database object.}
