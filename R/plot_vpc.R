@@ -1,5 +1,5 @@
 #' Visual predictive checks
-#'
+#' 
 #' @description Generate visual predictive checks (VPC)
 #'
 #' @param xpdb An xpose database object.
