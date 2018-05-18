@@ -54,6 +54,7 @@ read_nm_tables <- function(file          = NULL,
                            quiet         = FALSE,
                            simtab        = NULL,
                            ziptab        = TRUE,
+                           column_map    = character(0),
                            ...) {
   # Check inputs
   if (is.null(file)) stop('Argument `file` required.', call. = FALSE)
@@ -119,7 +120,7 @@ read_nm_tables <- function(file          = NULL,
     dplyr::mutate(name = basename(.$file)) %>% 
     dplyr::select(dplyr::one_of('problem', 'name', 'simtab', 'firstonly', 'fun', 'params'))
   
-  if (nrow(tables) == 0) stop('No table imported.', call. = FALSE)
+  if (nrow(tables) == 0) stop('No table imported while collecting options for table import.', call. = FALSE)
   
   # Read in data
   tables <- tables %>% 
@@ -138,11 +139,10 @@ read_nm_tables <- function(file          = NULL,
     dplyr::mutate(grouping = 1:n()) %>% 
     dplyr::group_by_(.dots = 'grouping') %>% 
     tidyr::nest(.key = 'tmp') %>% 
-    dplyr::mutate(index = purrr::map(.$tmp, index_table),
+    dplyr::mutate(index = purrr::map(.$tmp, index_table, column_map=column_map),
                   nrow =  purrr::map_dbl(.$tmp, ~nrow(.$data[[1]]))) %>% 
     tidyr::unnest_(unnest_cols = 'tmp') %>% 
     dplyr::ungroup()
-  
   
   # Combine tables with same number of rows
   tables <- tables %>% 
@@ -152,7 +152,7 @@ read_nm_tables <- function(file          = NULL,
     tidyr::unnest_(unnest_cols = 'out') %>% 
     dplyr::select(dplyr::one_of('problem', 'simtab', 'firstonly', 'data', 'index'))
   
-  if (nrow(tables) == 0) stop('No table imported.', call. = FALSE)
+  if (nrow(tables) == 0) stop('No table imported while combining tables with the same number of rows.', call. = FALSE)
   
   # Remove duplicated columns to decrease xpdb size
   if (rm_duplicates) {
@@ -178,7 +178,7 @@ read_nm_tables <- function(file          = NULL,
       dplyr::select(dplyr::one_of('problem', 'simtab', 'data', 'index'))
   }
   
-  if (nrow(tables) == 0) stop('No table imported.', call. = FALSE)
+  if (nrow(tables) == 0) stop('No table imported after removing duplicated columns and merging firstonly tables.', call. = FALSE)
   
   # Convert catcov, id, occ, dvid to factor
   tables <- tables %>% 
@@ -288,7 +288,6 @@ combine_tables <- function(x) {
     return(dplyr::tibble(data = list(), index = list()))
     
   }
-  
   # Check for ID column
   if (!any(purrr::map_lgl(x$index, ~any(.$type == 'id')))) {
     warning(c('Dropped ', stringr::str_c('`', x$name, '`', collapse = ', '), 
@@ -341,22 +340,32 @@ merge_firstonly <- function(x, quiet) {
 
 
 #' Index table columns
-#' 
-#' @param x A list containing the tables (`x$data`) to be 
-#' combined along with their respective names (`x$name`).
-#' 
+#'
+#' @param x A list containing the tables (`x$data`) to be combined along with
+#'   their respective names (`x$name`).
+#' @param column_map A named character vector mapping column names either to
+#'   reserved NONMEM keywords or to itself.
+#'
 #' @return A tibble of the index.
-#' 
+#'
 #' @keywords internal
+#' @seealso \code{\link{parse_nm_input_record}}
 #' @export
-index_table <- function(x) {
+index_table <- function(x, column_map=character(0)) {
   tab_type <- dplyr::case_when(
     stringr::str_detect(x$name, 'patab') ~ 'param',   # model parameters
     stringr::str_detect(x$name, 'catab') ~ 'catcov',  # categorical covariate
     stringr::str_detect(x$name, 'cotab') ~ 'contcov', # continuous covariate
     TRUE ~ 'na')
   
-  x$data[[1]] %>% 
+  mapped_names <-
+    c("ID", "DV", "TIME", "OCC", "DVID", "AMT", "MDV", "EVID", "IPRED", "PRED") %>%
+    setNames(., .)
+  replace_names <- intersect(names(mapped_names), names(column_map))
+  mapped_names[replace_names] <- column_map[replace_names]
+  
+  ret <-
+    x$data[[1]] %>% 
     colnames() %>% 
     dplyr::tibble(table = x$name,
                   col   = ., 
@@ -364,18 +373,19 @@ index_table <- function(x) {
                   label = NA_character_,     # Feature to be added in future releases
                   units = NA_character_) %>% # Feature to be added in future releases
     dplyr::mutate(type = dplyr::case_when(
-      .$col == 'ID' ~ 'id',
-      .$col == 'DV' ~ 'dv',
-      .$col == 'TIME' ~ 'idv',
-      .$col == 'OCC' ~ 'occ',
-      .$col == 'DVID' ~ 'dvid',
-      .$col == 'AMT' ~ 'amt',
-      .$col == 'MDV' ~ 'mdv',
-      .$col == 'EVID' ~ 'evid',
-      .$col == 'IPRED' ~ 'ipred',
-      .$col == 'PRED' ~ 'pred',
+      .$col == mapped_names['ID'] ~ 'id',
+      .$col == mapped_names['DV'] ~ 'dv',
+      .$col == mapped_names['TIME'] ~ 'idv',
+      .$col == mapped_names['OCC'] ~ 'occ',
+      .$col == mapped_names['DVID'] ~ 'dvid',
+      .$col == mapped_names['AMT'] ~ 'amt',
+      .$col == mapped_names['MDV'] ~ 'mdv',
+      .$col == mapped_names['EVID'] ~ 'evid',
+      .$col == mapped_names['IPRED'] ~ 'ipred',
+      .$col == mapped_names['PRED'] ~ 'pred',
       .$col %in% c('RES', 'WRES', 'CWRES', 'IWRES', 'EWRES', 'NPDE') ~ 'res',
       stringr::str_detect(.$col, 'ETA\\d+|ET\\d+') ~ 'eta',
       stringr::str_detect(.$col, '^A\\d+$') ~ 'a',
       TRUE ~ tab_type))
+  ret
 }

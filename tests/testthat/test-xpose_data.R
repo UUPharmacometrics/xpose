@@ -89,3 +89,8 @@ test_that('properly handles errors in files', {
                  regexp = 'Dropped `run001.lst`')
   expect_error(grd_vs_iteration(xpdb_5), regex = 'No `files` slot could be found in this xpdb')
 })  
+
+test_that('properly uses mapped ID column', {
+  xpdb_1 <- xpose_data(file = 'run004.lst', dir = 'data', quiet = TRUE)
+})
+  
