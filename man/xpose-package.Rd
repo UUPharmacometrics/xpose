@@ -37,6 +37,7 @@ Other contributors:
   \item Kajsa Harling \email{kajsa.harling@pharmetheus.com} [contributor]
   \item Mike K. Smith \email{mike.k.smith@pfizer.com} [contributor]
   \item Elodie Plan \email{elodie.plan@pharmetheus.com} [contributor]
+  \item Bill Denney \email{wdenney@humanpredictions.com} [contributor]
   \item Pharmetheus \email{info@pharmetheus.com} [contributor]
   \item Pfizer [contributor]
 }

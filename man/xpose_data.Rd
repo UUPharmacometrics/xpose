@@ -40,7 +40,7 @@ combination of the three.}
 
 \item{quiet}{Logical, if \code{FALSE} messages are printed to the console.}
 
-\item{...}{Additional arguments to be passed to the \code{\link[readr]{read_delim}} functions.}
+\item{...}{Additional arguments to be passed to the \code{\link{read_nm_tables}} functions.}
 }
 \description{
 Gather model outputs into a R database

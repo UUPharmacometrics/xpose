@@ -116,8 +116,10 @@ xpose_data <- function(runno         = NULL,
     msg('Ignoring data import.', quiet)
     data <- NULL
   } else if (software == 'nonmem') {
+    column_map <- parse_nm_input_record(model_code)
     data <- tryCatch(read_nm_tables(file = tbl_names, dir = NULL, 
-                                    quiet = quiet, simtab = simtab, ...), 
+                                    quiet = quiet, simtab = simtab,
+                                    column_map = column_map, ...),
                      error = function(e) {
                        warning(e$message, call. = FALSE)
                        return()

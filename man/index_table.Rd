@@ -7,13 +7,16 @@
 index_table(x)
 }
 \arguments{
-\item{x}{A list containing the tables (`x$data`) to be 
-combined along with their respective names (`x$name`).}
+\item{x}{A list containing the tables (`x$data`) to be combined along with
+their respective names (`x$name`).}
 }
 \value{
 A tibble of the index.
 }
 \description{
 Index table columns
+}
+\seealso{
+\code{\link{parse_nm_input_record}}
 }
 \keyword{internal}

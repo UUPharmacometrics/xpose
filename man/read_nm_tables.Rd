@@ -6,7 +6,7 @@
 \usage{
 read_nm_tables(file = NULL, dir = NULL, combined = TRUE,
   rm_duplicates = TRUE, quiet = FALSE, simtab = NULL, ziptab = TRUE,
-  ...)
+  column_map = character(0), ...)
 }
 \arguments{
 \item{file}{A character vector of path to the files or a \code{nm_table_list} object created with \code{list_nm_tables}.}
@@ -24,6 +24,8 @@ does not match an error will be returned.}
 Default \code{NULL} reads all tables.}
 
 \item{ziptab}{If \code{TRUE} search for the tables that have been compressed and renamed ´<file>.zip'.}
+
+\item{column_map}{An optional named character vector used to rename columns in a table file to standard NONMEM names.  This will be needed if the model remaps the "ID" column to a different name.}
 
 \item{...}{Additional arguments to be passed to the \code{\link[readr]{read_table2}} or \code{\link[readr]{read_csv}} functions.}
 }
@@ -64,5 +66,8 @@ nm_tables <- read_nm_tables(file = 'sdtab001', dir = 'models',
                             col_type = readr::cols(.default = 'c'), 
                             n_max = 10)
 
+# Renaming the ID column from FOO to ID
+nm_tables <- read_nm_tables(file = 'sdtab001', dir = 'models',
+                            column_map = c(ID="FOO"))
 }
 }

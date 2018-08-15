@@ -12,6 +12,7 @@
 #' @param simtab If \code{TRUE} only reads in simulation tables, if \code{FALSE} only reads estimation tables. 
 #' Default \code{NULL} reads all tables.
 #' @param ziptab If \code{TRUE} search for the tables that have been compressed and renamed ´<file>.zip'.
+#' @param column_map An optional named character vector used to rename columns in a table file to standard NONMEM names.  This will be needed if the model remaps the "ID" column to a different name.
 #' @param ... Additional arguments to be passed to the \code{\link[readr]{read_table2}} or \code{\link[readr]{read_csv}} functions.
 #' 
 #' @section Table format requirement:
@@ -45,8 +46,12 @@
 #'                             col_type = readr::cols(.default = 'c'), 
 #'                             n_max = 10)
 #' 
+#' # Renaming the ID column from FOO to ID
+#' nm_tables <- read_nm_tables(file = 'sdtab001', dir = 'models',
+#'                             column_map = c(ID="FOO"))
 #' }
 #' @export
+#' @importFrom dplyr rename_
 read_nm_tables <- function(file          = NULL,
                            dir           = NULL,
                            combined      = TRUE,
@@ -54,9 +59,15 @@ read_nm_tables <- function(file          = NULL,
                            quiet         = FALSE,
                            simtab        = NULL,
                            ziptab        = TRUE,
+                           column_map    = character(0),
                            ...) {
   # Check inputs
   if (is.null(file)) stop('Argument `file` required.', call. = FALSE)
+  if (length(column_map) &
+      (is.null(names(column_map)) |
+       any(names(column_map) %in% ""))) {
+    stop("column_map must be a named vector")
+  }
   
   if (!is.null(file) && !is.nm.table.list(file)) {
     file <- dplyr::tibble(problem   = 1, 
@@ -119,14 +130,28 @@ read_nm_tables <- function(file          = NULL,
     dplyr::mutate(name = basename(.$file)) %>% 
     dplyr::select(dplyr::one_of('problem', 'name', 'simtab', 'firstonly', 'fun', 'params'))
   
-  if (nrow(tables) == 0) stop('No table imported.', call. = FALSE)
-  
+  if (nrow(tables) == 0) stop('No table imported while collecting options for table import.', call. = FALSE)
   # Read in data
   tables <- tables %>% 
     dplyr::bind_cols(tables %>% 
                        dplyr::select(dplyr::one_of(c('fun', 'params'))) %>% 
                        {purrr::invoke_map(.f = .$fun, .x = .$params)} %>%
                        dplyr::tibble(data = .))
+  if (length(column_map)) {
+    # Rename columns to standard NONMEM names, if applicable.
+    tables$data <-
+      lapply(FUN=function(x, .dots) {
+        if (any(.dots %in% names(x))) {
+          # Some data sets may not have any or all of the remapped names
+          tmp_dots <- .dots[.dots %in% names(x)]
+          dplyr::rename_(x, .dots=tmp_dots)
+        } else {
+          x
+        }
+      },
+      X=tables$data,
+      .dots=column_map)
+  }
   
   if (!combined) {
     return(purrr::set_names(x = purrr::map(tables$data, ~tidyr::drop_na(., dplyr::one_of('ID'))),
@@ -143,7 +168,6 @@ read_nm_tables <- function(file          = NULL,
     tidyr::unnest_(unnest_cols = 'tmp') %>% 
     dplyr::ungroup()
   
-  
   # Combine tables with same number of rows
   tables <- tables %>% 
     dplyr::group_by_(.dots = c('problem', 'simtab', 'firstonly')) %>% 
@@ -152,7 +176,7 @@ read_nm_tables <- function(file          = NULL,
     tidyr::unnest_(unnest_cols = 'out') %>% 
     dplyr::select(dplyr::one_of('problem', 'simtab', 'firstonly', 'data', 'index'))
   
-  if (nrow(tables) == 0) stop('No table imported.', call. = FALSE)
+  if (nrow(tables) == 0) stop('No table imported while combining tables with the same number of rows.', call. = FALSE)
   
   # Remove duplicated columns to decrease xpdb size
   if (rm_duplicates) {
@@ -178,7 +202,7 @@ read_nm_tables <- function(file          = NULL,
       dplyr::select(dplyr::one_of('problem', 'simtab', 'data', 'index'))
   }
   
-  if (nrow(tables) == 0) stop('No table imported.', call. = FALSE)
+  if (nrow(tables) == 0) stop('No table imported after removing duplicated columns and merging firstonly tables.', call. = FALSE)
   
   # Convert catcov, id, occ, dvid to factor
   tables <- tables %>% 
@@ -288,7 +312,6 @@ combine_tables <- function(x) {
     return(dplyr::tibble(data = list(), index = list()))
     
   }
-  
   # Check for ID column
   if (!any(purrr::map_lgl(x$index, ~any(.$type == 'id')))) {
     warning(c('Dropped ', stringr::str_c('`', x$name, '`', collapse = ', '), 
@@ -341,13 +364,14 @@ merge_firstonly <- function(x, quiet) {
 
 
 #' Index table columns
-#' 
-#' @param x A list containing the tables (`x$data`) to be 
-#' combined along with their respective names (`x$name`).
-#' 
+#'
+#' @param x A list containing the tables (`x$data`) to be combined along with
+#'   their respective names (`x$name`).
+#'
 #' @return A tibble of the index.
-#' 
+#'
 #' @keywords internal
+#' @seealso \code{\link{parse_nm_input_record}}
 #' @export
 index_table <- function(x) {
   tab_type <- dplyr::case_when(
@@ -356,7 +380,8 @@ index_table <- function(x) {
     stringr::str_detect(x$name, 'cotab') ~ 'contcov', # continuous covariate
     TRUE ~ 'na')
   
-  x$data[[1]] %>% 
+  ret <-
+    x$data[[1]] %>% 
     colnames() %>% 
     dplyr::tibble(table = x$name,
                   col   = ., 
@@ -378,4 +403,5 @@ index_table <- function(x) {
       stringr::str_detect(.$col, 'ETA\\d+|ET\\d+') ~ 'eta',
       stringr::str_detect(.$col, '^A\\d+$') ~ 'a',
       TRUE ~ tab_type))
+  ret
 }

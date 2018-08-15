@@ -89,3 +89,12 @@ test_that('properly handles errors in files', {
                  regexp = 'Dropped `run001.lst`')
   expect_error(grd_vs_iteration(xpdb_5), regex = 'No `files` slot could be found in this xpdb')
 })  
+
+test_that('properly uses mapped ID column', {
+  xpdb_1 <- xpose_data(file = 'run004.lst', dir = 'data', quiet = TRUE)
+  expect_equal(parse_nm_input_record(xpdb_1$code), c(ID="FOO"),
+               info="The input record wants to remap FOO to ID")
+  expect_true("ID" %in% names(xpdb_1$data$data[[1]]),
+              info="FOO is remapped to ID accurately")
+})
+  
