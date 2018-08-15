@@ -6,5 +6,7 @@ apt_packages:
   - libudunits2-dev
 r_packages:
   - covr
+r_github_packages:
+  - ronkeizer/vpc
 after_success:
   - Rscript -e 'library(covr); codecov()'

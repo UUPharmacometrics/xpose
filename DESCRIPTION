@@ -1,7 +1,7 @@
 Package: xpose
 Type: Package
 Title: Diagnostics for Pharmacometric Models
-Version: 0.4.2
+Version: 0.4.3
 Authors@R: c(
       person('Benjamin', 'Guiastrennec',
              role  = c('aut', 'cre', 'cph'),
@@ -58,7 +58,7 @@ Imports:
   tidyr (>= 0.6),
   utils,
   stats,
-  vpc (>= 1.0.0)
+  vpc (>= 1.0.2)
 Suggests:
   gridExtra,
   rmarkdown,
