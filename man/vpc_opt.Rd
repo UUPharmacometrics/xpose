@@ -24,9 +24,9 @@ timepoints (default) or 'middle' to use the average of the bin boundaries.}
 
 \item{pred_corr_lower_bnd}{Option reserved to continuous VPC. Lower bound for the prediction-correction.}
 
-\item{pi}{Option reserved to continuous VPC. Simulated prediction interval to plot. Default is c(0.05, 0.95).}
+\item{pi}{Option reserved to continuous VPC. Simulated prediction interval to plot. Default is c(0.025, 0.975).}
 
-\item{ci}{Confidence interval around the percentiles to plot. Default is c(0.05, 0.95)}
+\item{ci}{Confidence interval around the percentiles to plot. Default is c(0.025, 0.975)}
 
 \item{lloq}{Number or NULL indicating lower limit of quantification. Default is NULL.}
 
