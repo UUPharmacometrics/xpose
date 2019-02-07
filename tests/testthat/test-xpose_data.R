@@ -90,3 +90,8 @@ test_that('properly handles errors in files', {
   expect_error(grd_vs_iteration(xpdb_5), regex = 'No `files` slot could be found in this xpdb')
 })  
 
+test_that('Allow assignment within object while maintaining the class', {
+  xpdb <- xpdb_ex_pk
+  xpdb$options$quiet <- TRUE
+  expect_equal(class(xpdb), class(xpdb_ex_pk))
+})
