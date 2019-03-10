@@ -1,3 +1,8 @@
+# xpose 0.4.3.9000
+
+### General
+* Fixed bug in `eta_distrib()` where nonstandard ETA parameter names whould not show up correctly and may be grouped incorrectly (#144).
+
 # xpose 0.4.3
 ### General
 * Fixed bug in `get_prm()`/`prm_table()` where off diagonal correlations were improperly computed.
