@@ -423,13 +423,24 @@ get_prm <- function(xpdb,
       }
       
       # Assign OMEGA labels
-      n_omega     <- sum(prms$type == 'ome' & prms$diagonal, na.rm = TRUE)
+      mask_omega <- prms$type == 'ome' & prms$diagonal
+      mask_omega_all <-
+        prms$type == 'ome' &
+        !is.nan(prms$value) &
+        (prms$diagonal |
+           !(prms$value == 0 & prms$fixed & !prms$diagonal)
+        )
+      n_omega     <- sum(mask_omega, na.rm = TRUE)
+      n_omega_all <- sum(mask_omega_all, na.rm = TRUE)
       omega_names <- data$prm_names$omega
-      if (n_omega != length(omega_names)) {
+      if (n_omega == length(omega_names)) {
+        prms$label[mask_omega] <- omega_names
+      } else if (n_omega_all == length(omega_names)) {
+        prms$label[mask_omega_all] <- omega_names
+      } else {
+        browser()
         warning('[$prob no.', data$problem, ', subprob no.', data$subprob, ', ', data$method, 
                 '] $OMEGA labels did not match the number of OMEGAs in the `.ext` file.', call. = FALSE)
-      } else {
-        prms$label[prms$type == 'ome' & prms$diagonal] <- omega_names
       }
       
       # Assign SIGMA labels
