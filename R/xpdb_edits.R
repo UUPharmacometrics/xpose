@@ -350,3 +350,16 @@ irep <- function(x, quiet = FALSE) {
   msg(c('irep: ', max(x), ' simulations found.'), quiet)
   x
 }
+
+#' Allow assignment into xpose_data without conversion to class uneval
+#' @param x object from which to extract element(s) or in which to replace element(s).
+#' @param i index specifying element to replace.
+#' @param value typically an array-like R object of a similar class as x.
+#' @return The object with the value replaced.
+#' @noRd
+`[[<-.xpose_data` <- function(x, i, value) {
+  x <- unclass(x)
+  x[[i]] <- value
+  as.xpdb(x)
+}
+`$<-.xpose_data` <- `[[<-.xpose_data`

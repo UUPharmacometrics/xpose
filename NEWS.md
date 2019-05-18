@@ -1,3 +1,7 @@
+# xpose 0.4.4.9000
+### General
+* Assignment into an "xpose_data" object now keeps the class of "xpose_data" instead of reverting to "uneval" (@billdenney #134)
+
 # xpose 0.4.4
 ### General
 * Improved documentation for `xpose_data` (@billdenney #99)
