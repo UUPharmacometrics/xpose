@@ -7,8 +7,7 @@
 update_themes(xpdb = NULL, gg_theme = NULL, xp_theme = NULL, quiet)
 }
 \arguments{
-\item{xpdb}{An \code{xpdb} object generated with
-\code{\link{create_nm_xpdb}}.}
+\item{xpdb}{An \code{xpdb} object.}
 
 \item{gg_theme}{A complete ggplot2 theme object (e.g.
 \code{\link[ggplot2]{theme_classic}}), a function returning a complete

@@ -7,19 +7,22 @@
 get_data(xpdb, table = NULL, .problem = NULL, quiet)
 }
 \arguments{
-\item{xpdb}{An \code{xpose_data} object from which the model output file data will be extracted.}
+\item{xpdb}{An \code{xpose_data} object from which the model output file data
+will be extracted.}
 
-\item{table}{Name of the output table to be extracted from the xpdb e.g. 'sdtab001'. Alternative to 
-the `.problem` argument.}
+\item{table}{Name of the output table to be extracted from the xpdb e.g.
+'sdtab001'. Alternative to the `.problem` argument.}
 
-\item{.problem}{Accesses all tables from the specified problem. Alternative to the `table` argument.}
+\item{.problem}{Accesses all tables from the specified problem. Alternative
+to the `table` argument.}
 
 \item{quiet}{Logical, if \code{FALSE} messages are printed to the console.}
 }
 \value{
-By default returns data from the last estimation problem. If only simulation problems are present 
-then the data from last simulation will be returned instead. Object returned as tibble for single 
-tables/problems or a named list for multiple tables/problems.
+By default returns data from the last estimation problem. If only
+  simulation problems are present then the data from last simulation will be
+  returned instead. Object returned as tibble for single tables/problems or a
+  named list for multiple tables/problems.
 }
 \description{
 Access model output table data from an xpdb object.
@@ -38,5 +41,6 @@ print(xpdb_ex_pk)
 
 }
 \seealso{
-\code{\link{list_data}}, \code{\link{xpose_data}}, \code{\link{read_nm_tables}}
+\code{\link{list_data}}, \code{\link{xpose_data}},
+  \code{\link{read_nm_tables}}
 }

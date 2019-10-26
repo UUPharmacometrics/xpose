@@ -7,7 +7,7 @@
 \method{print}{xpdb}(x, ...)
 }
 \arguments{
-\item{x}{An \code{xpdb} object generated with \code{\link{create_nm_xpdb}}.}
+\item{x}{An \code{xpdb} object.}
 
 \item{...}{Ignored in this function}
 }

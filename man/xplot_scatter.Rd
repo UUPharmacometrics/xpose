@@ -10,8 +10,7 @@ xplot_scatter(xpdb, mapping = NULL, group = "ID", type = "pls",
   plot_name = "scatter_plot", gg_theme, xp_theme, opt, quiet, ...)
 }
 \arguments{
-\item{xpdb}{An \code{xpdb} object generated with
-\code{\link{create_nm_xpdb}}.}
+\item{xpdb}{An \code{xpdb} object.}
 
 \item{mapping}{List of aesthetics mappings to be used for the xpose plot
 (e.g. \code{point_color}).}

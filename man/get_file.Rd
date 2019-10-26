@@ -8,18 +8,23 @@ get_file(xpdb, file = NULL, ext = NULL, .problem = NULL,
   .subprob = NULL, .method = NULL, quiet)
 }
 \arguments{
-\item{xpdb}{An \code{xpose_data} object from which the model output file data will be extracted.}
+\item{xpdb}{An \code{xpose_data} object from which the model output file data
+will be extracted.}
 
-\item{file}{Full name of the file to be extracted from the xpdb e.g. 'run001.phi'. Alternative to the 'ext' argument.}
+\item{file}{Full name of the file to be extracted from the xpdb e.g.
+'run001.phi'. Alternative to the 'ext' argument.}
 
-\item{ext}{Extension of the file to be extracted from the xpdb e.g. 'phi'. Alternative to the 'file' argument.}
+\item{ext}{Extension of the file to be extracted from the xpdb e.g. 'phi'.
+Alternative to the 'file' argument.}
 
-\item{.problem}{The problem to be used, by default returns the last one for each file.}
+\item{.problem}{The problem to be used, by default returns the last one for
+each file.}
 
-\item{.subprob}{The subproblem to be used, by default returns the last one for each file.}
+\item{.subprob}{The subproblem to be used, by default returns the last one
+for each file.}
 
-\item{.method}{The estimation method to be used (e.g. 'foce', 'imp', 'saem'), by default returns the 
-last one for each file.}
+\item{.method}{The estimation method to be used (e.g. 'foce', 'imp', 'saem'),
+by default returns the last one for each file.}
 
 \item{quiet}{Logical, if \code{FALSE} messages are printed to the console.}
 }
@@ -43,5 +48,6 @@ print(xpdb_ex_pk)
 
 }
 \seealso{
-\code{\link{list_files}}, \code{\link{xpose_data}}, \code{\link{read_nm_files}}
+\code{\link{list_files}}, \code{\link{xpose_data}},
+  \code{\link{read_nm_files}}
 }

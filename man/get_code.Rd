@@ -4,31 +4,34 @@
 \alias{get_code}
 \title{Access model code}
 \usage{
-get_code(xpdb, .problem = NULL, .type = c("parsed", "raw"))
+get_code(xpdb, parsed = TRUE, .problem = NULL)
 }
 \arguments{
 \item{xpdb}{An \code{xpose_data} object from which the model code will be
 extracted.}
 
-\item{.problem}{The problem to be used, in addition, problem 0 is attributed
-to general output (e.g. NM-TRAN warnings in NONMEM). By default returns the
-entire code.}
+\item{parsed}{Should the parsed (\code{parsed = TRUE} (default)) or raw
+(\code{parsed = FALSE}) model code be returned.}
 
-\item{.type}{The type of output (see the return value for options).}
+\item{.problem}{The problem to be used (only used with \code{parsed = TRUE}).
+Of note, problem 0 is attributed to general output (e.g. NM-TRAN
+warnings in NONMEM). When ]code{NULL} (default) returns the entire code.}
 }
 \value{
-A tibble of the parsed model (if \code{.type="parsed"}) or a
-  character vector of the model (if \code{.type="raw"}).
+A tibble of the parsed model (if \code{parsed = TRUE}) or a character
+  vector of the raw model (if \code{parsed = FALSE}).
 }
 \description{
 Access model code from an xpdb object.
 }
 \examples{
-parsed_model <- get_code(xpdb_ex_pk)
-parsed_model
-raw_model <- get_code(xpdb_ex_pk, .type="raw")
+parsed_code <- get_code(xpdb_ex_pk)
+head(parsed_code)
+
+raw_code <- get_code(xpdb_ex_pk, parsed = FALSE)
+head(raw_code)
 
 }
 \seealso{
-\code{\link{xpose_data}}, \code{\link{read_nm_model}}
+\code{\link{create_xpdb}}, \code{\link{read_nm_model}}
 }

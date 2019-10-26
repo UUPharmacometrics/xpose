@@ -24,7 +24,7 @@ arguments.}
 \item{dir}{Location of the model files.}
 }
 \value{
-A \code{\link[dplyr]{tibble}} of class \code{model} containing the
+A \code{\link[dplyr]{tibble}} of class \code{nm_model} containing the
   following columns: \itemize{ \item{\strong{problem}}{: a numeric identifier
   for the $PROBLEM associated with the code.} \item{\strong{level}}{: a
   unique numeric identifier to each subroutine block associated with the

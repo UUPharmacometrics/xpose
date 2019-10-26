@@ -1,1 +1,0 @@
-/opt/local64/PsN/bin/vpc run001.mod -samples=20 -directory=psn_vpc -stratify_on=SEX -predcorr -idv=TAD
