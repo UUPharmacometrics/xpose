@@ -89,6 +89,6 @@ list_nm_tables_manual <- function(runno = NULL, file = NULL, dir = NULL, tab_lis
                                         true  = stringr::str_c(!!rlang::sym('file'), tab_list$sim_suffix),
                                         false = stringr::str_c(!!rlang::sym('file'), tab_list$tab_suffix))) %>% 
     dplyr::filter(file.exists(!!rlang::sym('file'))) %>% 
-    as.nm.table.list()
+    as.table.list.nm()
 }
 

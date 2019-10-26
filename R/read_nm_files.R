@@ -141,7 +141,7 @@ parse_nm_files <- function(file, name, raw, quiet) {
     dplyr::slice(-tab_rows) %>%
     dplyr::mutate(problem = as.numeric(!!rlang::sym('problem')),
                   subprob = as.numeric(!!rlang::sym('subprob')),
-                  raw = stringr::str_trim(string = !!rlang::sym('raw'), 
+                  raw     = stringr::str_trim(string = !!rlang::sym('raw'), 
                                           side   = 'both')) %>% 
     dplyr::group_by_at(.vars = c('problem', 'subprob', 'method')) %>% 
     tidyr::nest() %>% 

@@ -31,7 +31,7 @@
 #' nm_tables <- read_nm_tables(file = c('sdtab001', 'patab001'),
 #'                             dir = 'models', combined = TRUE)
 #'
-#' # Import tables automatically (used internally by xpose_data())
+#' # Import tables automatically (used internally by create_nm_xpdb())
 #' nm_tables <- read_nm_model(file = 'run001.lst', dir = 'models') %>%
 #'               list_nm_tables() %>%
 #'               read_nm_tables()
@@ -55,14 +55,14 @@ read_nm_tables <- function(file          = NULL,
   # Check inputs
   if (is.null(file)) stop('Argument `file` required.', call. = FALSE)
   
-  if (!is.null(file) && !is.nm.table.list(file)) {
+  if (!is.null(file) && !is.table.list.nm(file)) {
     file <- tibble::tibble(problem   = 1, 
                            file      = file_path(dir, file),
                            firstonly = FALSE,
                            simtab    = FALSE)
   }
   
-  user_mode <- !is.nm.table.list(file)
+  user_mode <- !is.table.list.nm(file)
   
   # Filter tables if needed
   if (!is.null(simtab)) file <- file[file$simtab == simtab, ]
@@ -136,11 +136,11 @@ read_nm_tables <- function(file          = NULL,
   
   # Read in data
   tables <- tables %>% 
-    mutate(data = purrr::map2(.x = !!rlang::sym('fun'), 
-                              .y = !!rlang::sym('params'),
-                              .f = ~do.call(what = .x, args = .y)),
-           data = purrr::map(.x = !!rlang::sym('data'), 
-                             .f = ~tidyr::drop_na(.x, 1)))
+    dplyr::mutate(data = purrr::map2(.x = !!rlang::sym('fun'), 
+                                     .y = !!rlang::sym('params'),
+                                     .f = ~do.call(what = .x, args = .y)),
+                  data = purrr::map(.x = !!rlang::sym('data'), 
+                                    .f = ~tidyr::drop_na(.x, 1)))
   
   # Return a list of datasets if asked by the user
   if (!combined) {
@@ -226,10 +226,10 @@ read_nm_tables <- function(file          = NULL,
     {dplyr::semi_join(x = file,
                       y = .,
                       by = c('problem', 'name'))} %>% 
-  
-  # Final output
-  {list(data      = tables, 
-        file_info = .)} %>% 
+    
+    # Final output
+    {list(data      = tables, 
+          file_info = .)} %>% 
     structure(class = 'nm_tables')
 }
 

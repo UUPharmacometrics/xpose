@@ -63,14 +63,13 @@ ggforce::facet_grid_paginate
 
 
 #' Test for xpose_theme class
-#' 
+#'
 #' @description Reports whether x is an `xpose_theme` object
-#' 
+#'
 #' @param x An object to be tested.
-#' 
-#' @return Logical value, `TRUE` for `xpose_theme` class 
-#' and `FALSE` otherwise.
-#' 
+#'
+#' @return Logical value, `TRUE` for `xpose_theme` class and `FALSE` otherwise.
+#'
 #' @keywords internal
 #' @export
 is.xpose.theme <- function(x) {
@@ -97,35 +96,35 @@ as.xpose.theme <- function(x) {
 }
 
 
-#' Test for xpose_data class
+#' Test for xpdb class
 #' 
-#' @description Reports whether x is an `xpose_data` object
+#' @description Reports whether x is an `xpdb` object
 #' 
 #' @param x An object to be tested.
 #' 
-#' @return Logical value, `TRUE` for `xpose_data` class 
+#' @return Logical value, `TRUE` for `xpdb` class 
 #' and `FALSE` otherwise.
 #' 
 #' @keywords internal
 #' @export
 is.xpdb <- function(x) {
-  inherits(x, 'xpose_data')
+  inherits(x, 'xpdb')
 }
 
 
-#' Convert an object to `xpose_data` class
+#' Convert an object to `xpdb` class
 #' 
-#' @description Adds `xpose_data` attribute to an object
+#' @description Adds `xpdb` attribute to an object
 #' 
 #' @param x An object to be modified.
 #' 
-#' @return x with `xpose_data` class.
+#' @return x with `xpdb` class.
 #' 
 #' @keywords internal
 #' @export
 as.xpdb <- function(x) {
   if (!is.xpdb(x)) {
-    structure(x, class = c('xpose_data', 'uneval'))
+    structure(x, class = c('xpdb', 'uneval'))
   } else {
     x
   }
@@ -148,35 +147,35 @@ is.nm.model <- function(x) {
 }
 
 
-#' Test for nm_table_list class
+#' Test for table_list_nm class
 #' 
-#' @description Reports whether x is a `nm_table_list` object
+#' @description Reports whether x is a `table_list_nm` object
 #' 
 #' @param x An object to be tested.
 #' 
-#' @return Logical value, `TRUE` for `nm_table_list` class 
+#' @return Logical value, `TRUE` for `table_list_nm` class 
 #' and `FALSE` otherwise.
 #' 
 #' @keywords internal
 #' @export
-is.nm.table.list <- function(x) {
-  inherits(x, 'nm_table_list')
+is.table.list.nm <- function(x) {
+  inherits(x, 'table_list_nm')
 }
 
 
-#' Convert an object to `nm_table_list` class
+#' Convert an object to `table_list_nm` class
 #' 
-#' @description Adds `nm_table_list` attribute to an object
+#' @description Adds `table_list_nm` attribute to an object
 #' 
 #' @param x An object to be modified.
 #' 
-#' @return x with `nm_table_list` class.
+#' @return x with `table_list_nm` class.
 #' 
 #' @keywords internal
 #' @export
-as.nm.table.list <- function(x) {
-  if (!is.nm.table.list(x)) {
-    structure(x, class = c('nm_table_list', class(x)))
+as.table.list.nm <- function(x) {
+  if (!is.table.list.nm(x)) {
+    structure(x, class = c('table_list_nm', class(x)))
   } else {
     x
   }

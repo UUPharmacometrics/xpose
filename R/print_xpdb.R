@@ -3,7 +3,7 @@
 #' @description This function returns to the console a list of the files and
 #'   options attached to an \code{\link{xpdb}} object.
 #'
-#' @param x An \code{xpdb} object generated with \code{\link{create_nm_xpdb}}.
+#' @param x An \code{xpdb} object.
 #' @param ... Ignored in this function
 #'
 #' @method print xpdb

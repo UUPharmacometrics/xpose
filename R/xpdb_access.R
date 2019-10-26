@@ -1,60 +1,80 @@
 #' Access model code
 #'
 #' @description Access model code from an xpdb object.
-#' 
-#' @param xpdb An \code{xpose_data} object from which the model code will be extracted.
-#' @param .problem The problem to be used, in addition, problem 0 is attributed to 
-#' general output (e.g. NM-TRAN warnings in NONMEM). By default returns the 
-#' entire code.
-#' @return A tibble of the parsed model.
-#' @seealso \code{\link{xpose_data}}, \code{\link{read_nm_model}}
+#'
+#' @param xpdb An \code{xpose_data} object from which the model code will be
+#'   extracted.
+#' @param parsed Should the parsed (\code{parsed = TRUE} (default)) or raw
+#'   (\code{parsed = FALSE}) model code be returned.
+#' @param .problem The problem to be used (only used with \code{parsed = TRUE}).
+#'   Of note, problem 0 is attributed to general output (e.g. NM-TRAN
+#'   warnings in NONMEM). When ]code{NULL} (default) returns the entire code.
+#' @return A tibble of the parsed model (if \code{parsed = TRUE}) or a character
+#'   vector of the raw model (if \code{parsed = FALSE}).
+#' @seealso \code{\link{create_xpdb}}, \code{\link{read_nm_model}}
 #' @examples
-#' parsed_model <- get_code(xpdb_ex_pk)
-#' parsed_model
-#' 
+#' parsed_code <- get_code(xpdb_ex_pk)
+#' head(parsed_code)
+#'
+#' raw_code <- get_code(xpdb_ex_pk, parsed = FALSE)
+#' head(raw_code)
+#'
 #' @export
-get_code <- function(xpdb, .problem = NULL) {
+get_code <- function(xpdb, parsed = TRUE, .problem = NULL) {
   check_xpdb(xpdb, check = 'code')
-  x <- xpdb$code
   
+  # Get the code
+  x <- xpdb$code$code[[which(xpdb$code$parsed == parsed)]]
+  
+  # Check .problems
   if (!is.null(.problem)) {
-    if (!all(.problem %in% x$problem)) {
-      stop('$prob no.', stringr::str_c(.problem[!.problem %in% x$problem], collapse = ', '), 
-           ' not found in model code.', call. = FALSE)
+    if (parsed) {
+      if (!all(.problem %in% x$problem)) {
+        stop('$prob no.', stringr::str_c(.problem[!.problem %in% x$problem], collapse = ', '), 
+             ' not found in model code.', call. = FALSE)
+      }
+      x <- x[x$problem %in% .problem, ]
+    } else {
+      msg('Argument `.problem` ignored with `parsed = FALSE`.', xpdb$options$quiet)
     }
-    x <- x[x$problem %in% .problem, ]
   }
-  x
+  
+  # Output the code
+  structure(x, class = c(ifelse(parsed, 'parsed_code', 'raw_code'), class(x)))
 }
 
 
 #' Access model output table data
 #'
 #' @description Access model output table data from an xpdb object.
-#' 
-#' @param xpdb An \code{xpose_data} object from which the model output file data will be extracted.
-#' @param table Name of the output table to be extracted from the xpdb e.g. 'sdtab001'. Alternative to 
-#' the `.problem` argument.
-#' @param .problem Accesses all tables from the specified problem. Alternative to the `table` argument.
+#'
+#' @param xpdb An \code{xpose_data} object from which the model output file data
+#'   will be extracted.
+#' @param table Name of the output table to be extracted from the xpdb e.g.
+#'   'sdtab001'. Alternative to the `.problem` argument.
+#' @param .problem Accesses all tables from the specified problem. Alternative
+#'   to the `table` argument.
 #' @param quiet Logical, if \code{FALSE} messages are printed to the console.
-#' 
-#' @return By default returns data from the last estimation problem. If only simulation problems are present 
-#' then the data from last simulation will be returned instead. Object returned as tibble for single 
-#' tables/problems or a named list for multiple tables/problems.
-#' 
-#' @seealso  \code{\link{list_data}}, \code{\link{xpose_data}}, \code{\link{read_nm_tables}}
+#'
+#' @return By default returns data from the last estimation problem. If only
+#'   simulation problems are present then the data from last simulation will be
+#'   returned instead. Object returned as tibble for single tables/problems or a
+#'   named list for multiple tables/problems.
+#'
+#' @seealso  \code{\link{list_data}}, \code{\link{xpose_data}},
+#'   \code{\link{read_nm_tables}}
 #' @examples
 #' # By table name
 #' sdtab <- get_data(xpdb_ex_pk, 'sdtab001')
 #' sdtab
-#' 
+#'
 #' # By problem
 #' tables <- get_data(xpdb_ex_pk, .problem = 1)
 #' tables
-#' 
+#'
 #' # Tip to list available tables in the xpdb
 #' print(xpdb_ex_pk)
-#' 
+#'
 #' @export
 get_data <- function(xpdb, 
                      table    = NULL, 
@@ -101,7 +121,7 @@ get_data <- function(xpdb,
       full_index <- full_index %>% tidyr::unnest(!!rlang::sym('index'))
     }
     ## END TEMP
-      
+    
     if (any(!table %in% full_index$table)) {
       stop(stringr::str_c(table[!table %in% full_index$table], collapse = ', '), 
            ' not found in model output data.', call. = FALSE) 
@@ -148,30 +168,36 @@ get_data <- function(xpdb,
 #' Access model output file data
 #'
 #' @description Access model output file data from an xpdb object.
-#' 
-#' @param xpdb An \code{xpose_data} object from which the model output file data will be extracted.
-#' @param file Full name of the file to be extracted from the xpdb e.g. 'run001.phi'. Alternative to the 'ext' argument.
-#' @param ext Extension of the file to be extracted from the xpdb e.g. 'phi'. Alternative to the 'file' argument.
-#' @param .problem The problem to be used, by default returns the last one for each file.
-#' @param .subprob The subproblem to be used, by default returns the last one for each file.
-#' @param .method The estimation method to be used (e.g. 'foce', 'imp', 'saem'), by default returns the 
-#' last one for each file.
+#'
+#' @param xpdb An \code{xpose_data} object from which the model output file data
+#'   will be extracted.
+#' @param file Full name of the file to be extracted from the xpdb e.g.
+#'   'run001.phi'. Alternative to the 'ext' argument.
+#' @param ext Extension of the file to be extracted from the xpdb e.g. 'phi'.
+#'   Alternative to the 'file' argument.
+#' @param .problem The problem to be used, by default returns the last one for
+#'   each file.
+#' @param .subprob The subproblem to be used, by default returns the last one
+#'   for each file.
+#' @param .method The estimation method to be used (e.g. 'foce', 'imp', 'saem'),
+#'   by default returns the last one for each file.
 #' @param quiet Logical, if \code{FALSE} messages are printed to the console.
-#' 
+#'
 #' @return A tibble for single file or a named list for multiple files.
-#' @seealso  \code{\link{list_files}}, \code{\link{xpose_data}}, \code{\link{read_nm_files}}
+#' @seealso  \code{\link{list_files}}, \code{\link{xpose_data}},
+#'   \code{\link{read_nm_files}}
 #' @examples
 #' # Single file (returns a tibble)
 #' ext_file <- get_file(xpdb_ex_pk, file = 'run001.ext')
 #' ext_file
-#' 
+#'
 #' # Multiple files (returns a list)
 #' files <- get_file(xpdb_ex_pk, file = c('run001.ext', 'run001.phi'))
 #' files
-#' 
+#'
 #' # Tip to list available files in the xpdb
 #' print(xpdb_ex_pk)
-#' 
+#'
 #' @export
 get_file <- function(xpdb, 
                      file     = NULL, 
@@ -410,8 +436,8 @@ get_prm <- function(xpdb,
         prms <- purrr::map_df(prm_trans_formula, ~transform_prm(.x, mu = prm_mean, sigma = prm_cov, method = 'delta')) %>% 
           dplyr::mutate(se = sqrt(.$variance))
       } else {
-        prms <- dplyr::tibble(mean = purrr::flatten_dbl(prm_mean), 
-                              se   = purrr::flatten_dbl(prm_se)) %>% 
+        prms <- tibble::tibble(mean = purrr::flatten_dbl(prm_mean), 
+                               se   = purrr::flatten_dbl(prm_se)) %>% 
           dplyr::mutate(rse = .$se/abs(.$mean))
       }
       
@@ -563,3 +589,4 @@ get_special <- function(xpdb, .problem = NULL, quiet) {
     x$data[[1]]
   }
 }
+

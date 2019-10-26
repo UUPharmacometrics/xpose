@@ -16,7 +16,7 @@
 #' run001.mod.
 #'
 #' @seealso \code{\link{xpose_data}}, \code{\link{read_nm_tables}}
-#' @return A \code{\link[dplyr]{tibble}} of class \code{model} containing the
+#' @return A \code{\link[dplyr]{tibble}} of class \code{nm_model} containing the
 #'   following columns: \itemize{ \item{\strong{problem}}{: a numeric identifier
 #'   for the $PROBLEM associated with the code.} \item{\strong{level}}{: a
 #'   unique numeric identifier to each subroutine block associated with the
@@ -97,7 +97,7 @@ read_nm_model <- function(runno   = NULL,
   )
   
   # Parse the raw model file
-  model <- tibble::tibble(code = model_raw) %>% 
+  model_parsed <- tibble::tibble(code = model_raw) %>% 
     
     # Drop empty rows and comment rows except special headers (;;)
     dplyr::filter(!stringr::str_detect(!!rlang::sym('code'), '^;[^;]*$|^$')) %>%
@@ -116,15 +116,15 @@ read_nm_model <- function(runno   = NULL,
   
   # Generate abbreviated subroutine names
   special <- c('THETAI', 'THETAR', 'THETAP', 'THETAPV', 'OMEGAP', 'OMEGAPD', 'SIGMAP', 'SIGMAPD')
-  match_special <- match(model$subroutine[model$subroutine %in% special], special)
-  model$subroutine[model$subroutine %in% special] <- c('thi', 'thr', 'thp', 'tpv', 
-                                                       'omp', 'opd', 'sip', 'spd')[match_special]
-  model$subroutine <- stringr::str_extract(tolower(model$subroutine), '[a-z]{1,3}')
+  match_special <- match(model_parsed$subroutine[model_parsed$subroutine %in% special], special)
+  model_parsed$subroutine[model_parsed$subroutine %in% special] <- c('thi', 'thr', 'thp', 'tpv', 
+                                                                     'omp', 'opd', 'sip', 'spd')[match_special]
+  model_parsed$subroutine <- stringr::str_extract(tolower(model_parsed$subroutine), '[a-z]{1,3}')
   
   # Format lst part
-  if (any(stringr::str_detect(model$code, 'NM-TRAN MESSAGES'))) {
-    lst_rows <- which(stringr::str_detect(model$code, 'NM-TRAN MESSAGES')):nrow(model)
-    model[lst_rows,] <- model %>% 
+  if (any(stringr::str_detect(model_parsed$code, 'NM-TRAN MESSAGES'))) {
+    lst_rows <- which(stringr::str_detect(model_parsed$code, 'NM-TRAN MESSAGES')):nrow(model_parsed)
+    model_parsed[lst_rows,] <- model_parsed %>% 
       dplyr::slice(lst_rows) %>% 
       dplyr::mutate(problem = findInterval(seq_along(!!rlang::sym('problem')), 
                                            which(stringr::str_detect(!!rlang::sym('code'), 
@@ -134,41 +134,41 @@ read_nm_model <- function(runno   = NULL,
   }
   
   # Handle other special cases
-  if (any(stringr::str_detect(model$code, '#CPUT'))) {
-    cput_row <- which(stringr::str_detect(model$code, '#CPUT'))
-    model[cput_row, 'problem'] <- 0
-    model[cput_row:nrow(model), 'level'] <- model[cput_row:nrow(model), ]$level + 1
+  if (any(stringr::str_detect(model_parsed$code, '#CPUT'))) {
+    cput_row <- which(stringr::str_detect(model_parsed$code, '#CPUT'))
+    model_parsed[cput_row, 'problem'] <- 0
+    model_parsed[cput_row:nrow(model_parsed), 'level'] <- model_parsed[cput_row:nrow(model_parsed), ]$level + 1
   }
   
-  if (any(stringr::str_detect(model$code, 'Stop Time'))) {
-    end_rows <- which(stringr::str_detect(model$code, 'Stop Time')):nrow(model)
-    model[end_rows, 'problem'] <- 0
-    model[end_rows, 'level'] <- model[end_rows[1], ]$level + 1
+  if (any(stringr::str_detect(model_parsed$code, 'Stop Time'))) {
+    end_rows <- which(stringr::str_detect(model_parsed$code, 'Stop Time')):nrow(model_parsed)
+    model_parsed[end_rows, 'problem'] <- 0
+    model_parsed[end_rows, 'level'] <- model_parsed[end_rows[1], ]$level + 1
   }
   
-  model[is.na(model$subroutine) | (model$problem == 0 & model$subroutine == 'lst'), 'subroutine'] <- 'oth'
+  model_parsed[is.na(model_parsed$subroutine) | (model_parsed$problem == 0 & model_parsed$subroutine == 'lst'), 'subroutine'] <- 'oth'
   
   # Remove subroutine names from the code
-  model$code <- stringr::str_replace(model$code, '^\\s*\\$\\w+\\s*', '')
+  model_parsed$code <- stringr::str_replace(model_parsed$code, '^\\s*\\$\\w+\\s*', '')
   
   # Remove empty rows but $PROBLEM
-  model <- model[!stringr::str_detect(model$code, '^(\\s|\\t)*$') | model$subroutine == 'pro', ]
+  model_parsed <- model_parsed[!stringr::str_detect(model_parsed$code, '^(\\s|\\t)*$') | model_parsed$subroutine == 'pro', ]
   
   # Create comment column
-  code_rows <- !model$subroutine %in% c('lst', 'oth') | model$level == 0
-  model[code_rows, 'comment'] <- stringr::str_match(model[code_rows, ]$code, ';\\s*(.*)\\s*$')[, 2]
-  model[code_rows, 'code'] <- stringr::str_replace(model[code_rows, ]$code, '\\s*;.*$', '')
+  code_rows <- !model_parsed$subroutine %in% c('lst', 'oth') | model_parsed$level == 0
+  model_parsed[code_rows, 'comment'] <- stringr::str_match(model_parsed[code_rows, ]$code, ';\\s*(.*)\\s*$')[, 2]
+  model_parsed[code_rows, 'code'] <- stringr::str_replace(model_parsed[code_rows, ]$code, '\\s*;.*$', '')
   
   # Remove na values
-  model <- model %>% 
+  model_parsed <- model_parsed %>% 
     tidyr::replace_na(replace = list(code = '', comment = '')) %>% 
     dplyr::select(dplyr::one_of('problem', 'level', 'subroutine', 'code', 'comment')) %>% 
     dplyr::mutate(problem = as.integer(!!rlang::sym('problem')),
                   level   = as.integer(!!rlang::sym('level')))
   
   # Ouptut code
-  tibble::tibble(code = list(model_raw, model),
-                 raw  = c(TRUE, FALSE)) %>% 
+  tibble::tibble(code   = list(model_raw, model_parsed),
+                 parsed = c(FALSE, TRUE)) %>% 
     dplyr::mutate(md5_ref = purrr::map_chr(.x = !!rlang::sym('code'), 
                                            .f = digest::digest)) %>% 
     list(data      = .,

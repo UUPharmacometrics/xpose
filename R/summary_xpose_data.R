@@ -1,17 +1,18 @@
-#' Summarizing xpose_data
+#' Summarizing xpdb
 #'
-#' @description This function returns a summary of an \code{\link{xpose_data}} 
-#' to the console.
-#' @param object An \code{xpose_data} object generated with \code{\link{xpose_data}}.
-#' @param .problem The problem to be used, by default returns the last one for each label.
+#' @description This function returns a summary of an \code{\link{xpdb}} to the
+#'   console.
+#' @param object An \code{xpdb} object.
+#' @param .problem The problem to be used, by default returns the last one for
+#'   each label.
 #' @param ... Ignored in this function
 #'
-#' @method summary xpose_data
+#' @method summary xpdb_nm
 #' @examples
 #' summary(xpdb_ex_pk)
 #'
 #' @export
-summary.xpose_data <- function(object, .problem = NULL, ...) {
+summary.xpdb_nm <- function(object, .problem = NULL, ...) {
   order <- c('software', 'version', 'dir', 'file', 'run', 'ref', 'descr', 'timestart', 
              'timestop', 'probn', 'label', 'data', 'nind', 'nobs', 'subroutine', 'method',
              'term', 'runtime', 'ofv', 'nsig', 'covtime', 'condn','etashk', 'epsshk', 

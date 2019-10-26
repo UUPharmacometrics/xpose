@@ -4,8 +4,8 @@
 #' Unlike base subsetting, rows where the condition evaluates to NA are dropped.
 #' Use \code{slice()} to select row/cases by their position
 #' 
-#' @inheritParams edit_xpose_data
-#' @method filter xpose_data
+#' @inheritParams edit_xpdb
+#' @method filter xpdb
 #' @examples
 #' # Subset by condition
 #' xpdb_ex_pk %>% 
@@ -23,28 +23,28 @@
 #'  dv_vs_ipred()
 #' @name subset_xpdb
 #' @export
-filter.xpose_data <- function(.data, ..., .problem, .source, .where) {
-  edit_xpose_data(.fun = dplyr::filter, .fname = 'filter', .data = .data,
-                  .problem = .problem, .source = .source, .where = .where, ...)
+filter.xpdb <- function(.data, ..., .problem, .source, .where) {
+  edit_xpdb(.fun = dplyr::filter, .fname = 'filter', .data = .data,
+            .problem = .problem, .source = .source, .where = .where, ...)
 }
 
 
-#' @method slice xpose_data
+#' @method slice xpdb
 #' @name subset_xpdb
 #' @export
-slice.xpose_data <- function(.data, ..., .problem, .source, .where) {
-  edit_xpose_data(.fun = dplyr::slice, .fname = 'slice', .data = .data,
-                  .problem = .problem, .source = .source, .where = .where, ...)
+slice.xpdb <- function(.data, ..., .problem, .source, .where) {
+  edit_xpdb(.fun = dplyr::slice, .fname = 'slice', .data = .data,
+            .problem = .problem, .source = .source, .where = .where, ...)
 }
 
 
-#' @method distinct xpose_data
+#' @method distinct xpdb
 #' @name subset_xpdb
 #' @export
-distinct.xpose_data <- function(.data, ..., .problem, .source, .where) {
-  edit_xpose_data(.fun = function(.data, ...) {dplyr::distinct(.data, ..., .keep_all = TRUE)}, 
-                  .fname = 'distinct', .data = .data, .problem = .problem, 
-                  .source = .source, .where = .where, ...)
+distinct.xpdb <- function(.data, ..., .problem, .source, .where) {
+  edit_xpdb(.fun = function(.data, ...) {dplyr::distinct(.data, ..., .keep_all = TRUE)}, 
+            .fname = 'distinct', .data = .data, .problem = .problem, 
+            .source = .source, .where = .where, ...)
 }
 
 
@@ -53,8 +53,8 @@ distinct.xpose_data <- function(.data, ..., .problem, .source, .where) {
 #' @description \code{mutate()} adds new variables and preserves existing ones. 
 #' \code{select()} keeps only the listed variables; \code{rename()} keeps all variables.
 #' 
-#' @inheritParams edit_xpose_data
-#' @method mutate xpose_data
+#' @inheritParams edit_xpdb
+#' @method mutate xpdb
 #' @examples
 #' # Mutate columns
 #' xpdb_ex_pk %>% 
@@ -70,27 +70,27 @@ distinct.xpose_data <- function(.data, ..., .problem, .source, .where) {
 #'  dv_vs_idv(aes(x = TSLD))
 #' @name modify_xpdb
 #' @export
-mutate.xpose_data <- function(.data, ..., .problem, .source, .where) {
-  edit_xpose_data(.fun = dplyr::mutate, .fname = 'mutate', .data = .data,
-                  .problem = .problem, .source = .source, .where = .where, ...)
+mutate.xpdb <- function(.data, ..., .problem, .source, .where) {
+  edit_xpdb(.fun = dplyr::mutate, .fname = 'mutate', .data = .data,
+            .problem = .problem, .source = .source, .where = .where, ...)
 }
 
 
-#' @method select xpose_data
+#' @method select xpdb
 #' @name modify_xpdb
 #' @export
-select.xpose_data <- function(.data, ..., .problem, .source, .where) {
-  edit_xpose_data(.fun = dplyr::select, .fname = 'select', .data = .data,
-                  .problem = .problem, .source = .source, .where = .where, ...)
+select.xpdb <- function(.data, ..., .problem, .source, .where) {
+  edit_xpdb(.fun = dplyr::select, .fname = 'select', .data = .data,
+            .problem = .problem, .source = .source, .where = .where, ...)
 }
 
 
-#' @method rename xpose_data
+#' @method rename xpdb
 #' @name modify_xpdb
 #' @export
-rename.xpose_data <- function(.data, ..., .problem, .source, .where) {
-  edit_xpose_data(.fun = dplyr::rename, .fname = 'rename', .data = .data,
-                  .problem = .problem, .source = .source, .where = .where, ...)
+rename.xpdb <- function(.data, ..., .problem, .source, .where) {
+  edit_xpdb(.fun = dplyr::rename, .fname = 'rename', .data = .data,
+            .problem = .problem, .source = .source, .where = .where, ...)
 }
 
 
@@ -100,9 +100,9 @@ rename.xpose_data <- function(.data, ..., .problem, .source, .where) {
 #' grouped table where operations are performed "by group". \code{ungroup()} removes grouping.
 #' \code{summarize()} reduces multiple values down to a single value.
 #' 
-#' @inheritParams edit_xpose_data 
+#' @inheritParams edit_xpdb 
 #' @param x Same as .data (used for consistency with dplyr functions).
-#' @method group_by xpose_data
+#' @method group_by xpdb
 #' @examples
 #' # Create a distribution plot of Cmax
 #' xpdb_ex_pk %>% 
@@ -113,55 +113,56 @@ rename.xpose_data <- function(.data, ..., .problem, .source, .where) {
 #'  
 #' @name summarise_xpdb
 #' @export
-group_by.xpose_data <- function(.data, ..., .problem, .source, .where) {
-  edit_xpose_data(.fun = dplyr::group_by, .fname = 'group_by', .data = .data,
-                  .problem = .problem, .source = .source, .where = .where, ...)
+group_by.xpdb <- function(.data, ..., .problem, .source, .where) {
+  edit_xpdb(.fun = dplyr::group_by, .fname = 'group_by', .data = .data,
+            .problem = .problem, .source = .source, .where = .where, ...)
 }
 
 
-#' @method ungroup xpose_data
+#' @method ungroup xpdb
 #' @name summarise_xpdb
 #' @export
-ungroup.xpose_data <- function(x, ..., .problem, .source, .where) {
-  edit_xpose_data(.fun = dplyr::ungroup, .fname = 'ungroup', .data = x,
-                  .problem = .problem, .source = .source, .where = .where, ...)
+ungroup.xpdb <- function(x, ..., .problem, .source, .where) {
+  edit_xpdb(.fun = dplyr::ungroup, .fname = 'ungroup', .data = x,
+            .problem = .problem, .source = .source, .where = .where, ...)
 }
 
 
-#' @method summarise xpose_data
+#' @method summarise xpdb
 #' @name summarise_xpdb
 #' @export
-summarise.xpose_data <- function(.data, ..., .problem, .source, .where) {
-  edit_xpose_data(.fun = dplyr::summarise, .fname = 'summarise', .data = .data,
-                  .problem = .problem, .source = .source, .where = .where, ...)
+summarise.xpdb <- function(.data, ..., .problem, .source, .where) {
+  edit_xpdb(.fun = dplyr::summarise, .fname = 'summarise', .data = .data,
+            .problem = .problem, .source = .source, .where = .where, ...)
 }
 
-#' @method summarize xpose_data
+#' @method summarize xpdb
 #' @name summarise_xpdb
 #' @export
-summarize.xpose_data <- summarise.xpose_data
+summarize.xpdb <- summarise.xpdb
 
 
 #' Master xpdb editing function
-#' 
+#'
 #' @description Generic function used to build dedicated editing functions
-#' 
+#'
 #' @param .fun An editing function to be applied to the data.
 #' @param .fname The name of the editing function.
 #' @param .data An xpose database object.
 #' @param .problem The problem from which the data will be modified
-#' @param .source The source of the data in the xpdb. Can either be 'data' or an output 
-#' file extension e.g. 'phi'.
-#' @param .where A vector of element names to be edited in special (e.g. 
-#' \code{.where = c('vpc_dat', 'aggr_obs')} with vpc).
-#' @param ... Name-value pairs of expressions. Use \code{NULL} to drop a variable.
-#' 
-#' These arguments are automatically quoted and evaluated in the 
-#' context of the data frame. They support unquoting and splicing. 
-#' See the dplyr vignette("programming") for an introduction to these concepts.
+#' @param .source The source of the data in the xpdb. Can either be 'data' or an
+#'   output file extension e.g. 'phi'.
+#' @param .where A vector of element names to be edited in special (e.g.
+#'   \code{.where = c('vpc_dat', 'aggr_obs')} with vpc).
+#' @param ... Name-value pairs of expressions. Use \code{NULL} to drop a
+#'   variable.
+#'
+#'   These arguments are automatically quoted and evaluated in the context of
+#'   the data frame. They support unquoting and splicing. See the dplyr
+#'   vignette("programming") for an introduction to these concepts.
 #' @keywords internal
 #' @export
-edit_xpose_data <- function(.fun, .fname, .data, ..., .problem, .source, .where) {
+edit_xpdb <- function(.fun, .fname, .data, ..., .problem, .source, .where) {
   
   # Check input
   xpdb <- .data # Avoids issues with dplyr arguments

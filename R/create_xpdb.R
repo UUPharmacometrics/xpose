@@ -179,7 +179,7 @@ create_nm_xpdb <- function(runno         = NULL,
   } else {
     summary <- tryCatch(
       summarise_nm_model(file = full_path, 
-                         model = model_code$code[[which(model_code$raw == FALSE)]], 
+                         model = model_code$code[[which(model_code$parsed == TRUE)]], 
                          software = 'nonmem', rounding = xp_theme$rounding),
       error = function(e) {
         warning(c('Failed to create run summary. ', e$message), call. = FALSE)
@@ -203,7 +203,7 @@ create_nm_xpdb <- function(runno         = NULL,
        options   = list(dir = dirname(full_path), 
                         quiet = quiet, 
                         manual_import = manual_import)) %>% 
-    structure(class = c('nm_xpdb', 'xpdb', 'uneval'))
+    structure(class = c('xpdb_nm', 'xpdb', 'uneval'))
 }
 
 #' @rdname create_nm_xpdb

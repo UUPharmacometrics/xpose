@@ -20,14 +20,14 @@ list_nm_tables <- function(nm_model = NULL) {
     stop('Object of class `nm_model` required.', call. = FALSE)
   }
   
-  # Prepare null object to be returned if no $table is found
-  null_object <- as.nm.table.list(tibble::tibble(problem = -1, file = '', 
+  # Prepare null object to be returned if no $TABLE is found
+  null_object <- as.table.list.nm(tibble::tibble(problem = -1, file = '', 
                                                  firstonly = NA, simtab = NA))
   
   # Get the parsed NM code associated with the tables
   table_list <- nm_model %>% 
     purrr::pluck('data') %>% 
-    dplyr::filter(raw == FALSE) %>% 
+    dplyr::filter(!!rlang::sym('parsed')) %>% 
     purrr::pluck('code', 1) %>% 
     dplyr::filter(!!rlang::sym('problem') > 0, 
                   !!rlang::sym('subroutine') == 'tab') 
@@ -62,7 +62,7 @@ list_nm_tables <- function(nm_model = NULL) {
   # Prep simtab flag
   sim_flag <- nm_model %>% 
     purrr::pluck('data') %>% 
-    dplyr::filter(raw == FALSE) %>% 
+    dplyr::filter(!!rlang::sym('parsed')) %>% 
     purrr::pluck('code', 1) %>%
     dplyr::filter(!!rlang::sym('problem') > 0) %>% 
     dplyr::group_by_at(.vars = 'problem') %>% 
@@ -75,5 +75,5 @@ list_nm_tables <- function(nm_model = NULL) {
   # Merge and output
   table_list %>% 
     dplyr::left_join(sim_flag, by = 'problem') %>% 
-    as.nm.table.list()
+    as.table.list.nm()
 }

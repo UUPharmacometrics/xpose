@@ -2,12 +2,12 @@
 #'
 #' @description Manually generate scatter plots from an xpdb object.
 #'
-#' @param xpdb An \code{xpose_data} object generated with \code{\link{xpose_data}}.
-#' @param mapping List of aesthetics mappings to be used for the xpose plot 
-#' (e.g. \code{point_color}).
+#' @param xpdb An \code{xpdb} object.
+#' @param mapping List of aesthetics mappings to be used for the xpose plot
+#'   (e.g. \code{point_color}).
 #' @param group Grouping variable to be used for lines.
-#' @param type String setting the type of plot to be used. Can be line 'l', 
-#' point 'p', smooth 's' and text 't' or any combination of the four.
+#' @param type String setting the type of plot to be used. Can be line 'l',
+#'   point 'p', smooth 's' and text 't' or any combination of the four.
 #' @param guide Should the guide (e.g. unity line) be displayed.
 #' @param xscale Scale type for x axis (e.g. 'continuous', 'discrete', 'log10').
 #' @param yscale Scale type for y axis (e.g. 'continuous', 'discrete', 'log10').
@@ -16,59 +16,61 @@
 #' @param caption Page caption. Use \code{NULL} to remove.
 #' @param tag Plot identification tag. Use \code{NULL} to remove.
 #' @param plot_name Name to be used by \code{xpose_save()} when saving the plot.
-#' @param opt A list of options in order to create appropriate data input for 
-#' ggplot2. For more information see \code{\link{data_opt}}.
+#' @param opt A list of options in order to create appropriate data input for
+#'   ggplot2. For more information see \code{\link{data_opt}}.
 #' @param quiet Logical, if \code{FALSE} messages are printed to the console.
 #' @param ... Any additional aesthetics.
-#' 
+#'
 #' @inheritParams update_themes
-#' 
-#' @section Layers mapping:
-#' Plots can be customized by mapping arguments to specific layers. The naming convention is 
-#' layer_option where layer is one of the names defined in the list below and option is 
-#' any option supported by this layer e.g. point_color = 'blue', smooth_method = 'lm', etc.
-#' \itemize{
-#'   \item point: options to \code{geom_point}
-#'   \item line: options to \code{geom_line}
-#'   \item guide: options to \code{geom_abline}
-#'   \item smooth: options to \code{geom_smooth}
-#'   \item text: options to \code{geom_text}
-#'   \item xscale: options to \code{scale_x_continuous} or \code{scale_x_log10}
-#'   \item yscale: options to \code{scale_y_continuous} or \code{scale_y_log10}
-#' }
-#' 
-#' @section Faceting:
-#' Every xpose plot function has built-in faceting functionalities. Faceting arguments 
-#' are passed to the functions \code{\link[ggforce]{facet_wrap_paginate}} when the \code{facets} 
-#' argument is a character string (e.g. \code{facets = c('SEX', 'MED1')}) or 
-#' \code{\link[ggforce]{facet_grid_paginate}} when facets is a formula (e.g. \code{facets = SEX~MED1}).
-#' All xpose plot functions accept all the arguments for the \code{\link[ggforce]{facet_wrap_paginate}} 
-#' and \code{\link[ggforce]{facet_grid_paginate}} functions e.g. \code{dv_vs_ipred(xpdb_ex_pk, 
-#' facets = SEX~MED1, ncol = 3, nrow = 3, page = 1, margins = TRUE, labeller = 'label_both')}.
-#' 
-#' Faceting options can either be defined in plot functions (e.g. \code{dv_vs_ipred(xpdb_ex_pk, 
-#' facets = 'SEX')}) or assigned globally to an xpdb object via the \code{xp_theme} (e.g. \code{xpdb 
-#' <- update_themes(xpdb_ex_pk, xp_theme = list(facets = 'SEX'))}). In the latter example all plots 
-#' generate from this xpdb will automatically be stratified by `SEX`.
-#' 
-#' By default, some plot functions use a custom stratifying variable named `variable`, e.g. 
-#' \code{eta_distrib()}. When using the \code{facets} argument, `variable` needs to be added manually 
-#' e.g. \code{facets = c('SEX', 'variable')} or \code{facets = c('SEX', 'variable')}, but is optional, 
-#' when using the \code{facets} argument in \code{xp_theme} variable is automatically added whenever needed.
-#' 
-#' @section Template titles:
-#' Template titles can be used to create highly informative diagnostics plots. 
-#' They can be applied to any plot title, subtitle, caption and tag. Template titles 
-#' are defined via a single string containing key variables staring with a `@` (e.g. `@ofv`)
-#' which will be replaced by their actual value when rendering the plot.
-#' For example `'@run, @nobs observations in @nind subjects'` would become 
-#' `'run001, 1022 observations in 74 subjects'`. The available key variables 
-#' are listed under \code{\link{template_titles}}.
-#' 
+#'
+#' @section Layers mapping: Plots can be customized by mapping arguments to
+#'   specific layers. The naming convention is layer_option where layer is one
+#'   of the names defined in the list below and option is any option supported
+#'   by this layer e.g. point_color = 'blue', smooth_method = 'lm', etc.
+#'   \itemize{ \item point: options to \code{geom_point} \item line: options to
+#'   \code{geom_line} \item guide: options to \code{geom_abline} \item smooth:
+#'   options to \code{geom_smooth} \item text: options to \code{geom_text} \item
+#'   xscale: options to \code{scale_x_continuous} or \code{scale_x_log10} \item
+#'   yscale: options to \code{scale_y_continuous} or \code{scale_y_log10} }
+#'
+#' @section Faceting: Every xpose plot function has built-in faceting
+#'   functionalities. Faceting arguments are passed to the functions
+#'   \code{\link[ggforce]{facet_wrap_paginate}} when the \code{facets} argument
+#'   is a character string (e.g. \code{facets = c('SEX', 'MED1')}) or
+#'   \code{\link[ggforce]{facet_grid_paginate}} when facets is a formula (e.g.
+#'   \code{facets = SEX~MED1}). All xpose plot functions accept all the
+#'   arguments for the \code{\link[ggforce]{facet_wrap_paginate}} and
+#'   \code{\link[ggforce]{facet_grid_paginate}} functions e.g.
+#'   \code{dv_vs_ipred(xpdb_ex_pk, facets = SEX~MED1, ncol = 3, nrow = 3, page =
+#'   1, margins = TRUE, labeller = 'label_both')}.
+#'
+#'   Faceting options can either be defined in plot functions (e.g.
+#'   \code{dv_vs_ipred(xpdb_ex_pk, facets = 'SEX')}) or assigned globally to an
+#'   xpdb object via the \code{xp_theme} (e.g. \code{xpdb <-
+#'   update_themes(xpdb_ex_pk, xp_theme = list(facets = 'SEX'))}). In the latter
+#'   example all plots generate from this xpdb will automatically be stratified
+#'   by `SEX`.
+#'
+#'   By default, some plot functions use a custom stratifying variable named
+#'   `variable`, e.g. \code{eta_distrib()}. When using the \code{facets}
+#'   argument, `variable` needs to be added manually e.g. \code{facets =
+#'   c('SEX', 'variable')} or \code{facets = c('SEX', 'variable')}, but is
+#'   optional, when using the \code{facets} argument in \code{xp_theme} variable
+#'   is automatically added whenever needed.
+#'
+#' @section Template titles: Template titles can be used to create highly
+#'   informative diagnostics plots. They can be applied to any plot title,
+#'   subtitle, caption and tag. Template titles are defined via a single string
+#'   containing key variables staring with a `@` (e.g. `@ofv`) which will be
+#'   replaced by their actual value when rendering the plot. For example `'@run,
+#'   @nobs observations in @nind subjects'` would become `'run001, 1022
+#'   observations in 74 subjects'`. The available key variables are listed under
+#'   \code{\link{template_titles}}.
+#'
 #' @seealso \code{\link{xplot_distrib}} \code{\link{xplot_qq}}
 #' @examples
 #' xplot_scatter(xpdb_ex_pk, aes(x = IPRED, y = DV))
-#' 
+#'
 #' @export
 xplot_scatter <- function(xpdb,
                           mapping   = NULL,

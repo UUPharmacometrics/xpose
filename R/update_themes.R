@@ -4,8 +4,7 @@
 #'   xpdb object. All plots generated with this xpdb will automatically use the
 #'   defined xpose (\code{xp_theme}) and ggplot2 (\code{gg_theme}) themes.
 #'
-#' @param xpdb An \code{xpose_data} object generated with
-#'   \code{\link{xpose_data}}.
+#' @param xpdb An \code{xpdb} object.
 #' @param gg_theme A complete ggplot2 theme object (e.g.
 #'   \code{\link[ggplot2]{theme_classic}}), a function returning a complete
 #'   ggplot2 theme, or a change to the current \code{gg_theme}.
