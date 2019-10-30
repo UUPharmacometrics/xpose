@@ -2,7 +2,7 @@
 #'
 #' @description Function listing all available variables in an xpdb object.
 #' 
-#' @param xpdb An \code{xpose_data} object from which the model code will be extracted.
+#' @param xpdb An \code{xpdb} object from which the model code will be extracted.
 #' @param .problem The problem to be used, by lists all available problems.
 #' 
 #' @seealso \code{\link{set_var_types}}

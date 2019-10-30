@@ -1,8 +1,8 @@
-#' \code{xpose_data} examples
+#' \code{xpdb} examples
 #'
-#' @description Moxonidine \code{xpose_data} example.
+#' @description Moxonidine \code{xpdb} example.
 #'
-#' @format An \code{xpose_data} object
+#' @format An \code{xpdb} object
 #'
 #' @source
 #'   \href{http://link.springer.com/article/10.1023/A:1020561807903}{Moxonidine

@@ -2,8 +2,8 @@
 #'
 #' @description Parse NONMEM model files in R format
 #'
-#' @inheritParams xpose_data
-#' @inheritSection xpose_data File path generation
+#' @inheritParams create_nm_xpdb
+#' @inheritSection create_nm_xpdb File path generation
 #'
 #' @details A NONMEM model output file (i.e. .lst, .out, .res, .nmlog) should
 #' preferably be provided to \code{read_nm_model} to allow for a more extensive
@@ -15,7 +15,7 @@
 #' the model file remains consistent e.g. run001.lst should be associated with
 #' run001.mod.
 #'
-#' @seealso \code{\link{xpose_data}}, \code{\link{read_nm_tables}}
+#' @seealso \code{\link{create_nm_xpdb}}, \code{\link{read_nm_tables}}
 #' @return A \code{\link[dplyr]{tibble}} of class \code{nm_model} containing the
 #'   following columns: \itemize{ \item{\strong{problem}}{: a numeric identifier
 #'   for the $PROBLEM associated with the code.} \item{\strong{level}}{: a

@@ -11,8 +11,8 @@
 #' @param dir Location of the model files.
 #' @param quiet Logical, if \code{FALSE} messages are printed to the console.
 #'
-#' @inheritSection xpose_data File path generation
-#' @seealso \code{\link{xpose_data}}, \code{\link{read_nm_tables}}
+#' @inheritSection create_nm_xpdb File path generation
+#' @seealso \code{\link{create_nm_xpdb}}, \code{\link{read_nm_tables}}
 #' @examples
 #' \dontrun{
 #' # Using the `file` argument to import a model file:

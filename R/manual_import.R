@@ -1,7 +1,7 @@
 #' Manually define nonmem tables to be imported
 #'
 #' @description Manually provide names of the table files to be imported by
-#'   \code{xpose_data}.
+#'   \code{create_nm_xpdb}.
 #'
 #' @param tab_names Provide the name of the tables to import e.g. 'sdtab',
 #'   'patab', 'cotab', 'catab' for NONMEM.
@@ -12,25 +12,25 @@
 #'
 #' @details In order to be imported manually, table names must follow the
 #' following convention: \code{<tab_names><runno><tab/sim_suffix>} e.g.
-#' sdtab001sim. When the argument `file` is used in \code{xpose_data}, the
+#' sdtab001sim. When the argument `file` is used in \code{create_nm_xpdb}, the
 #' \code{<runno>} part is guessed by taking the portion of the string starting
 #' by any digit and ending at the file extension e.g. \code{file = run001a.mod}
 #' will guess <runno> as `001a`. If no valid <runno> can be guessed, xpose will
-#' return an error. In this case it is advised to use the \code{xpose_data}
+#' return an error. In this case it is advised to use the \code{create_nm_xpdb}
 #' argument `runno` directly rather than `file` hence preventing xpose from
 #' having to guess <runno>.
 #'
 #' Note that with manual table import xpose still reads in the NONMEM model file
 #' in order to generate the run summary.
 #'
-#' @seealso \code{\link{xpose_data}}
+#' @seealso \code{\link{create_nm_xpdb}}
 #' @examples
 #' \dontrun{
 #' # Import all names specified by default as in xpose4
-#' xpose_data(runno = '001', manual_import = manual_nm_import())
+#' create_nm_xpdb(runno = '001', manual_import = manual_nm_import())
 #'
 #' # Import a specific table name
-#' xpose_data(runno = '001', manual_import = manual_nm_import(tab_names = 'mytab'))
+#' create_nm_xpdb(runno = '001', manual_import = manual_nm_import(tab_names = 'mytab'))
 #' }
 #' @export
 manual_nm_import <- function(tab_names = c('sdtab', 'mutab', 'patab', 'catab', 'cotab', 

@@ -2,7 +2,7 @@
 #'
 #' @description Access model code from an xpdb object.
 #'
-#' @param xpdb An \code{xpose_data} object from which the model code will be
+#' @param xpdb An \code{xpdb} object from which the model code will be
 #'   extracted.
 #' @param parsed Should the parsed (\code{parsed = TRUE} (default)) or raw
 #'   (\code{parsed = FALSE}) model code be returned.
@@ -20,7 +20,9 @@
 #' head(raw_code)
 #'
 #' @export
-get_code <- function(xpdb, parsed = TRUE, .problem = NULL) {
+get_code <- function(xpdb, 
+                     parsed   = TRUE, 
+                     .problem = NULL) {
   check_xpdb(xpdb, check = 'code')
   
   # Get the code
@@ -48,7 +50,7 @@ get_code <- function(xpdb, parsed = TRUE, .problem = NULL) {
 #'
 #' @description Access model output table data from an xpdb object.
 #'
-#' @param xpdb An \code{xpose_data} object from which the model output file data
+#' @param xpdb An \code{xpdb} object from which the model output file data
 #'   will be extracted.
 #' @param table Name of the output table to be extracted from the xpdb e.g.
 #'   'sdtab001'. Alternative to the `.problem` argument.
@@ -61,7 +63,7 @@ get_code <- function(xpdb, parsed = TRUE, .problem = NULL) {
 #'   returned instead. Object returned as tibble for single tables/problems or a
 #'   named list for multiple tables/problems.
 #'
-#' @seealso  \code{\link{list_data}}, \code{\link{xpose_data}},
+#' @seealso  \code{\link{list_data}}, \code{\link{create_xpdb}},
 #'   \code{\link{read_nm_tables}}
 #' @examples
 #' # By table name
@@ -107,52 +109,40 @@ get_data <- function(xpdb,
     if (length(.problem) > 1) {
       purrr::set_names(x, stringr::str_c('problem_', sort(.problem), sep = ''))
     } else {
-      x[[1]]
+      purrr::pluck(x, 1)
     }
   } else {
     # When selecting tables based on their name
     full_index <- x %>% 
-      dplyr::select(dplyr::one_of('problem', 'index'))
-    
-    ## TEMP handling
-    if (tidyr_new_interface()) {
-      full_index <- full_index %>% tidyr::unnest(dplyr::one_of('index'))
-    } else {
-      full_index <- full_index %>% tidyr::unnest(!!rlang::sym('index'))
-    }
-    ## END TEMP
+      dplyr::select(dplyr::one_of('problem', 'index')) %>% 
+      tidyr::unnest(!!rlang::sym('index'))
     
     if (any(!table %in% full_index$table)) {
       stop(stringr::str_c(table[!table %in% full_index$table], collapse = ', '), 
            ' not found in model output data.', call. = FALSE) 
     }
+    
     x <- full_index[full_index$table %in% table, ] %>% 
-      dplyr::group_by_at(.vars = c('problem', 'table'))
-    
-    ## TEMP handling
-    if (tidyr_new_interface()) {
-      x <- x %>% tidyr::nest(tmp = -dplyr::one_of('problem', 'table'))
-    } else {
-      x <- x %>% tidyr::nest(.key = 'tmp')
-    }
-    ## END TEMP
-    
-    x <- x %>% 
+      dplyr::group_by_at(.vars = c('problem', 'table')) %>% 
+      {# Temporary handling of changes in tidyr 1.0
+        if (tidyr_new_interface()) {
+          tidyr::nest(.data = ., tmp = -dplyr::one_of('problem', 'table'))
+        } else {
+          tidyr::nest(.data = ., .key = 'tmp')
+        }} %>% 
       dplyr::ungroup() %>% 
-      dplyr::mutate(cols = purrr::map(.$tmp, ~.$col)) %>% 
-      dplyr::group_by_at(.vars = 'table')
-    
-    ## TEMP handling
-    if (tidyr_new_interface()) {
-      x <- x %>% tidyr::nest(tmp = -dplyr::one_of('table'))
-    } else {
-      x <- x %>% tidyr::nest(.key = 'tmp')
-    }
-    ## END TEMP
-    
-    x <- x %>% 
+      dplyr::mutate(cols = purrr::map(.x = !!rlang::sym('tmp'), 
+                                      .f = ~.$col)) %>% 
+      dplyr::group_by_at(.vars = 'table') %>% 
+      {# Temporary handling of changes in tidyr 1.0
+        if (tidyr_new_interface()) {
+          tidyr::nest(.data = ., tmp = -dplyr::one_of('table'))
+        } else {
+          tidyr::nest(.data = ., .key = 'tmp')
+        }} %>%
       dplyr::ungroup() %>% 
-      dplyr::mutate(out = purrr::map(.$tmp, function(y) {
+      dplyr::mutate(out = purrr::map(.x = !!rlang::sym('tmp'), 
+                                     .f = function(y) {
         xpdb$data[xpdb$data$problem == y$problem, ]$data[[1]][, y$cols[[1]]]
       }))
     
@@ -169,7 +159,7 @@ get_data <- function(xpdb,
 #'
 #' @description Access model output file data from an xpdb object.
 #'
-#' @param xpdb An \code{xpose_data} object from which the model output file data
+#' @param xpdb An \code{xpdb} object from which the model output file data
 #'   will be extracted.
 #' @param file Full name of the file to be extracted from the xpdb e.g.
 #'   'run001.phi'. Alternative to the 'ext' argument.
@@ -184,7 +174,7 @@ get_data <- function(xpdb,
 #' @param quiet Logical, if \code{FALSE} messages are printed to the console.
 #'
 #' @return A tibble for single file or a named list for multiple files.
-#' @seealso  \code{\link{list_files}}, \code{\link{xpose_data}},
+#' @seealso  \code{\link{list_files}}, \code{\link{create_xpdb}},
 #'   \code{\link{read_nm_files}}
 #' @examples
 #' # Single file (returns a tibble)
@@ -279,14 +269,14 @@ get_file <- function(xpdb,
 #'
 #' @description Access model summary data from an xpdb object.
 #' 
-#' @param xpdb An \code{xpose_data} object from which the summary data will be extracted.
+#' @param xpdb An \code{xpdb} object from which the summary data will be extracted.
 #' @param .problem The .problem to be used, by default returns the last one for each label.
 #' @param .subprob The subproblem to be used, by default returns the last one for each label.
 #' @param only_last Logical, if \code{TRUE} only the last record for each label is returned in case 
 #' of multiple problem and/or subproblem. If \code{FALSE} all values are returned.
 #' 
 #' @return A tibble of model summary.
-#' @seealso \code{\link{xpose_data}}, \code{\link{template_titles}}, \code{\link{summary.xpose_data}}
+#' @seealso \code{\link{create_xpdb}}, \code{\link{template_titles}}, \code{\link{summary.xpdb_nm}}
 #' @examples
 #' run_summary <- get_summary(xpdb_ex_pk)
 #' run_summary
@@ -328,7 +318,7 @@ get_summary <- function(xpdb,
 #'
 #' @description Access model parameter estimates from an xpdb object.
 #' 
-#' @param xpdb An \code{xpose_data} object from which the model output file data will be extracted.
+#' @param xpdb An \code{xpdb} object from which the model output file data will be extracted.
 #' @param .problem The problem to be used, by default returns the last one for each file.
 #' @param .subprob The subproblem to be used, by default returns the last one for each file.
 #' @param .method The estimation method to be used, by default returns the last one for each file
@@ -559,12 +549,12 @@ get_prm_transformation_formulas <- function(prm_names) {
 #'
 #' @description Access special model data from an xpdb object.
 #' 
-#' @param xpdb An \code{xpose_data} object from which the special data will be extracted.
+#' @param xpdb An \code{xpdb} object from which the special data will be extracted.
 #' @param .problem The problem to be used, by default returns the last one.
 #' @param quiet Logical, if \code{FALSE} messages are printed to the console.
 #' 
 #' @return A list.
-#' @seealso  \code{\link{list_special}}, \code{\link{xpose_data}}
+#' @seealso  \code{\link{list_special}}, \code{\link{create_xpdb}}
 #' @examples
 #' special <- get_summary(xpdb_ex_pk)
 #' special
