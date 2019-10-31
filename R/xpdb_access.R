@@ -23,6 +23,13 @@
 get_code <- function(xpdb, 
                      parsed   = TRUE, 
                      .problem = NULL) {
+  UseMethod('get_code')
+}
+
+#' @export
+get_code.default <- function(xpdb, 
+                             parsed   = TRUE, 
+                             .problem = NULL) {
   check_xpdb(xpdb, check = 'code')
   
   # Get the code
@@ -82,6 +89,14 @@ get_data <- function(xpdb,
                      table    = NULL, 
                      .problem = NULL,
                      quiet) {
+  UseMethod('get_data')
+}
+
+#' @export
+get_data.default <- function(xpdb, 
+                             table    = NULL, 
+                             .problem = NULL,
+                             quiet) {
   check_xpdb(xpdb, check = 'data')
   if (missing(quiet)) quiet <- xpdb$options$quiet
   
@@ -126,30 +141,25 @@ get_data <- function(xpdb,
       dplyr::group_by_at(.vars = c('problem', 'table')) %>% 
       {# Temporary handling of changes in tidyr 1.0
         if (tidyr_new_interface()) {
-          tidyr::nest(.data = ., tmp = -dplyr::one_of('problem', 'table'))
+          tidyr::nest(.data = ., cols = -dplyr::one_of('problem', 'table'))
         } else {
-          tidyr::nest(.data = ., .key = 'tmp')
+          tidyr::nest(.data = ., .key = 'cols')
         }} %>% 
       dplyr::ungroup() %>% 
-      dplyr::mutate(cols = purrr::map(.x = !!rlang::sym('tmp'), 
-                                      .f = ~.$col)) %>% 
-      dplyr::group_by_at(.vars = 'table') %>% 
-      {# Temporary handling of changes in tidyr 1.0
-        if (tidyr_new_interface()) {
-          tidyr::nest(.data = ., tmp = -dplyr::one_of('table'))
-        } else {
-          tidyr::nest(.data = ., .key = 'tmp')
-        }} %>%
-      dplyr::ungroup() %>% 
-      dplyr::mutate(out = purrr::map(.x = !!rlang::sym('tmp'), 
-                                     .f = function(y) {
-        xpdb$data[xpdb$data$problem == y$problem, ]$data[[1]][, y$cols[[1]]]
-      }))
+      dplyr::mutate(cols = purrr::map(.x = !!rlang::sym('cols'), 
+                                      .f = 'col')) %>% 
+      dplyr::left_join(y = dplyr::select_at(.tbl  = xpdb$data,
+                                            .vars = c('problem', 'data')),
+                       by = 'problem') %>% 
+      dplyr::mutate(data = purrr::map2(.x = !!rlang::sym('data'), 
+                                       .y = !!rlang::sym('cols'), 
+                                       .f = ~dplyr::select_at(.tbl = .x, .vars = .y)))
+    
     
     if (length(unique(x$table)) > 1) {
-      purrr::set_names(x$out, x$table)
+      purrr::set_names(x$data, x$table)
     } else {
-      x$out[[nrow(x)]]
+      x$data[[nrow(x)]]
     }
   }
 }
@@ -196,6 +206,17 @@ get_file <- function(xpdb,
                      .subprob = NULL, 
                      .method  = NULL, 
                      quiet) {
+  UseMethod('get_file')
+}
+
+#' @export
+get_file.default <- function(xpdb, 
+                             file     = NULL, 
+                             ext      = NULL, 
+                             .problem = NULL, 
+                             .subprob = NULL, 
+                             .method  = NULL, 
+                             quiet) {
   check_xpdb(xpdb, check = 'files')
   if (missing(quiet)) quiet <- xpdb$options$quiet
   
@@ -204,14 +225,16 @@ get_file <- function(xpdb,
   }
   
   if (!is.null(file) && !is.null(ext)) {
-    stop('Argument `file` and `ext` should not be used simultaneously.', call. = FALSE) 
+    stop('Arguments `file` and `ext` should not be used simultaneously.', call. = FALSE) 
   }
   
   # Get file name from extension
   if (!is.null(ext)) {
     file <- unique(xpdb$files$name[xpdb$files$extension %in% ext])
     if (length(file) == 0) {
-      stop('File extension ', stringr::str_c(ext[!ext %in% xpdb$files$extension], collapse = ', '), ' not found in model output files.', call. = FALSE) 
+      stop('File extension ', 
+           stringr::str_c(ext[!ext %in% xpdb$files$extension], collapse = ', '), 
+           ' not found in model output files.', call. = FALSE) 
     }
   }
   
@@ -226,8 +249,10 @@ get_file <- function(xpdb,
   if (is.null(.problem)) {
     .problem <- last_file_problem(xpdb, ext = x$extension)
   } else if (!all(.problem %in% x$problem)) {
-    stop('$prob no.', stringr::str_c(.problem[!.problem %in% x$problem], collapse = ', '), 
-         ' not found in ', stringr::str_c(unique(x$name), collapse = ', '), ' files.', call. = FALSE)
+    stop('$prob no.', 
+         stringr::str_c(.problem[!.problem %in% x$problem], collapse = ', '), 
+         ' not found in ', stringr::str_c(unique(x$name), collapse = ', '), 
+         ' files.', call. = FALSE)
   }
   x <- x[x$problem %in% .problem, ]
   
@@ -235,23 +260,31 @@ get_file <- function(xpdb,
   if (is.null(.subprob)) {
     .subprob <- last_file_subprob(xpdb, ext = x$extension, .problem = .problem)
   } else if (!all(.subprob %in% x$subprob)) {
-    stop('Subprob no.', stringr::str_c(.subprob[!.subprob %in% x$subprob], collapse = ', '), 
-         ' not found in ', stringr::str_c(unique(x$name), collapse = ', '), ' files.', call. = FALSE)
+    stop('Subprob no.', 
+         stringr::str_c(.subprob[!.subprob %in% x$subprob], collapse = ', '), 
+         ' not found in ', stringr::str_c(unique(x$name), collapse = ', '), 
+         ' files.', call. = FALSE)
   }
   x <- x[x$subprob %in% .subprob, ]
   
   # Filter by method
   if (is.null(.method)) {
-    .method <- last_file_method(xpdb, ext = x$extension, .problem = .problem, .subprob = .subprob)
+    .method <- last_file_method(xpdb, ext = x$extension, 
+                                .problem = .problem, 
+                                .subprob = .subprob)
   } else if (!all(.method %in% x$method)) {
-    stop('Method ', stringr::str_c(.method[!.method %in% x$method], collapse = ', '), 
-         ' not found in ', stringr::str_c(unique(x$name), collapse = ', ') , ' files.', call. = FALSE)
+    stop('Method ', 
+         stringr::str_c(.method[!.method %in% x$method], collapse = ', '), 
+         ' not found in ', 
+         stringr::str_c(unique(x$name), collapse = ', ') , 
+         ' files.', call. = FALSE)
   }
   x <- x[x$method %in% .method, ]
   
   # Prepare output
   if (nrow(x) > 1) {
-    msg(c('Returning data from ', stringr::str_c(unique(x$name), collapse = ', ')), quiet)
+    msg(c('Returning data from ', 
+          stringr::str_c(unique(x$name), collapse = ', ')), quiet)
     x$data %>% 
       purrr::set_names(stringr::str_c(x$name, '_prob_', x$problem, 
                                       '_subprob_', x$subprob, '_', 
@@ -286,13 +319,22 @@ get_summary <- function(xpdb,
                         .problem  = NULL, 
                         .subprob  = NULL, 
                         only_last = FALSE) {
+  UseMethod('get_summary')
+}  
+
+#' @export
+get_summary.default <- function(xpdb, 
+                                .problem  = NULL, 
+                                .subprob  = NULL, 
+                                only_last = FALSE) {
   check_xpdb(xpdb, check = 'summary')
   x <- xpdb$summary
   
   # Filter by $problem
   if (!is.null(.problem)) {
     if (!all(.problem %in% x$problem)) {
-      stop('$prob no.', stringr::str_c(.problem[!.problem %in% x$problem], collapse = ', '), 
+      stop('$prob no.', 
+           stringr::str_c(.problem[!.problem %in% x$problem], collapse = ', '), 
            ' not found in model summary.', call. = FALSE)
     }
     x <- x[x$problem %in% .problem, ]
@@ -301,7 +343,8 @@ get_summary <- function(xpdb,
   # Filter by sub-problem
   if (!is.null(.subprob)) {
     if (!all(.subprob %in% x$subprob)) {
-      stop('Subprob no.', stringr::str_c(.subprob[!.subprob %in% x$subprob], collapse = ', '), 
+      stop('Subprob no.', 
+           stringr::str_c(.subprob[!.subprob %in% x$subprob], collapse = ', '), 
            ' not found in model summary.', call. = FALSE)
     }
     x <- x[x$subprob %in% .subprob, ]
@@ -346,6 +389,18 @@ get_prm <- function(xpdb,
                     transform = TRUE,
                     show_all  = FALSE,
                     quiet) {
+  UseMethod('get_prm')
+}
+
+#' @export
+get_prm.default <- function(xpdb, 
+                            .problem  = NULL, 
+                            .subprob  = NULL, 
+                            .method   = NULL,
+                            digits    = 4,
+                            transform = TRUE,
+                            show_all  = FALSE,
+                            quiet) {
   
   check_xpdb(xpdb, check = 'files')
   if (missing(quiet)) quiet <- xpdb$options$quiet
@@ -395,9 +450,9 @@ get_prm <- function(xpdb,
     }, code = xpdb$code)) %>% 
     purrr::transpose() %>% 
     purrr::map(.f = function(data) {
-      prm_mean <- grab_iter(ext = data$ext, iter = -1000000000)
-      prm_se   <- grab_iter(ext = data$ext, iter = -1000000001)
-      prm_fix  <- grab_iter(ext = data$ext, iter = -1000000006)
+      prm_mean <- grab_nm_iter(ext = data$ext, iter = -1000000000)
+      prm_se   <- grab_nm_iter(ext = data$ext, iter = -1000000001)
+      prm_fix  <- grab_nm_iter(ext = data$ext, iter = -1000000006)
       
       if (all(is.na(prm_fix))) {
         warning('Iteration `-1000000006` not found in the `.ext` file. Assuming no fixed parameters, check the output carefully.', call. = FALSE)
@@ -421,7 +476,7 @@ get_prm <- function(xpdb,
           }
         }
         # obtain transformation formulas 
-        prm_trans_formula <- get_prm_transformation_formulas(names(prm_mean))
+        prm_trans_formula <- get_nm_prm_transformation_formulas(names(prm_mean))
         # transform parameters & calculate var, rse for transformation
         prms <- purrr::map_df(prm_trans_formula, ~transform_prm(.x, mu = prm_mean, sigma = prm_cov, method = 'delta')) %>% 
           dplyr::mutate(se = sqrt(.$variance))
@@ -509,7 +564,7 @@ get_prm <- function(xpdb,
 #'
 #' @keywords internal
 #' @export
-grab_iter <- function(ext, iter) {
+grab_nm_iter <- function(ext, iter) {
   out <- ext %>% 
     dplyr::filter(.$ITERATION == iter) %>% 
     dplyr::select(-dplyr::one_of('ITERATION', 'OBJ'))
@@ -527,7 +582,7 @@ grab_iter <- function(ext, iter) {
 #' @return List of formulas decribing the transformation
 #' @keywords internal
 #' @export
-get_prm_transformation_formulas <- function(prm_names) {
+get_nm_prm_transformation_formulas <- function(prm_names) {
   prm_names %>% 
     purrr::set_names() %>% 
     purrr::map_if(~stringr::str_detect(.x, "^THETA"), 
@@ -560,20 +615,31 @@ get_prm_transformation_formulas <- function(prm_names) {
 #' special
 #' 
 #' @export
-get_special <- function(xpdb, .problem = NULL, quiet) {
+get_special <- function(xpdb, 
+                        .problem = NULL, 
+                        quiet) {
+  UseMethod('get_special')
+}
+
+#' @export
+get_special.default <- function(xpdb, 
+                                .problem = NULL, 
+                                quiet) {
   check_xpdb(xpdb, check = 'special')
   if (missing(quiet)) quiet <- xpdb$options$quiet
   x <- xpdb$special
   if (is.null(.problem)) .problem <- max(x$problem)
   
   if (!all(.problem %in% x$problem)) {
-    stop('$prob no.', stringr::str_c(.problem[!.problem %in% x$problem], collapse = ', '), 
+    stop('$prob no.', 
+         stringr::str_c(.problem[!.problem %in% x$problem], collapse = ', '), 
          ' not found in special data.', call. = FALSE)
   }
   x <- x[x$problem %in% .problem, ]
   
   if (length(.problem) > 1) {
-    purrr::set_names(x$data, stringr::str_c('problem_', x$problem, '_', x$method, '_', x$type))
+    purrr::set_names(x$data, stringr::str_c('problem_', x$problem, '_', 
+                                            x$method, '_', x$type))
   } else {
     msg(c('Returning ', x$method, ' ' , x$type, ' data from $prob no.', x$problem), quiet)
     x$data[[1]]

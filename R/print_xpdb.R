@@ -6,7 +6,7 @@
 #' @param x An \code{xpdb} object.
 #' @param ... Ignored in this function
 #'
-#' @method print xpdb
+#' @method print xpdb_nm
 #' @examples
 #' # Using the print function
 #' print(xpdb_ex_pk)
@@ -15,7 +15,7 @@
 #' xpdb_ex_pk
 #'
 #' @export
-print.xpdb <- function(x, ...) {
+print.xpdb_nm <- function(x, ...) {
   
   # Summarize estimation tables names
   if (!is.null(x$data) && any(!x$data$simtab)) {
@@ -69,7 +69,7 @@ print.xpdb <- function(x, ...) {
   opt_names <- x$options %>% 
     purrr::map_if(.p = is.null, 
                   .f = function(x) {'NULL'}) %>% 
-                  {stringr::str_c(names(.), unlist(.), sep = ' = ', collapse = ', ')}
+    {stringr::str_c(names(.), unlist(.), sep = ' = ', collapse = ', ')}
   
   cat(x$summary$value[x$summary$label == 'file'], 'overview:',
       '\n - Software:', x$summary$value[x$summary$label %in% c('software', 'version') & x$summary$value != 'na'],
