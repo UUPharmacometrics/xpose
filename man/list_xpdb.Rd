@@ -14,7 +14,7 @@ list_files(xpdb)
 list_special(xpdb)
 }
 \arguments{
-\item{xpdb}{An \code{xpose_data} object to be evaluated}
+\item{xpdb}{An \code{xpdb} object to be evaluated}
 }
 \description{
 Function providing a detailed listing of all available datasets in an xpdb object.

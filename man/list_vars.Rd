@@ -7,7 +7,7 @@
 list_vars(xpdb, .problem = NULL)
 }
 \arguments{
-\item{xpdb}{An \code{xpose_data} object from which the model code will be extracted.}
+\item{xpdb}{An \code{xpdb} object from which the model code will be extracted.}
 
 \item{.problem}{The problem to be used, by lists all available problems.}
 }

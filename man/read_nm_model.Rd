@@ -75,5 +75,5 @@ nm_model <- read_nm_model(runno = '001', ext = '.lst', dir = 'models')
 
 }
 \seealso{
-\code{\link{xpose_data}}, \code{\link{read_nm_tables}}
+\code{\link{create_nm_xpdb}}, \code{\link{read_nm_tables}}
 }

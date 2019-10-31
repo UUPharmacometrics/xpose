@@ -8,7 +8,7 @@ get_file(xpdb, file = NULL, ext = NULL, .problem = NULL,
   .subprob = NULL, .method = NULL, quiet)
 }
 \arguments{
-\item{xpdb}{An \code{xpose_data} object from which the model output file data
+\item{xpdb}{An \code{xpdb} object from which the model output file data
 will be extracted.}
 
 \item{file}{Full name of the file to be extracted from the xpdb e.g.
@@ -48,6 +48,6 @@ print(xpdb_ex_pk)
 
 }
 \seealso{
-\code{\link{list_files}}, \code{\link{xpose_data}},
+\code{\link{list_files}}, \code{\link{create_xpdb}},
   \code{\link{read_nm_files}}
 }

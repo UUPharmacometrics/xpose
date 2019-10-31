@@ -206,7 +206,7 @@ create_nm_xpdb <- function(runno         = NULL,
     structure(class = c('xpdb_nm', 'xpdb', 'uneval'))
 }
 
-#' @rdname create_nm_xpdb
+# Deprecated
 #' @export
 xpose_data <- function(runno         = NULL,
                        prefix        = 'run',

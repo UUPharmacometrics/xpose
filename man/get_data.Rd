@@ -7,7 +7,7 @@
 get_data(xpdb, table = NULL, .problem = NULL, quiet)
 }
 \arguments{
-\item{xpdb}{An \code{xpose_data} object from which the model output file data
+\item{xpdb}{An \code{xpdb} object from which the model output file data
 will be extracted.}
 
 \item{table}{Name of the output table to be extracted from the xpdb e.g.
@@ -41,6 +41,6 @@ print(xpdb_ex_pk)
 
 }
 \seealso{
-\code{\link{list_data}}, \code{\link{xpose_data}},
+\code{\link{list_data}}, \code{\link{create_xpdb}},
   \code{\link{read_nm_tables}}
 }

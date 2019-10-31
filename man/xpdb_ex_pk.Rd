@@ -2,8 +2,8 @@
 % Please edit documentation in R/examples.R
 \name{xpdb_ex_pk}
 \alias{xpdb_ex_pk}
-\title{\code{xpose_data} examples}
-\format{An \code{xpose_data} object}
+\title{\code{xpdb} examples}
+\format{An \code{xpdb} object}
 \source{
 \href{http://link.springer.com/article/10.1023/A:1020561807903}{Moxonidine
   model}: Assumption Testing in Population Pharmacokinetic Models:
@@ -12,7 +12,7 @@
   26(2):207–246 (1998).
 }
 \description{
-Moxonidine \code{xpose_data} example.
+Moxonidine \code{xpdb} example.
 }
 \examples{
 print(xpdb_ex_pk)

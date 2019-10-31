@@ -48,5 +48,5 @@ ext_file <- read_nm_files(runno = '001', ext = '.ext', dir = 'models')
 }
 }
 \seealso{
-\code{\link{xpose_data}}, \code{\link{read_nm_tables}}
+\code{\link{create_nm_xpdb}}, \code{\link{read_nm_tables}}
 }

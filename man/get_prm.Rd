@@ -8,7 +8,7 @@ get_prm(xpdb, .problem = NULL, .subprob = NULL, .method = NULL,
   digits = 4, transform = TRUE, show_all = FALSE, quiet)
 }
 \arguments{
-\item{xpdb}{An \code{xpose_data} object from which the model output file data will be extracted.}
+\item{xpdb}{An \code{xpdb} object from which the model output file data will be extracted.}
 
 \item{.problem}{The problem to be used, by default returns the last one for each file.}
 

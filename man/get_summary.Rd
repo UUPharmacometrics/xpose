@@ -8,7 +8,7 @@ get_summary(xpdb, .problem = NULL, .subprob = NULL,
   only_last = FALSE)
 }
 \arguments{
-\item{xpdb}{An \code{xpose_data} object from which the summary data will be extracted.}
+\item{xpdb}{An \code{xpdb} object from which the summary data will be extracted.}
 
 \item{.problem}{The .problem to be used, by default returns the last one for each label.}
 
@@ -29,5 +29,5 @@ run_summary
 
 }
 \seealso{
-\code{\link{xpose_data}}, \code{\link{template_titles}}, \code{\link{summary.xpose_data}}
+\code{\link{create_xpdb}}, \code{\link{template_titles}}, \code{\link{summary.xpdb_nm}}
 }

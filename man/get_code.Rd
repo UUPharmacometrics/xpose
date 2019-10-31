@@ -7,7 +7,7 @@
 get_code(xpdb, parsed = TRUE, .problem = NULL)
 }
 \arguments{
-\item{xpdb}{An \code{xpose_data} object from which the model code will be
+\item{xpdb}{An \code{xpdb} object from which the model code will be
 extracted.}
 
 \item{parsed}{Should the parsed (\code{parsed = TRUE} (default)) or raw

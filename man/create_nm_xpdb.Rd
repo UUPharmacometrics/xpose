@@ -2,18 +2,12 @@
 % Please edit documentation in R/create_xpdb.R
 \name{create_nm_xpdb}
 \alias{create_nm_xpdb}
-\alias{xpose_data}
 \title{Import NONMEM output into R}
 \usage{
 create_nm_xpdb(runno = NULL, prefix = "run", ext = ".lst",
   file = NULL, dir = NULL, gg_theme = theme_readable,
   xp_theme = theme_xp_default(), simtab = NULL, manual_import = NULL,
   ignore = NULL, extra_files, quiet, ...)
-
-xpose_data(runno = NULL, prefix = "run", ext = ".lst", file = NULL,
-  dir = NULL, gg_theme = theme_readable,
-  xp_theme = theme_xp_default(), simtab = NULL, manual_import = NULL,
-  ignore = NULL, ...)
 }
 \arguments{
 \item{runno}{Run number to be used to generate model file name. Used in
