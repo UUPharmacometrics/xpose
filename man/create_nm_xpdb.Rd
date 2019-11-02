@@ -6,8 +6,8 @@
 \usage{
 create_nm_xpdb(runno = NULL, prefix = "run", ext = ".lst",
   file = NULL, dir = NULL, gg_theme = theme_readable,
-  xp_theme = theme_xp_default(), simtab = NULL, manual_import = NULL,
-  ignore = NULL, extra_files, quiet, ...)
+  xp_theme = theme_xp_default(), simtab = NULL, ignore = NULL,
+  extra_files, quiet, ...)
 }
 \arguments{
 \item{runno}{Run number to be used to generate model file name. Used in
@@ -33,13 +33,7 @@ ggplot2 theme.}
 \code{\link{theme_xp_default}}).}
 
 \item{simtab}{If \code{TRUE} only reads in simulation tables, if \code{FALSE}
-only reads estimation tables. Default \code{NULL} reads all tables. Option
-not compatible with manual_import.}
-
-\item{manual_import}{If \code{NULL} (default) the names of the output tables
-to import will be obtained from the model file. To manually import files as
-in previous versions of xpose, the check the function
-\code{\link{manual_nm_import}}.}
+only reads estimation tables. Default \code{NULL} reads all tables.}
 
 \item{ignore}{Character vector be used to ignore the import/generation of:
 'data', 'files', 'summary' or any combination of the three.}

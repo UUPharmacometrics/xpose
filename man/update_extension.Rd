@@ -7,9 +7,11 @@
 update_extension(x, ext)
 }
 \arguments{
-\item{x}{A string or vector of strings containing the file name to be modified.}
+\item{x}{A string or vector of strings containing the file name to be
+modified.}
 
-\item{ext}{A string or vector of strings containing the name of the new extension(s).}
+\item{ext}{A string or vector of strings containing the name of the new
+extension(s).}
 }
 \value{
 A string or vector of strings of file name(s).
