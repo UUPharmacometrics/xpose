@@ -180,6 +180,7 @@ create_nm_xpdb <- function(runno         = NULL,
   out_data    <- label_df(out_data,    mod_num = 1, mod_file = basename(full_path))
   out_files   <- label_df(out_files,   mod_num = 1, mod_file = basename(full_path))
   out_summary <- label_df(out_summary, mod_num = 1, mod_file = basename(full_path))
+  file_info   <- label_df(file_info,   mod_num = 1, mod_file = basename(full_path))
   
   # Label themes
   attr(gg_theme, 'theme') <- as.character(substitute(gg_theme)) 

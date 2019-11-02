@@ -344,7 +344,7 @@ update_extension <- function(x, ext) {
 
 #' Get software from the xpdb
 #' 
-#' @description Get the name of the modeling softwre on which the xpdb was created
+#' @description Get the name of the modeling software on which the xpdb was created
 #' 
 #' @param xpdb An xpose database object.
 #' 
@@ -356,7 +356,7 @@ software <- function(xpdb) {
   x <- get_summary(xpdb)
   x <- x$value[x$label == 'software']
   if (is.null(x)) x <- 'na'
-  x
+  unique(x)
 }
 
 
