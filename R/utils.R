@@ -325,14 +325,16 @@ make_extension <- function(x) {
 
 
 #' Update file extension
-#' 
+#'
 #' @description Change the extension of a file.
-#' 
-#' @param x A string or vector of strings containing the file name to be modified.
-#' @param ext A string or vector of strings containing the name of the new extension(s).
-#' 
+#'
+#' @param x A string or vector of strings containing the file name to be
+#'   modified.
+#' @param ext A string or vector of strings containing the name of the new
+#'   extension(s).
+#'
 #' @return A string or vector of strings of file name(s).
-#' 
+#'
 #' @keywords internal
 #' @export
 update_extension <- function(x, ext) {
@@ -356,3 +358,26 @@ software <- function(xpdb) {
   if (is.null(x)) x <- 'na'
   x
 }
+
+
+#' Add `mod_num` and `mod_file` columns
+#'
+#' @description Add the model rank (`mod_num`) and model file name (`mod_file`)
+#'   to a data frame.
+#'
+#' @param x A data frame.
+#' @param mod_num The model rank.
+#' @param mod_file A label for the model.
+#'
+#' @return The original dataframe preceded by the columns model and label.
+#'
+#' @keywords internal
+#' @export
+label_df <- function(x, mod_num, mod_file) {
+  if (!is.null(x)) { 
+    x %>% 
+      dplyr::mutate(mod_num = mod_num, mod_file = mod_file) %>% 
+      dplyr::select_at(.vars = dplyr::vars('mod_num', 'mod_file', dplyr::everything()))
+  }
+}
+

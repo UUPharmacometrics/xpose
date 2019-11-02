@@ -18,12 +18,7 @@
 #' @param xp_theme A complete xpose theme object (e.g.
 #'   \code{\link{theme_xp_default}}).
 #' @param simtab If \code{TRUE} only reads in simulation tables, if \code{FALSE}
-#'   only reads estimation tables. Default \code{NULL} reads all tables. Option
-#'   not compatible with manual_import.
-#' @param manual_import If \code{NULL} (default) the names of the output tables
-#'   to import will be obtained from the model file. To manually import files as
-#'   in previous versions of xpose, the check the function
-#'   \code{\link{manual_nm_import}}.
+#'   only reads estimation tables. Default \code{NULL} reads all tables.
 #' @param ignore Character vector be used to ignore the import/generation of:
 #'   'data', 'files', 'summary' or any combination of the three.
 #' @param extra_files A vector of additional output file extensions to be
@@ -78,7 +73,6 @@ create_nm_xpdb <- function(runno         = NULL,
                            gg_theme      = theme_readable,
                            xp_theme      = theme_xp_default(),
                            simtab        = NULL,
-                           manual_import = NULL,
                            ignore        = NULL,
                            extra_files,
                            quiet,
@@ -119,14 +113,7 @@ create_nm_xpdb <- function(runno         = NULL,
                               dir  = dirname(full_path))
   
   # List output tables
-  if (is.null(manual_import)) {
-    tbl_names <- list_nm_tables(model_code)
-  } else {
-    tbl_names <- list_nm_tables_manual(runno    = NULL, 
-                                       file     = full_path,
-                                       dir      = NULL,
-                                       tab_list = manual_import)
-  }
+  tbl_names <- list_nm_tables(model_code)
   
   # Import output tables
   if ('data' %in% ignore) {
@@ -135,7 +122,7 @@ create_nm_xpdb <- function(runno         = NULL,
   } else {
     out_data <- tryCatch(
       read_nm_tables(file = tbl_names, dir = NULL, 
-                     quiet = quiet, simtab = simtab, ...), 
+                     quiet = quiet, simtab = simtab, ...),
       error = function(e) {
         warning(e$message, call. = FALSE)
         return()
@@ -175,9 +162,9 @@ create_nm_xpdb <- function(runno         = NULL,
   # Generate model summary
   if ('summary' %in% ignore) {
     msg('Ignoring summary generation', quiet)
-    summary <- NULL
+    out_summary <- NULL
   } else {
-    summary <- tryCatch(
+    out_summary <- tryCatch(
       summarise_nm_model(file = full_path, 
                          model = model_code$code[[which(model_code$parsed == TRUE)]], 
                          software = 'nonmem', rounding = xp_theme$rounding),
@@ -188,21 +175,25 @@ create_nm_xpdb <- function(runno         = NULL,
     )
   }
   
+  # Assign model number and label
+  model_code  <- label_df(model_code,  mod_num = 1, mod_file = basename(full_path))
+  out_data    <- label_df(out_data,    mod_num = 1, mod_file = basename(full_path))
+  out_files   <- label_df(out_files,   mod_num = 1, mod_file = basename(full_path))
+  out_summary <- label_df(out_summary, mod_num = 1, mod_file = basename(full_path))
+  
   # Label themes
   attr(gg_theme, 'theme') <- as.character(substitute(gg_theme)) 
   attr(xp_theme, 'theme') <- as.character(substitute(xp_theme)) 
   
   # Output create_nm_xpdb
-  list(code      = model_code, 
-       summary   = summary, 
-       data      = out_data,
-       files     = out_files,
-       file_info = file_info,
-       gg_theme  = gg_theme, 
-       xp_theme  = xp_theme,
-       options   = list(dir = dirname(full_path), 
-                        quiet = quiet, 
-                        manual_import = manual_import)) %>% 
+  list(code       = model_code, 
+       summary    = out_summary, 
+       data       = out_data,
+       files      = out_files,
+       file_info  = file_info,
+       gg_theme   = gg_theme, 
+       xp_theme   = xp_theme,
+       options    = list(quiet = quiet)) %>% 
     structure(class = c('xpdb_nm', 'xpdb', 'uneval'))
 }
 
@@ -216,7 +207,6 @@ xpose_data <- function(runno         = NULL,
                        gg_theme      = theme_readable,
                        xp_theme      = theme_xp_default(),
                        simtab        = NULL,
-                       manual_import = NULL,
                        ignore        = NULL,
                        ...) {
   
@@ -225,6 +215,5 @@ xpose_data <- function(runno         = NULL,
   create_nm_xpdb(runno = runno, prefix = prefix, ext = ext,
                  file = dir, dir = dir, gg_theme = gg_theme,
                  xp_theme = xp_theme, simtab = simtab,
-                 manual_import = manual_import,
                  ignore = ignore, ...)
 }
