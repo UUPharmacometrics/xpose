@@ -27,12 +27,15 @@ c.xpdb <- function(...) {
          call. = FALSE)
   }
   
+  if (length(x) == 1) return(x[[1]])
+  
   # Combine xpdbs
   out <- list(code       = c_xpdb_internal(x, item = 'code'), 
               summary    = c_xpdb_internal(x, item = 'summary'), 
               data       = c_xpdb_internal(x, item = 'data'),
               files      = c_xpdb_internal(x, item = 'files'),
               file_info  = c_xpdb_internal(x, item = 'file_info'),
+              special    = c_xpdb_internal(x, item = 'special'),
               gg_theme   = x[[1]]$gg_theme, 
               xp_theme   = x[[1]]$xp_theme,
               options    = x[[1]]$options)
@@ -64,11 +67,16 @@ c.xpdb <- function(...) {
 
 # Helper function to add a counter (i.e. rank) to a given xpdb item (e.g. data)
 c_xpdb_internal <- function(x, item) {
-  purrr::map2(
+  out <- purrr::map2(
     .x = x, 
     .y = seq_along(x), 
-    .f = ~ .x %>% 
-      purrr::pluck(item) %>% 
-      mutate(rank = .y)) %>% 
-    dplyr::bind_rows()
+    .f = function(x, y, item) {
+      x <- purrr::pluck(.x = x, item) ####### DEBUG with 'special' !!!!!!!!!!!
+      if (is.null(x)) return(NULL)
+      dplyr::mutate(x, rank = y)},
+    item = item)
+  
+  if (is.null(out)) return(NULL)
+  
+  dplyr::bind_rows(out)
 }

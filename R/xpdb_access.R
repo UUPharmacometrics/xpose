@@ -429,25 +429,32 @@ get_prm.default <- function(xpdb,
   }
   
   prm_df <- prm_df %>% 
-    dplyr::select(-dplyr::one_of('name', 'modified')) %>% 
+    dplyr::select(-dplyr::one_of('name', 'md5_ref')) %>% 
     tidyr::spread(key = 'extension', value = 'data')
   
   msg(c('Returning parameter estimates from $prob no.', stringr::str_c(unique(prm_df$problem), collapse = ', '), 
         ', subprob no.', stringr::str_c(unique(prm_df$subprob), collapse = ', '), 
         ', method ', stringr::str_c(unique(prm_df$method), collapse = ', ')), quiet)
   
+  code <- get_code(xpdb, .problem = .problem, parsed = TRUE)
+  
   prm_df <- prm_df %>% 
-    dplyr::mutate(prm_names = purrr::map(.x = as.list(.$problem), .f = function(x, code) {
-      
-      # Collect parameter names from the model code
-      code <- code[code$problem == x & nchar(code$code) > 0,]
-      list(theta = code$comment[code$subroutine == 'the'],
-           omega = code[code$subroutine == 'ome', ] %>%
-             dplyr::filter(!(stringr::str_detect(.$code, 'BLOCK\\(\\d+\\)(?!.*SAME)') & .$comment == '')) %>% 
-             {purrr::flatten_chr(.[, 'comment'])},
-           sigma = code$comment[code$subroutine == 'sig'])
-      
-    }, code = xpdb$code)) %>% 
+    ## IMPROVEMENT needed here when multiple models will be concatenated in the XPDB !!!
+    ## Suggest a merge based on the new column "model"
+    dplyr::mutate(prm_names = purrr::map(.x = !!rlang::sym('problem'), 
+                                         #.y = code,
+                                         .f  = function(x, code) {
+                                           
+                                           # Collect parameter names from the model code
+                                           code <- code[code$problem == x & nchar(code$code) > 0,]
+                                           
+                                           list(theta = code$comment[code$subroutine == 'the'],
+                                                omega = code[code$subroutine == 'ome', ] %>%
+                                                  dplyr::filter(!(stringr::str_detect(.$code, 'BLOCK\\(\\d+\\)(?!.*SAME)') & 
+                                                                    .$comment == '')) %>% 
+                                                  {purrr::flatten_chr(.[, 'comment'])},
+                                                sigma = code$comment[code$subroutine == 'sig'])
+                                         }, code = code)) %>% 
     purrr::transpose() %>% 
     purrr::map(.f = function(data) {
       prm_mean <- grab_nm_iter(ext = data$ext, iter = -1000000000)
@@ -499,16 +506,14 @@ get_prm.default <- function(xpdb,
         dplyr::mutate(diagonal = dplyr::if_else(.$m == .$n, TRUE, FALSE)) %>% 
         dplyr::rename(!!rlang::sym('value') := !!rlang::sym('mean')) %>% 
         dplyr::mutate(label = '',
-                      value = signif(.$value, digits = digits),
-                      se    = signif(.$se, digits = digits),
-                      rse   = signif(.$rse, digits = digits),
                       n     = as.numeric(.$n),
                       m     = as.numeric(.$m),
                       order = dplyr::case_when(type == 'the' ~ 1,
                                                type == 'ome' ~ 2,
-                                               TRUE ~ 3)) %>% 
+                                               TRUE          ~ 3)) %>% 
         dplyr::arrange_at(.vars = 'order') %>% 
-        dplyr::select(dplyr::one_of('type', 'name', 'label', 'value', 'se', 'rse', 'fixed', 'diagonal', 'm', 'n'))
+        dplyr::select(dplyr::one_of('type', 'name', 'label', 'value', 'se', 'rse', 
+                                    'fixed', 'diagonal', 'm', 'n'))
       
       # Assign THETA labels
       n_theta     <- sum(prms$type == 'the')
@@ -548,8 +553,7 @@ get_prm.default <- function(xpdb,
       
       # Add metadata to output
       structure(.Data = prms, file = 'ext', problem = data$problem, 
-                subprob = data$subprob, method = data$method)
-      
+                subprob = data$subprob, method = data$method, digits = digits)
     })
   
   # Format output

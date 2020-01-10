@@ -38,7 +38,8 @@ check_xpdb <- function(xpdb, check = 'data') {
   }
   
   skip  <- ifelse(check == FALSE, TRUE, FALSE)
-  check <- ifelse(!check %in% c('data', 'files', 'summary', 'special', 'code'), 
+  check <- ifelse(!check %in% c('data', 'files', 'summary', 
+                                'special', 'code', 'file_info'), 
                   'files', check)
   
   # Check for the presence of data
