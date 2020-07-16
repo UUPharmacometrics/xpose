@@ -401,7 +401,8 @@ get_prm <- function(xpdb,
         prm_trans_formula <- get_prm_transformation_formulas(names(prm_mean))
         # transform parameters & calculate var, rse for transformation
         prms <- purrr::map_df(prm_trans_formula, ~transform_prm(.x, mu = prm_mean, sigma = prm_cov, method = 'delta')) %>% 
-          dplyr::mutate(se = sqrt(.$variance))
+          dplyr::mutate(se = sqrt(.$variance)) %>% 
+          tibble::as_tibble()
       } else {
         prms <- dplyr::tibble(mean = purrr::flatten_dbl(prm_mean), 
                               se   = purrr::flatten_dbl(prm_se)) %>% 
