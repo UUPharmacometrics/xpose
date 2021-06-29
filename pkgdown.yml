@@ -1,0 +1,19 @@
+pandoc: 2.7.3
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  about: about.html
+  access_xpdb_data: access_xpdb_data.html
+  customize_plots: customize_plots.html
+  faq: faq.html
+  import_model_outputs: import_model_outputs.html
+  interactive_plots: interactive_plots.html
+  introduction: introduction.html
+  multiple_pages: multiple_pages.html
+  plot_list: plot_list.html
+  vpc: vpc.html
+last_built: 2021-06-29T21:22Z
+urls:
+  reference: https://uupharmacometrics.github.io/xpose//reference
+  article: https://uupharmacometrics.github.io/xpose//articles
+

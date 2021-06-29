@@ -1,0 +1,24 @@
+h1 {
+  font-size: 34px;
+}
+
+h2.hasAnchor {
+  font-size: 26px;
+}
+
+h3.hasAnchor {
+  font-size: 20px;
+}
+
+h4.hasAnchor {
+  font-size: 16px;
+}
+
+h4.date,
+h4.author {
+  font-size: 12px;;
+}
+
+
+
+
