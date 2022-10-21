@@ -125,7 +125,7 @@
 
       
 
-      </header><script src="import_model_outputs_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Import model outputs</h1>
@@ -173,13 +173,13 @@
 <li>output and simulation tables: for the actual data</li>
 </ul>
 <p>When importing the files, xpose will return messages to the console and inform of any issue encountered during the import.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>xpdb &lt;-<span class="st"> </span><span class="kw">xpose_data</span>(<span class="dt">runno =</span> <span class="st">'001'</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a>Looking <span class="cf">for</span> nonmem output tables</span>
-<span id="cb2-4"><a href="#cb2-4"></a>Reading<span class="op">:</span><span class="st"> </span>sdtab001, catab001, cotab001, patab001 [<span class="op">$</span>prob no<span class="fl">.1</span>]</span>
-<span id="cb2-5"><a href="#cb2-5"></a></span>
-<span id="cb2-6"><a href="#cb2-6"></a>Looking <span class="cf">for</span> nonmem output files</span>
-<span id="cb2-7"><a href="#cb2-7"></a>Reading<span class="op">:</span><span class="st"> </span>run001.cor, run001.cov, run001.ext, run001.grd, run001.phi</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>xpdb <span class="ot">&lt;-</span> <span class="fu">xpose_data</span>(<span class="at">runno =</span> <span class="st">'001'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Looking <span class="cf">for</span> nonmem output tables</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Reading<span class="sc">:</span> sdtab001, catab001, cotab001, patab001 [<span class="sc">$</span>prob no<span class="fl">.1</span>]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>Looking <span class="cf">for</span> nonmem output files</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>Reading<span class="sc">:</span> run001.cor, run001.cov, run001.ext, run001.grd, run001.phi</span></code></pre></div>
 <p>These messages can be silenced with the option <code>quiet = TRUE</code>.</p>
 <div class="section level5">
 <h5 id="firstonly-tables">
