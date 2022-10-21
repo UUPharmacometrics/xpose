@@ -27,6 +27,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -39,21 +41,22 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xpose</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.13</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li class="divider">
-    <li class="dropdown-header">Getting started</li>
+    </li>
+<li class="dropdown-header">Getting started</li>
     <li>
       <a href="../reference/figures/cheatsheet.pdf">Cheat sheet (pdf)</a>
     </li>
@@ -67,7 +70,8 @@
       <a href="../articles/access_xpdb_data.html">Access xpdb data</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Going further</li>
+    </li>
+<li class="dropdown-header">Going further</li>
     <li>
       <a href="../articles/customize_plots.html">Customize plots</a>
     </li>
@@ -100,13 +104,13 @@
   <a href="../news/index.html">News</a>
 </li>
 <li>
-  <a href="https://github.com/UUPharmacometrics/xpose">
+  <a href="https://github.com/UUPharmacometrics/xpose" class="external-link">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/UUPharmacometrics/xpose/releases">
+  <a href="https://github.com/UUPharmacometrics/xpose/releases" class="external-link">
     <span class="fa fa-download"></span>
      
   </a>
@@ -125,35 +129,35 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Visual Predictive Checks (VPC)</h1>
-                        <h4 class="author">Benjamin Guiastrennec</h4>
+                        <h4 data-toc-skip class="author">Benjamin Guiastrennec</h4>
             
-            <h4 class="date">30 June, 2021</h4>
+            <h4 data-toc-skip class="date">21 October, 2022</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/UUPharmacometrics/xpose/blob/master/vignettes/vpc.Rmd"><code>vignettes/vpc.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/UUPharmacometrics/xpose/blob/HEAD/vignettes/vpc.Rmd" class="external-link"><code>vignettes/vpc.Rmd</code></a></small>
       <div class="hidden name"><code>vpc.Rmd</code></div>
 
     </div>
 
     
     
-<div id="disclosure" class="section level3">
-<h3 class="hasAnchor">
-<a href="#disclosure" class="anchor"></a>Disclosure</h3>
+<div class="section level3">
+<h3 id="disclosure">Disclosure<a class="anchor" aria-label="anchor" href="#disclosure"></a>
+</h3>
 <p>The Visual predictive checks (VPC) shown below are only intended to demonstrate the various options available in xpose and should not be used as reference for modeling practice. Furthermore, the plots are only based on 20 simulations to minimize the computing time of the examples, the size of the <code>xpdb_ex_pk</code> object and of the xpose package in general.</p>
 </div>
-<div id="introduction" class="section level3">
-<h3 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h3>
+<div class="section level3">
+<h3 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h3>
 <p>VPC can be created either by:</p>
 <ol style="list-style-type: decimal">
 <li>Using an xpdb containing a simulation and an estimation problem</li>
-<li>Using a <a href="https://uupharmacometrics.github.io/PsN/">PsN</a> generated VPC folder</li>
+<li>Using a <a href="https://uupharmacometrics.github.io/PsN/" class="external-link">PsN</a> generated VPC folder</li>
 </ol>
-<p>The VPC functionality in xpose is build around the <a href="https://cran.r-project.org/package=vpc">vpc R package</a>. For more details about the way the vpc package works, please check the <a href="http://vpc.ronkeizer.com">documentation website</a>.</p>
+<p>The VPC functionality in xpose is build around the <a href="https://cran.r-project.org/package=vpc" class="external-link">vpc R package</a>. For more details about the way the vpc package works, please check the <a href="http://vpc.ronkeizer.com" class="external-link">documentation website</a>.</p>
 </div>
-<div id="workflow" class="section level3">
-<h3 class="hasAnchor">
-<a href="#workflow" class="anchor"></a>Workflow</h3>
+<div class="section level3">
+<h3 id="workflow">Workflow<a class="anchor" aria-label="anchor" href="#workflow"></a>
+</h3>
 <p>The VPC computing and plotting parts have been separated into two distinct functions: <code><a href="../reference/vpc_data.html">vpc_data()</a></code> and <code><a href="../reference/vpc.html">vpc()</a></code> respectively. This allows to:</p>
 <ul>
 <li>Optimize the speed when adjusting the graphics aesthetics</li>
@@ -161,15 +165,15 @@
 <li>Facilitate error debugging</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">xpdb_ex_pk</span> <span class="op">%&gt;%</span> 
- <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>  <span class="co"># Compute the vpc data</span>
- <span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="op">)</span>            <span class="co"># Plot the vpc</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">xpdb_ex_pk</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span> <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>  <span class="co"># Compute the vpc data</span></span>
+<span> <span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="op">)</span>            <span class="co"># Plot the vpc</span></span></code></pre></div>
 <p><img src="vpc_files/figure-html/unnamed-chunk-2-1.png" width="75%" style="display: block; margin: auto;"></p>
 <p>The generated VPC data is stored in the xpdb under specials datasets and can be used later on.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">xpdb_w_vpc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span> <span class="co"># Compute and store VPC data</span>
-
-<span class="va">xpdb_w_vpc</span> <span class="co"># The vpc data is now listed under the xpdb "special" data</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">xpdb_w_vpc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span> <span class="co"># Compute and store VPC data</span></span>
+<span></span>
+<span><span class="va">xpdb_w_vpc</span> <span class="co"># The vpc data is now listed under the xpdb "special" data</span></span></code></pre></div>
 <pre><code>run001.lst overview: 
  - Software: nonmem 7.3.0 
  - Attached files (memory usage 1.6 Mb): 
@@ -181,38 +185,36 @@
  - xp_theme: theme_xp_default 
  - Options: dir = data, quiet = FALSE, manual_import = NULL</code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="va">xpdb_w_vpc</span><span class="op">)</span> <span class="co"># Plot the vpc from the stored data</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="va">xpdb_w_vpc</span><span class="op">)</span> <span class="co"># Plot the vpc from the stored data</span></span></code></pre></div>
 <p><img src="vpc_files/figure-html/unnamed-chunk-3-1.png" width="75%" style="display: block; margin: auto;"></p>
 <p>Multiple VPC data can be stored in an xpdb, but only one of each <code>vpc_type</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">xpdb_w_multi_vpc</span> <span class="op">&lt;-</span> <span class="va">xpdb_ex_pk</span> <span class="op">%&gt;%</span> 
- <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span>vpc_type <span class="op">=</span> <span class="st">'continuous'</span>, opt <span class="op">=</span> <span class="fu"><a href="../reference/vpc_opt.html">vpc_opt</a></span><span class="op">(</span>n_bins <span class="op">=</span> <span class="fl">6</span>, lloq <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
- <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span>vpc_type <span class="op">=</span> <span class="st">'censored'</span>, opt <span class="op">=</span> <span class="fu"><a href="../reference/vpc_opt.html">vpc_opt</a></span><span class="op">(</span>n_bins <span class="op">=</span> <span class="fl">6</span>, lloq <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="va">xpdb_w_multi_vpc</span>, vpc_type <span class="op">=</span> <span class="st">'continuous'</span><span class="op">)</span>
-<span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="va">xpdb_w_multi_vpc</span>, vpc_type <span class="op">=</span> <span class="st">'censored'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">xpdb_w_multi_vpc</span> <span class="op">&lt;-</span> <span class="va">xpdb_ex_pk</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span> <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span>vpc_type <span class="op">=</span> <span class="st">'continuous'</span>, opt <span class="op">=</span> <span class="fu"><a href="../reference/vpc_opt.html">vpc_opt</a></span><span class="op">(</span>n_bins <span class="op">=</span> <span class="fl">6</span>, lloq <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span> <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span>vpc_type <span class="op">=</span> <span class="st">'censored'</span>, opt <span class="op">=</span> <span class="fu"><a href="../reference/vpc_opt.html">vpc_opt</a></span><span class="op">(</span>n_bins <span class="op">=</span> <span class="fl">6</span>, lloq <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="va">xpdb_w_multi_vpc</span>, vpc_type <span class="op">=</span> <span class="st">'continuous'</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="va">xpdb_w_multi_vpc</span>, vpc_type <span class="op">=</span> <span class="st">'censored'</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="common-options" class="section level3">
-<h3 class="hasAnchor">
-<a href="#common-options" class="anchor"></a>Common options</h3>
-<div id="options-in-vpc_data" class="section level4">
-<h4 class="hasAnchor">
-<a href="#options-in-vpc_data" class="anchor"></a>Options in <code>vpc_data()</code>
+<div class="section level3">
+<h3 id="common-options">Common options<a class="anchor" aria-label="anchor" href="#common-options"></a>
+</h3>
+<div class="section level4">
+<h4 id="options-in-vpc_data">Options in <code>vpc_data()</code><a class="anchor" aria-label="anchor" href="#options-in-vpc_data"></a>
 </h4>
 <ul>
 <li>The option <code>vpc_type</code> allows to specify the type of VPC to be computed: “continuous” (default), “categorical”, “censored”, “time-to-event”.</li>
-<li>The <code>stratify</code> options defines up to two stratifying variable to be used when computing the VPC data. The <code>stratify</code> variables can either be provided as a character vector (<code>stratify = c('SEX', 'MED1')</code>) or a formula (<code>stratify = SEX~MED1</code>) . The former will result in the use of <code><a href="https://ggforce.data-imaginist.com/reference/facet_wrap_paginate.html">ggforce::facet_wrap_paginate()</a></code> and the latter of <code><a href="https://ggforce.data-imaginist.com/reference/facet_grid_paginate.html">ggforce::facet_grid_paginate()</a></code> when creating the plot. With “categorical” VPC the “group” variable will also be added by default.</li>
+<li>The <code>stratify</code> options defines up to two stratifying variable to be used when computing the VPC data. The <code>stratify</code> variables can either be provided as a character vector (<code>stratify = c('SEX', 'MED1')</code>) or a formula (<code>stratify = SEX~MED1</code>) . The former will result in the use of <code><a href="https://ggforce.data-imaginist.com/reference/facet_wrap_paginate.html" class="external-link">ggforce::facet_wrap_paginate()</a></code> and the latter of <code><a href="https://ggforce.data-imaginist.com/reference/facet_grid_paginate.html" class="external-link">ggforce::facet_grid_paginate()</a></code> when creating the plot. With “categorical” VPC the “group” variable will also be added by default.</li>
 <li>More advanced options (i.e. binning, pi, ci, predcorr, lloq, etc.) are accessible via the <code>opt</code> argument. The <code>opt</code> argument expects the output from the <code><a href="../reference/vpc_opt.html">vpc_opt()</a></code> functions argument.</li>
 </ul>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">xpdb_ex_pk</span> <span class="op">%&gt;%</span> 
- <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span>vpc_type <span class="op">=</span> <span class="st">'censored'</span>, stratify <span class="op">=</span> <span class="st">'SEX'</span>,
-          opt <span class="op">=</span> <span class="fu"><a href="../reference/vpc_opt.html">vpc_opt</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="st">'jenks'</span>, n_bins <span class="op">=</span> <span class="fl">7</span>, lloq <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
- <span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">xpdb_ex_pk</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span> <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span>vpc_type <span class="op">=</span> <span class="st">'censored'</span>, stratify <span class="op">=</span> <span class="st">'SEX'</span>,</span>
+<span>          opt <span class="op">=</span> <span class="fu"><a href="../reference/vpc_opt.html">vpc_opt</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="st">'jenks'</span>, n_bins <span class="op">=</span> <span class="fl">7</span>, lloq <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span> <span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="options-in-vpc" class="section level4">
-<h4 class="hasAnchor">
-<a href="#options-in-vpc" class="anchor"></a>Options in <code>vpc()</code>
+<div class="section level4">
+<h4 id="options-in-vpc">Options in <code>vpc()</code><a class="anchor" aria-label="anchor" href="#options-in-vpc"></a>
 </h4>
 <ul>
 <li>The option <code>vpc_type</code> works similarly to <code><a href="../reference/vpc_data.html">vpc_data()</a></code> and is only required if several VPC data are associated with the xpdb.</li>
@@ -221,13 +223,13 @@
 </ul>
 </div>
 </div>
-<div id="creating-vpc-using-the-xpdb-data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#creating-vpc-using-the-xpdb-data" class="anchor"></a>Creating VPC using the xpdb data</h3>
+<div class="section level3">
+<h3 id="creating-vpc-using-the-xpdb-data">Creating VPC using the xpdb data<a class="anchor" aria-label="anchor" href="#creating-vpc-using-the-xpdb-data"></a>
+</h3>
 <p>To create VPC using the xpdb data, at least one simulation and one estimation problem need to present. Hence in the case of NONMEM the run used to generate the xpdb should contain several<code>$PROBLEM</code>. In <code><a href="../reference/vpc_data.html">vpc_data()</a></code> the problem number can be specified for the observation (<code>obs_problem</code>) and the simulation (<code>sim_problem</code>). By default xpose picks the last one of each to generate the VPC.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># View the xpdb content and data problems</span>
-<span class="va">xpdb_ex_pk</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># View the xpdb content and data problems</span></span>
+<span><span class="va">xpdb_ex_pk</span></span></code></pre></div>
 <pre><code>run001.lst overview: 
  - Software: nonmem 7.3.0 
  - Attached files (memory usage 1.4 Mb): 
@@ -239,22 +241,22 @@
  - xp_theme: theme_xp_default 
  - Options: dir = data, quiet = FALSE, manual_import = NULL</code></pre>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Generate the vpc</span>
-<span class="va">xpdb_ex_pk</span> <span class="op">%&gt;%</span> 
- <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span>vpc_type <span class="op">=</span> <span class="st">'continuous'</span>, obs_problem <span class="op">=</span> <span class="fl">1</span>, sim_problem <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">%&gt;%</span> 
- <span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Generate the vpc</span></span>
+<span><span class="va">xpdb_ex_pk</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span> <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span>vpc_type <span class="op">=</span> <span class="st">'continuous'</span>, obs_problem <span class="op">=</span> <span class="fl">1</span>, sim_problem <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span> <span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="vpc_files/figure-html/unnamed-chunk-6-1.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
-<div id="creating-the-vpc-using-a-psn-folder" class="section level3">
-<h3 class="hasAnchor">
-<a href="#creating-the-vpc-using-a-psn-folder" class="anchor"></a>Creating the VPC using a PsN folder</h3>
-<p>The <code><a href="../reference/vpc_data.html">vpc_data()</a></code> contains an argument <code>psn_folder</code> which can be used to point to a <a href="https://uupharmacometrics.github.io/PsN/">PsN</a> generated VPC folder. As in most xpose function <code>template_titles</code> keywords can be used to automatize the process e.g. <code>psn_folder = '@dir/@run_vpc'</code> where <code>@dir</code> and <code>@run</code> will be automatically translated to initial (i.e. when the xpdb was generated) run directory and run number <code>'analysis/models/pk/run001_vpc'</code>.</p>
-<p>In this case, the data will be read from the <code>/m1</code> sub-folder (or <code>m1.zip</code> if compressed). Note that <a href="https://uupharmacometrics.github.io/PsN/">PsN</a> drops unused columns to reduce the simtab file size. Thus, in order to allow for more flexibility in R, it is recommended to use multiple stratifying variables (<code>-stratify_on=VAR1,VAR2</code>) and the prediction corrected (<code>-predcorr</code> adds the PRED column to the output) options in <a href="https://uupharmacometrics.github.io/PsN/">PsN</a> to avoid having to rerun <a href="https://uupharmacometrics.github.io/PsN/">PsN</a> to add these variables later on. In addition, <code>-dv</code>, <code>-idv</code>, <code>-lloq</code>, <code>-uloq</code>, <code>-predcorr</code> and <code>-stratify_on</code> <a href="https://uupharmacometrics.github.io/PsN/">PsN</a> options are automatically applied to xpose VPC.</p>
-<p>The PsN generated binning can also applied to xpose VPC with the <code><a href="../reference/vpc_data.html">vpc_data()</a></code> option <code>psn_bins = TRUE</code> (disabled by default). However <a href="https://uupharmacometrics.github.io/PsN/">PsN</a> and the vpc package work slightly differently so the results may not be optimal and the output should be evaluated carefully.</p>
+<div class="section level3">
+<h3 id="creating-the-vpc-using-a-psn-folder">Creating the VPC using a PsN folder<a class="anchor" aria-label="anchor" href="#creating-the-vpc-using-a-psn-folder"></a>
+</h3>
+<p>The <code><a href="../reference/vpc_data.html">vpc_data()</a></code> contains an argument <code>psn_folder</code> which can be used to point to a <a href="https://uupharmacometrics.github.io/PsN/" class="external-link">PsN</a> generated VPC folder. As in most xpose function <code>template_titles</code> keywords can be used to automatize the process e.g. <code>psn_folder = '@dir/@run_vpc'</code> where <code>@dir</code> and <code>@run</code> will be automatically translated to initial (i.e. when the xpdb was generated) run directory and run number <code>'analysis/models/pk/run001_vpc'</code>.</p>
+<p>In this case, the data will be read from the <code>/m1</code> sub-folder (or <code>m1.zip</code> if compressed). Note that <a href="https://uupharmacometrics.github.io/PsN/" class="external-link">PsN</a> drops unused columns to reduce the simtab file size. Thus, in order to allow for more flexibility in R, it is recommended to use multiple stratifying variables (<code>-stratify_on=VAR1,VAR2</code>) and the prediction corrected (<code>-predcorr</code> adds the PRED column to the output) options in <a href="https://uupharmacometrics.github.io/PsN/" class="external-link">PsN</a> to avoid having to rerun <a href="https://uupharmacometrics.github.io/PsN/" class="external-link">PsN</a> to add these variables later on. In addition, <code>-dv</code>, <code>-idv</code>, <code>-lloq</code>, <code>-uloq</code>, <code>-predcorr</code> and <code>-stratify_on</code> <a href="https://uupharmacometrics.github.io/PsN/" class="external-link">PsN</a> options are automatically applied to xpose VPC.</p>
+<p>The PsN generated binning can also applied to xpose VPC with the <code><a href="../reference/vpc_data.html">vpc_data()</a></code> option <code>psn_bins = TRUE</code> (disabled by default). However <a href="https://uupharmacometrics.github.io/PsN/" class="external-link">PsN</a> and the vpc package work slightly differently so the results may not be optimal and the output should be evaluated carefully.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">xpdb_ex_pk</span> <span class="op">%&gt;%</span> 
- <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span>psn_folder <span class="op">=</span> <span class="st">'@dir/run001_vpc'</span>, psn_bins <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> 
- <span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">xpdb_ex_pk</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span> <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span>psn_folder <span class="op">=</span> <span class="st">'@dir/run001_vpc'</span>, psn_bins <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span> <span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
   </div>
 
@@ -267,11 +269,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/guiastrennec">Benjamin Guiastrennec</a>, <a href="https://github.com/andrewhooker">Andrew C. Hooker</a>, <a href="https://github.com/sebastianueckert">Sebastian Ueckert</a>, <a href="https://katalog.uu.se/profile/?id=XX3384">Mats O. Karlsson</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/guiastrennec" class="external-link">Benjamin Guiastrennec</a>, <a href="https://github.com/andrewhooker" class="external-link">Andrew C. Hooker</a>, <a href="https://github.com/sebastianueckert" class="external-link">Sebastian Ueckert</a>, <a href="https://katalog.uu.se/profile/?id=XX3384" class="external-link">Mats O. Karlsson</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -279,6 +283,8 @@
 
   
 
+
+  
 
   </body>
 </html>

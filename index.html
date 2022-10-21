@@ -31,6 +31,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -43,21 +45,22 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">xpose</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.13</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li class="divider">
-    <li class="dropdown-header">Getting started</li>
+    </li>
+<li class="dropdown-header">Getting started</li>
     <li>
       <a href="reference/figures/cheatsheet.pdf">Cheat sheet (pdf)</a>
     </li>
@@ -71,7 +74,8 @@
       <a href="articles/access_xpdb_data.html">Access xpdb data</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Going further</li>
+    </li>
+<li class="dropdown-header">Going further</li>
     <li>
       <a href="articles/customize_plots.html">Customize plots</a>
     </li>
@@ -104,13 +108,13 @@
   <a href="news/index.html">News</a>
 </li>
 <li>
-  <a href="https://github.com/UUPharmacometrics/xpose">
+  <a href="https://github.com/UUPharmacometrics/xpose" class="external-link">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/UUPharmacometrics/xpose/releases">
+  <a href="https://github.com/UUPharmacometrics/xpose/releases" class="external-link">
     <span class="fa fa-download"></span>
      
   </a>
@@ -127,47 +131,47 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="xpose-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#xpose-" class="anchor"></a>xpose <a href="https://UUPharmacometrics.github.io/xpose/"><img src="reference/figures/logo.png" align="right"></a>
+<div class="section level1">
+<div class="page-header"><h1 id="xpose-">xpose <a href="https://UUPharmacometrics.github.io/xpose/" class="external-link"><img src="reference/figures/logo.png" align="right"></a>
+<a class="anchor" aria-label="anchor" href="#xpose-"></a>
 </h1></div>
 
-<div id="overview" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h2>
-<p><a href="https://UUPharmacometrics.github.io/xpose/">xpose</a> was designed as a <a href="https://ggplot2.tidyverse.org/">ggplot2</a>-based alternative to <a href="http://xpose.sourceforge.net">xpose4</a>. xpose aims to reduce the post processing burden and improve diagnostics commonly associated the development of non-linear mixed effect models.</p>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
+<p><a href="https://UUPharmacometrics.github.io/xpose/" class="external-link">xpose</a> was designed as a <a href="https://ggplot2.tidyverse.org/" class="external-link">ggplot2</a>-based alternative to <a href="http://xpose.sourceforge.net" class="external-link">xpose4</a>. xpose aims to reduce the post processing burden and improve diagnostics commonly associated the development of non-linear mixed effect models.</p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Install the lastest release from the CRAN</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'xpose'</span><span class="op">)</span>
-
-<span class="co"># Or install the development version from GitHub</span>
-<span class="co"># install.packages('devtools')</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">'UUPharmacometrics/xpose'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Install the lastest release from the CRAN</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'xpose'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Or install the development version from GitHub</span></span>
+<span><span class="co"># install.packages('devtools')</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">'UUPharmacometrics/xpose'</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="getting-started" class="section level2">
-<h2 class="hasAnchor">
-<a href="#getting-started" class="anchor"></a>Getting started</h2>
-<div id="load-xpose" class="section level3">
-<h3 class="hasAnchor">
-<a href="#load-xpose" class="anchor"></a>Load xpose</h3>
+<div class="section level2">
+<h2 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
+</h2>
+<div class="section level3">
+<h3 id="load-xpose">Load xpose<a class="anchor" aria-label="anchor" href="#load-xpose"></a>
+</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://uupharmacometrics.github.io/xpose">xpose</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://uupharmacometrics.github.io/xpose">xpose</a></span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="import-run-output" class="section level3">
-<h3 class="hasAnchor">
-<a href="#import-run-output" class="anchor"></a>Import run output</h3>
+<div class="section level3">
+<h3 id="import-run-output">Import run output<a class="anchor" aria-label="anchor" href="#import-run-output"></a>
+</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">xpdb</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/xpose_data.html">xpose_data</a></span><span class="op">(</span>runno <span class="op">=</span> <span class="st">'001'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">xpdb</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/xpose_data.html">xpose_data</a></span><span class="op">(</span>runno <span class="op">=</span> <span class="st">'001'</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="glance-at-the-data-object" class="section level3">
-<h3 class="hasAnchor">
-<a href="#glance-at-the-data-object" class="anchor"></a>Glance at the data object</h3>
+<div class="section level3">
+<h3 id="glance-at-the-data-object">Glance at the data object<a class="anchor" aria-label="anchor" href="#glance-at-the-data-object"></a>
+</h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">xpdb</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">xpdb</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>run001.lst overview<span class="op">:</span><span class="st"> </span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="st"> </span><span class="op">-</span><span class="st"> </span>Software<span class="op">:</span><span class="st"> </span>nonmem <span class="dv">7</span>.<span class="fl">3.0</span> </span>
 <span id="cb5-3"><a href="#cb5-3"></a> <span class="op">-</span><span class="st"> </span>Attached <span class="kw">files</span> (memory usage <span class="fl">1.4</span> Mb)<span class="op">:</span><span class="st"> </span></span>
@@ -178,11 +182,11 @@
 <span id="cb5-8"><a href="#cb5-8"></a><span class="st"> </span><span class="op">-</span><span class="st"> </span>gg_theme<span class="op">:</span><span class="st"> </span>theme_readable </span>
 <span id="cb5-9"><a href="#cb5-9"></a> <span class="op">-</span><span class="st"> </span>xp_theme<span class="op">:</span><span class="st"> </span>theme_xp_default </span>
 <span id="cb5-10"><a href="#cb5-10"></a> <span class="op">-</span><span class="st"> </span>Options<span class="op">:</span><span class="st"> </span>dir =<span class="st"> </span>data, quiet =<span class="st"> </span><span class="ot">TRUE</span>, manual_import =<span class="st"> </span><span class="ot">NULL</span></span></code></pre></div>
-<div id="model-summary" class="section level4">
-<h4 class="hasAnchor">
-<a href="#model-summary" class="anchor"></a>Model summary</h4>
+<div class="section level4">
+<h4 id="model-summary">Model summary<a class="anchor" aria-label="anchor" href="#model-summary"></a>
+</h4>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">xpdb</span>, problem <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">xpdb</span>, problem <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>Summary <span class="cf">for</span> problem no. <span class="dv">0</span> [Global information] </span>
 <span id="cb7-2"><a href="#cb7-2"></a> <span class="op">-</span><span class="st"> </span>Software                      <span class="op">@</span>software   <span class="op">:</span><span class="st"> </span>nonmem</span>
 <span id="cb7-3"><a href="#cb7-3"></a> <span class="op">-</span><span class="st"> </span>Software version              <span class="op">@</span>version    <span class="op">:</span><span class="st"> </span><span class="dv">7</span>.<span class="fl">3.0</span></span>
@@ -221,128 +225,138 @@
 <span id="cb7-36"><a href="#cb7-36"></a>                                               (WARNING <span class="dv">22</span>) WITH <span class="op">$</span>MSFI AND <span class="st">"SUBPROBS"</span>, <span class="st">"TRUE=FINAL"</span> ...</span></code></pre></div>
 </div>
 </div>
-<div id="generate-diagnostics" class="section level3">
-<h3 class="hasAnchor">
-<a href="#generate-diagnostics" class="anchor"></a>Generate diagnostics</h3>
-<div id="standard-goodness-of-fit-plots" class="section level4">
-<h4 class="hasAnchor">
-<a href="#standard-goodness-of-fit-plots" class="anchor"></a>Standard goodness-of-fit plots</h4>
+<div class="section level3">
+<h3 id="generate-diagnostics">Generate diagnostics<a class="anchor" aria-label="anchor" href="#generate-diagnostics"></a>
+</h3>
+<div class="section level4">
+<h4 id="standard-goodness-of-fit-plots">Standard goodness-of-fit plots<a class="anchor" aria-label="anchor" href="#standard-goodness-of-fit-plots"></a>
+</h4>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/readme_example_figure_1-1.png" width="50%" style="display: block; margin: auto;"></p>
 </div>
-<div id="individual-plots" class="section level4">
-<h4 class="hasAnchor">
-<a href="#individual-plots" class="anchor"></a>Individual plots</h4>
+<div class="section level4">
+<h4 id="individual-plots">Individual plots<a class="anchor" aria-label="anchor" href="#individual-plots"></a>
+</h4>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/ind_plots.html">ind_plots</a></span><span class="op">(</span><span class="va">xpdb</span>, page <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/ind_plots.html">ind_plots</a></span><span class="op">(</span><span class="va">xpdb</span>, page <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/readme_example_figure_2-1.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
-<div id="visual-predictive-checks" class="section level4">
-<h4 class="hasAnchor">
-<a href="#visual-predictive-checks" class="anchor"></a>Visual predictive checks</h4>
+<div class="section level4">
+<h4 id="visual-predictive-checks">Visual predictive checks<a class="anchor" aria-label="anchor" href="#visual-predictive-checks"></a>
+</h4>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">xpdb</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="reference/vpc_data.html">vpc_data</a></span><span class="op">(</span>stratify <span class="op">=</span> <span class="st">'SEX'</span>, opt <span class="op">=</span> <span class="fu"><a href="reference/vpc_opt.html">vpc_opt</a></span><span class="op">(</span>n_bins <span class="op">=</span> <span class="fl">7</span>, lloq <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="reference/vpc.html">vpc</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">xpdb</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/vpc_data.html">vpc_data</a></span><span class="op">(</span>stratify <span class="op">=</span> <span class="st">'SEX'</span>, opt <span class="op">=</span> <span class="fu"><a href="reference/vpc_opt.html">vpc_opt</a></span><span class="op">(</span>n_bins <span class="op">=</span> <span class="fl">7</span>, lloq <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/vpc.html">vpc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/readme_example_figure_3-1.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
-<div id="distribution-plots" class="section level4">
-<h4 class="hasAnchor">
-<a href="#distribution-plots" class="anchor"></a>Distribution plots</h4>
+<div class="section level4">
+<h4 id="distribution-plots">Distribution plots<a class="anchor" aria-label="anchor" href="#distribution-plots"></a>
+</h4>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/distrib_plot.html">eta_distrib</a></span><span class="op">(</span><span class="va">xpdb</span>, labeller <span class="op">=</span> <span class="st">'label_value'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/distrib_plot.html">eta_distrib</a></span><span class="op">(</span><span class="va">xpdb</span>, labeller <span class="op">=</span> <span class="st">'label_value'</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/readme_example_figure_4-1.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
-<div id="minimization-diagnostics" class="section level4">
-<h4 class="hasAnchor">
-<a href="#minimization-diagnostics" class="anchor"></a>Minimization diagnostics</h4>
+<div class="section level4">
+<h4 id="minimization-diagnostics">Minimization diagnostics<a class="anchor" aria-label="anchor" href="#minimization-diagnostics"></a>
+</h4>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/minimization_plots.html">prm_vs_iteration</a></span><span class="op">(</span><span class="va">xpdb</span>, labeller <span class="op">=</span> <span class="st">'label_value'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/minimization_plots.html">prm_vs_iteration</a></span><span class="op">(</span><span class="va">xpdb</span>, labeller <span class="op">=</span> <span class="st">'label_value'</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/readme_example_figure_5-1.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
 </div>
 </div>
-<div id="recommended-reading" class="section level2">
-<h2 class="hasAnchor">
-<a href="#recommended-reading" class="anchor"></a>Recommended reading</h2>
-<p>The <a href="https://UUPharmacometrics.github.io/xpose/">xpose website</a> contains several useful articles to make full use of xpose</p>
+<div class="section level2">
+<h2 id="recommended-reading">Recommended reading<a class="anchor" aria-label="anchor" href="#recommended-reading"></a>
+</h2>
+<p>The <a href="https://UUPharmacometrics.github.io/xpose/" class="external-link">xpose website</a> contains several useful articles to make full use of xpose</p>
 <p>When working with xpose, a working knowledge of ggplot2 is recommended. Help for ggplot2 can be found in:</p>
 <ul>
-<li>The ggplot2 <a href="https://ggplot2.tidyverse.org/reference/">documentation</a>
+<li>The ggplot2 <a href="https://ggplot2.tidyverse.org/reference/" class="external-link">documentation</a>
 </li>
-<li>The ggplot2 <a href="https://groups.google.com/forum/?fromgroups#!forum/ggplot2">mailing list</a>
+<li>The ggplot2 <a href="https://groups.google.com/forum/?fromgroups#!forum/ggplot2" class="external-link">mailing list</a>
 </li>
 <li>Internet resources (stack overflow, etc.)</li>
 </ul>
 </div>
-<div id="contribute" class="section level2">
-<h2 class="hasAnchor">
-<a href="#contribute" class="anchor"></a>Contribute</h2>
-<p>Please note that the xpose project is released with a <a href="https://github.com/UUPharmacometrics/xpose/blob/master/.github/CODE_OF_CONDUCT.md">Contributor Code of Conduct</a> and <a href="https://github.com/UUPharmacometrics/xpose/blob/master/.github/CONTRIBUTING.md">Contributing Guidelines</a>. By contributing to this project, you agree to abide these.</p>
+<div class="section level2">
+<h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>
+</h2>
+<p>Please note that the xpose project is released with a <a href="https://github.com/UUPharmacometrics/xpose/blob/master/.github/CODE_OF_CONDUCT.md" class="external-link">Contributor Code of Conduct</a> and <a href="https://github.com/UUPharmacometrics/xpose/blob/master/.github/CONTRIBUTING.md" class="external-link">Contributing Guidelines</a>. By contributing to this project, you agree to abide these.</p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=xpose">https://​cloud.r-project.org/​package=xpose</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/UUPharmacometrics/xpose/">https://​github.com/​UUPharmacometrics/​xpose/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/UUPharmacometrics/xpose/issues">https://​github.com/​UUPharmacometrics/​xpose/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=xpose" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/UUPharmacometrics/xpose/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/UUPharmacometrics/xpose/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/LGPL-3">LGPL-3</a></li>
+<li><a href="https://www.r-project.org/Licenses/LGPL-3" class="external-link">LGPL-3</a></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://github.com/guiastrennec">Benjamin Guiastrennec</a> <br><small class="roles"> Author, maintainer, copyright holder </small>  </li>
-<li>
-<a href="https://github.com/andrewhooker">Andrew C. Hooker</a> <br><small class="roles"> Author, copyright holder </small>  </li>
-<li>
-<a href="https://github.com/sebastianueckert">Sebastian Ueckert</a> <br><small class="roles"> Author, copyright holder </small>  </li>
-<li>
-<a href="https://katalog.uu.se/profile/?id=XX3384">Mats O. Karlsson</a> <br><small class="roles"> Author, copyright holder </small>  </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="authors.html#citation">Citing xpose</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/UUPharmacometrics/xpose/actions"><img src="https://github.com/UUPharmacometrics/xpose/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://CRAN.R-project.org/package=xpose"><img src="https://www.r-pkg.org/badges/version/xpose" alt="cran_version"></a></li>
-<li><a href="https://codecov.io/gh/UUPharmacometrics/xpose?branch=master"><img src="https://codecov.io/gh/UUPharmacometrics/xpose/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://CRAN.R-project.org/package=xpose"><img src="https://cranlogs.r-pkg.org/badges/grand-total/xpose" alt="downloads"></a></li>
+<li>
+<a href="https://github.com/guiastrennec" class="external-link">Benjamin Guiastrennec</a> <br><small class="roles"> Author, maintainer, copyright holder </small>  </li>
+<li>
+<a href="https://github.com/andrewhooker" class="external-link">Andrew C. Hooker</a> <br><small class="roles"> Author, copyright holder </small>  </li>
+<li>
+<a href="https://github.com/sebastianueckert" class="external-link">Sebastian Ueckert</a> <br><small class="roles"> Author, copyright holder </small>  </li>
+<li>
+<a href="https://katalog.uu.se/profile/?id=XX3384" class="external-link">Mats O. Karlsson</a> <br><small class="roles"> Author, copyright holder </small>  </li>
+<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/UUPharmacometrics/xpose/actions" class="external-link"><img src="https://github.com/UUPharmacometrics/xpose/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://CRAN.R-project.org/package=xpose" class="external-link"><img src="https://www.r-pkg.org/badges/version/xpose" alt="cran_version"></a></li>
+<li><a href="https://codecov.io/gh/UUPharmacometrics/xpose?branch=master" class="external-link"><img src="https://codecov.io/gh/UUPharmacometrics/xpose/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://CRAN.R-project.org/package=xpose" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/xpose" alt="downloads"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/guiastrennec">Benjamin Guiastrennec</a>, <a href="https://github.com/andrewhooker">Andrew C. Hooker</a>, <a href="https://github.com/sebastianueckert">Sebastian Ueckert</a>, <a href="https://katalog.uu.se/profile/?id=XX3384">Mats O. Karlsson</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/guiastrennec" class="external-link">Benjamin Guiastrennec</a>, <a href="https://github.com/andrewhooker" class="external-link">Andrew C. Hooker</a>, <a href="https://github.com/sebastianueckert" class="external-link">Sebastian Ueckert</a>, <a href="https://katalog.uu.se/profile/?id=XX3384" class="external-link">Mats O. Karlsson</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -350,6 +364,8 @@
 
   
 
+
+  
 
   </body>
 </html>

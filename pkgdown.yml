@@ -1,5 +1,5 @@
 pandoc: 2.7.3
-pkgdown: 1.6.1
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   about: about.html
@@ -12,8 +12,8 @@ articles:
   multiple_pages: multiple_pages.html
   plot_list: plot_list.html
   vpc: vpc.html
-last_built: 2021-06-30T07:31Z
+last_built: 2022-10-21T09:01Z
 urls:
-  reference: https://uupharmacometrics.github.io/xpose//reference
-  article: https://uupharmacometrics.github.io/xpose//articles
+  reference: https://uupharmacometrics.github.io/xpose/reference
+  article: https://uupharmacometrics.github.io/xpose/articles
 

@@ -27,6 +27,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -39,21 +41,22 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xpose</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.13</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li class="divider">
-    <li class="dropdown-header">Getting started</li>
+    </li>
+<li class="dropdown-header">Getting started</li>
     <li>
       <a href="../reference/figures/cheatsheet.pdf">Cheat sheet (pdf)</a>
     </li>
@@ -67,7 +70,8 @@
       <a href="../articles/access_xpdb_data.html">Access xpdb data</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Going further</li>
+    </li>
+<li class="dropdown-header">Going further</li>
     <li>
       <a href="../articles/customize_plots.html">Customize plots</a>
     </li>
@@ -100,13 +104,13 @@
   <a href="../news/index.html">News</a>
 </li>
 <li>
-  <a href="https://github.com/UUPharmacometrics/xpose">
+  <a href="https://github.com/UUPharmacometrics/xpose" class="external-link">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/UUPharmacometrics/xpose/releases">
+  <a href="https://github.com/UUPharmacometrics/xpose/releases" class="external-link">
     <span class="fa fa-download"></span>
      
   </a>
@@ -125,154 +129,154 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>The xpose plots</h1>
-                        <h4 class="author">Benjamin Guiastrennec</h4>
+                        <h4 data-toc-skip class="author">Benjamin Guiastrennec</h4>
             
-            <h4 class="date">30 June, 2021</h4>
+            <h4 data-toc-skip class="date">21 October, 2022</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/UUPharmacometrics/xpose/blob/master/vignettes/plot_list.Rmd"><code>vignettes/plot_list.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/UUPharmacometrics/xpose/blob/HEAD/vignettes/plot_list.Rmd" class="external-link"><code>vignettes/plot_list.Rmd</code></a></small>
       <div class="hidden name"><code>plot_list.Rmd</code></div>
 
     </div>
 
     
     
-<div id="basic-goodness-of-fit-plots" class="section level2">
-<h2 class="hasAnchor">
-<a href="#basic-goodness-of-fit-plots" class="anchor"></a>Basic goodness-of-fit plots</h2>
-<div id="plots-of-the-independent-variable-idv" class="section level3">
-<h3 class="hasAnchor">
-<a href="#plots-of-the-independent-variable-idv" class="anchor"></a>Plots of the independent variable (IDV)</h3>
+<div class="section level2">
+<h2 id="basic-goodness-of-fit-plots">Basic goodness-of-fit plots<a class="anchor" aria-label="anchor" href="#basic-goodness-of-fit-plots"></a>
+</h2>
+<div class="section level3">
+<h3 id="plots-of-the-independent-variable-idv">Plots of the independent variable (IDV)<a class="anchor" aria-label="anchor" href="#plots-of-the-independent-variable-idv"></a>
+</h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/pred_vs_idv.html">dv_vs_idv</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pred_vs_idv.html">dv_vs_idv</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-2-1.png" width="75%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/pred_vs_idv.html">ipred_vs_idv</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pred_vs_idv.html">ipred_vs_idv</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-2-2.png" width="75%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/pred_vs_idv.html">pred_vs_idv</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pred_vs_idv.html">pred_vs_idv</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-2-3.png" width="75%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/pred_vs_idv.html">dv_preds_vs_idv</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pred_vs_idv.html">dv_preds_vs_idv</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-2-4.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
-<div id="dv-vs--preds-plots" class="section level3">
-<h3 class="hasAnchor">
-<a href="#dv-vs--preds-plots" class="anchor"></a>DV vs. PREDs plots</h3>
+<div class="section level3">
+<h3 id="dv-vs--preds-plots">DV vs. PREDs plots<a class="anchor" aria-label="anchor" href="#dv-vs--preds-plots"></a>
+</h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_pred</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_pred</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-3-1.png" width="75%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-3-2.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
-<div id="residual-plots" class="section level3">
-<h3 class="hasAnchor">
-<a href="#residual-plots" class="anchor"></a>Residual plots</h3>
+<div class="section level3">
+<h3 id="residual-plots">Residual plots<a class="anchor" aria-label="anchor" href="#residual-plots"></a>
+</h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/res_vs_idv.html">res_vs_idv</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, res <span class="op">=</span> <span class="st">'CWRES'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/res_vs_idv.html">res_vs_idv</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, res <span class="op">=</span> <span class="st">'CWRES'</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-4-1.png" width="75%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/res_vs_pred.html">res_vs_pred</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, res <span class="op">=</span> <span class="st">'CWRES'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/res_vs_pred.html">res_vs_pred</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, res <span class="op">=</span> <span class="st">'CWRES'</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-4-2.png" width="75%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/res_vs_idv.html">absval_res_vs_idv</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, res <span class="op">=</span> <span class="st">'CWRES'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/res_vs_idv.html">absval_res_vs_idv</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, res <span class="op">=</span> <span class="st">'CWRES'</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-4-3.png" width="75%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/res_vs_pred.html">absval_res_vs_pred</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, res <span class="op">=</span> <span class="st">'CWRES'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/res_vs_pred.html">absval_res_vs_pred</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, res <span class="op">=</span> <span class="st">'CWRES'</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-4-4.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
 </div>
-<div id="minimization-plots" class="section level2">
-<h2 class="hasAnchor">
-<a href="#minimization-plots" class="anchor"></a>Minimization plots</h2>
+<div class="section level2">
+<h2 id="minimization-plots">Minimization plots<a class="anchor" aria-label="anchor" href="#minimization-plots"></a>
+</h2>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/minimization_plots.html">prm_vs_iteration</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, labeller <span class="op">=</span> <span class="st">'label_value'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/minimization_plots.html">prm_vs_iteration</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, labeller <span class="op">=</span> <span class="st">'label_value'</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-5-1.png" width="75%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/minimization_plots.html">grd_vs_iteration</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, labeller <span class="op">=</span> <span class="st">'label_value'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/minimization_plots.html">grd_vs_iteration</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, labeller <span class="op">=</span> <span class="st">'label_value'</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-5-2.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
-<div id="individual-plots" class="section level2">
-<h2 class="hasAnchor">
-<a href="#individual-plots" class="anchor"></a>Individual plots</h2>
+<div class="section level2">
+<h2 id="individual-plots">Individual plots<a class="anchor" aria-label="anchor" href="#individual-plots"></a>
+</h2>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/ind_plots.html">ind_plots</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, page <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/ind_plots.html">ind_plots</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, page <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-6-1.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
-<div id="distributions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#distributions" class="anchor"></a>Distributions</h2>
-<div id="histograms-and-density-plots" class="section level3">
-<h3 class="hasAnchor">
-<a href="#histograms-and-density-plots" class="anchor"></a>Histograms and density plots</h3>
+<div class="section level2">
+<h2 id="distributions">Distributions<a class="anchor" aria-label="anchor" href="#distributions"></a>
+</h2>
+<div class="section level3">
+<h3 id="histograms-and-density-plots">Histograms and density plots<a class="anchor" aria-label="anchor" href="#histograms-and-density-plots"></a>
+</h3>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/distrib_plot.html">prm_distrib</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/distrib_plot.html">prm_distrib</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-7-1.png" width="75%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/distrib_plot.html">eta_distrib</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/distrib_plot.html">eta_distrib</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-7-2.png" width="75%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/distrib_plot.html">res_distrib</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/distrib_plot.html">res_distrib</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-7-3.png" width="75%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/distrib_plot.html">cov_distrib</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/distrib_plot.html">cov_distrib</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-7-4.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
-<div id="qq-plots" class="section level3">
-<h3 class="hasAnchor">
-<a href="#qq-plots" class="anchor"></a>QQ plots</h3>
+<div class="section level3">
+<h3 id="qq-plots">QQ plots<a class="anchor" aria-label="anchor" href="#qq-plots"></a>
+</h3>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/qq_plot.html">prm_qq</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/qq_plot.html">prm_qq</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-8-1.png" width="75%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/qq_plot.html">eta_qq</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/qq_plot.html">eta_qq</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-8-2.png" width="75%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/qq_plot.html">res_qq</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/qq_plot.html">res_qq</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-8-3.png" width="75%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/qq_plot.html">cov_qq</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/qq_plot.html">cov_qq</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-8-4.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
 </div>
-<div id="kinetic-plots" class="section level2">
-<h2 class="hasAnchor">
-<a href="#kinetic-plots" class="anchor"></a>Kinetic plots</h2>
-<div id="compartments-amount" class="section level3">
-<h3 class="hasAnchor">
-<a href="#compartments-amount" class="anchor"></a>Compartment’s amount</h3>
+<div class="section level2">
+<h2 id="kinetic-plots">Kinetic plots<a class="anchor" aria-label="anchor" href="#kinetic-plots"></a>
+</h2>
+<div class="section level3">
+<h3 id="compartments-amount">Compartment’s amount<a class="anchor" aria-label="anchor" href="#compartments-amount"></a>
+</h3>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/amt_vs_idv.html">amt_vs_idv</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/amt_vs_idv.html">amt_vs_idv</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-9-1.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
 </div>
-<div id="visual-predictive-checks-vpc" class="section level2">
-<h2 class="hasAnchor">
-<a href="#visual-predictive-checks-vpc" class="anchor"></a>Visual predictive checks (VPC)</h2>
-<div id="continuous-vpc" class="section level3">
-<h3 class="hasAnchor">
-<a href="#continuous-vpc" class="anchor"></a>Continuous vpc</h3>
+<div class="section level2">
+<h2 id="visual-predictive-checks-vpc">Visual predictive checks (VPC)<a class="anchor" aria-label="anchor" href="#visual-predictive-checks-vpc"></a>
+</h2>
+<div class="section level3">
+<h3 id="continuous-vpc">Continuous vpc<a class="anchor" aria-label="anchor" href="#continuous-vpc"></a>
+</h3>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">xpdb_ex_pk</span> <span class="op">%&gt;%</span> 
- <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span>opt <span class="op">=</span> <span class="fu"><a href="../reference/vpc_opt.html">vpc_opt</a></span><span class="op">(</span>n_bins <span class="op">=</span> <span class="fl">7</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
- <span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">xpdb_ex_pk</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span> <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span>opt <span class="op">=</span> <span class="fu"><a href="../reference/vpc_opt.html">vpc_opt</a></span><span class="op">(</span>n_bins <span class="op">=</span> <span class="fl">7</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span> <span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plot_list_files/figure-html/unnamed-chunk-10-1.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
-<div id="censored-vpc" class="section level3">
-<h3 class="hasAnchor">
-<a href="#censored-vpc" class="anchor"></a>Censored vpc</h3>
+<div class="section level3">
+<h3 id="censored-vpc">Censored vpc<a class="anchor" aria-label="anchor" href="#censored-vpc"></a>
+</h3>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">xpdb_ex_pk</span> <span class="op">%&gt;%</span> 
- <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span>vpc_type <span class="op">=</span> <span class="st">'censored'</span>, opt <span class="op">=</span> <span class="fu"><a href="../reference/vpc_opt.html">vpc_opt</a></span><span class="op">(</span>lloq <span class="op">=</span> <span class="fl">1</span>, n_bins <span class="op">=</span> <span class="fl">7</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
- <span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">xpdb_ex_pk</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span> <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span>vpc_type <span class="op">=</span> <span class="st">'censored'</span>, opt <span class="op">=</span> <span class="fu"><a href="../reference/vpc_opt.html">vpc_opt</a></span><span class="op">(</span>lloq <span class="op">=</span> <span class="fl">1</span>, n_bins <span class="op">=</span> <span class="fl">7</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span> <span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="categorical-vpc" class="section level3">
-<h3 class="hasAnchor">
-<a href="#categorical-vpc" class="anchor"></a>Categorical vpc</h3>
+<div class="section level3">
+<h3 id="categorical-vpc">Categorical vpc<a class="anchor" aria-label="anchor" href="#categorical-vpc"></a>
+</h3>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">xpdb_ex_pk</span> <span class="op">%&gt;%</span> 
- <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span>vpc_type <span class="op">=</span> <span class="st">'categorical'</span><span class="op">)</span> <span class="op">%&gt;%</span> 
- <span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">xpdb_ex_pk</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span> <span class="fu"><a href="../reference/vpc_data.html">vpc_data</a></span><span class="op">(</span>vpc_type <span class="op">=</span> <span class="st">'categorical'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span> <span class="fu"><a href="../reference/vpc.html">vpc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </div>
@@ -288,11 +292,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/guiastrennec">Benjamin Guiastrennec</a>, <a href="https://github.com/andrewhooker">Andrew C. Hooker</a>, <a href="https://github.com/sebastianueckert">Sebastian Ueckert</a>, <a href="https://katalog.uu.se/profile/?id=XX3384">Mats O. Karlsson</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/guiastrennec" class="external-link">Benjamin Guiastrennec</a>, <a href="https://github.com/andrewhooker" class="external-link">Andrew C. Hooker</a>, <a href="https://github.com/sebastianueckert" class="external-link">Sebastian Ueckert</a>, <a href="https://katalog.uu.se/profile/?id=XX3384" class="external-link">Mats O. Karlsson</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -300,6 +306,8 @@
 
   
 
+
+  
 
   </body>
 </html>

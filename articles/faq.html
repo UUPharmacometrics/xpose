@@ -27,6 +27,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -39,21 +41,22 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xpose</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.13</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li class="divider">
-    <li class="dropdown-header">Getting started</li>
+    </li>
+<li class="dropdown-header">Getting started</li>
     <li>
       <a href="../reference/figures/cheatsheet.pdf">Cheat sheet (pdf)</a>
     </li>
@@ -67,7 +70,8 @@
       <a href="../articles/access_xpdb_data.html">Access xpdb data</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Going further</li>
+    </li>
+<li class="dropdown-header">Going further</li>
     <li>
       <a href="../articles/customize_plots.html">Customize plots</a>
     </li>
@@ -100,13 +104,13 @@
   <a href="../news/index.html">News</a>
 </li>
 <li>
-  <a href="https://github.com/UUPharmacometrics/xpose">
+  <a href="https://github.com/UUPharmacometrics/xpose" class="external-link">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/UUPharmacometrics/xpose/releases">
+  <a href="https://github.com/UUPharmacometrics/xpose/releases" class="external-link">
     <span class="fa fa-download"></span>
      
   </a>
@@ -125,31 +129,31 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Frequently Asked Questions</h1>
-                        <h4 class="author">Benjamin Guiastrennec</h4>
+                        <h4 data-toc-skip class="author">Benjamin Guiastrennec</h4>
             
-            <h4 class="date">30 June, 2021</h4>
+            <h4 data-toc-skip class="date">21 October, 2022</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/UUPharmacometrics/xpose/blob/master/vignettes/faq.Rmd"><code>vignettes/faq.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/UUPharmacometrics/xpose/blob/HEAD/vignettes/faq.Rmd" class="external-link"><code>vignettes/faq.Rmd</code></a></small>
       <div class="hidden name"><code>faq.Rmd</code></div>
 
     </div>
 
     
     
-<div id="how-do-i-install-xpose" class="section level2">
-<h2 class="hasAnchor">
-<a href="#how-do-i-install-xpose" class="anchor"></a>How do I install xpose?</h2>
-<div id="from-cran-latest-stable-release" class="section level3">
-<h3 class="hasAnchor">
-<a href="#from-cran-latest-stable-release" class="anchor"></a>From CRAN (latest stable release)</h3>
+<div class="section level2">
+<h2 id="how-do-i-install-xpose">How do I install xpose?<a class="anchor" aria-label="anchor" href="#how-do-i-install-xpose"></a>
+</h2>
+<div class="section level3">
+<h3 id="from-cran-latest-stable-release">From CRAN (latest stable release)<a class="anchor" aria-label="anchor" href="#from-cran-latest-stable-release"></a>
+</h3>
 <ol style="list-style-type: decimal">
-<li>Install/update xpose with the following command:<br><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages('xpose')</a></code>
+<li>Install/update xpose with the following command:<br><code>install.packages('xpose')</code>
 </li>
 </ol>
 </div>
-<div id="from-github-current-development-version" class="section level3">
-<h3 class="hasAnchor">
-<a href="#from-github-current-development-version" class="anchor"></a>From github (current development version)</h3>
+<div class="section level3">
+<h3 id="from-github-current-development-version">From github (current development version)<a class="anchor" aria-label="anchor" href="#from-github-current-development-version"></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li>Make sure you have the devtools package installed</li>
 <li>Install/update xpose with the following command:<br><code>devtools::install_github('UUPharmacometrics/xpose')</code>
@@ -157,33 +161,33 @@
 </ol>
 </div>
 </div>
-<div id="are-xpose-and-xpose4-cross-compatible-packages" class="section level2">
-<h2 class="hasAnchor">
-<a href="#are-xpose-and-xpose4-cross-compatible-packages" class="anchor"></a>Are xpose and xpose4 cross compatible packages?</h2>
+<div class="section level2">
+<h2 id="are-xpose-and-xpose4-cross-compatible-packages">Are xpose and xpose4 cross compatible packages?<a class="anchor" aria-label="anchor" href="#are-xpose-and-xpose4-cross-compatible-packages"></a>
+</h2>
 <p>No. While the philosophy behind xpose and xpose4 is similar these are two independent packages.</p>
 </div>
-<div id="are-all-xpose4-functionalities-present-in-xpose" class="section level2">
-<h2 class="hasAnchor">
-<a href="#are-all-xpose4-functionalities-present-in-xpose" class="anchor"></a>Are all xpose4 functionalities present in xpose?</h2>
+<div class="section level2">
+<h2 id="are-all-xpose4-functionalities-present-in-xpose">Are all xpose4 functionalities present in xpose?<a class="anchor" aria-label="anchor" href="#are-all-xpose4-functionalities-present-in-xpose"></a>
+</h2>
 <p>Not yet. The new xpose package has been fully redesigned around ggplot2 and the focus is currently on establishing the bases with basic PK diagnostic plots. New features will be added through future updates.</p>
 </div>
-<div id="how-do-i-suggest-an-idea-for-a-future-version-of-xpose" class="section level2">
-<h2 class="hasAnchor">
-<a href="#how-do-i-suggest-an-idea-for-a-future-version-of-xpose" class="anchor"></a>How do I suggest an idea for a future version of xpose?</h2>
+<div class="section level2">
+<h2 id="how-do-i-suggest-an-idea-for-a-future-version-of-xpose">How do I suggest an idea for a future version of xpose?<a class="anchor" aria-label="anchor" href="#how-do-i-suggest-an-idea-for-a-future-version-of-xpose"></a>
+</h2>
 <ol style="list-style-type: decimal">
-<li>Check on <a href="https://github.com/UUPharmacometrics/xpose/issues">github</a> that this idea has not yet been discussed</li>
-<li>Read the <a href="https://github.com/UUPharmacometrics/xpose/blob/master/.github/CONTRIBUTING.md">CONTRIBUTING.md</a> document</li>
-<li>Open a new issue on <a href="https://github.com/UUPharmacometrics/xpose/issues">github</a> describing your idea</li>
+<li>Check on <a href="https://github.com/UUPharmacometrics/xpose/issues" class="external-link">github</a> that this idea has not yet been discussed</li>
+<li>Read the <a href="https://github.com/UUPharmacometrics/xpose/blob/master/.github/CONTRIBUTING.md" class="external-link">CONTRIBUTING.md</a> document</li>
+<li>Open a new issue on <a href="https://github.com/UUPharmacometrics/xpose/issues" class="external-link">github</a> describing your idea</li>
 </ol>
 </div>
-<div id="how-do-i-report-a-bug-found-in-xpose" class="section level2">
-<h2 class="hasAnchor">
-<a href="#how-do-i-report-a-bug-found-in-xpose" class="anchor"></a>How do I report a bug found in xpose?</h2>
+<div class="section level2">
+<h2 id="how-do-i-report-a-bug-found-in-xpose">How do I report a bug found in xpose?<a class="anchor" aria-label="anchor" href="#how-do-i-report-a-bug-found-in-xpose"></a>
+</h2>
 <ol style="list-style-type: decimal">
 <li>Make sure you are running the latest version of xpose</li>
-<li>Check on <a href="https://github.com/UUPharmacometrics/xpose/issues">github</a> that this issue has not yet been reported</li>
-<li>Read the <a href="https://github.com/UUPharmacometrics/xpose/blob/master/.github/CONTRIBUTING.md">CONTRIBUTING.md</a> document</li>
-<li>Open a new issue on <a href="https://github.com/UUPharmacometrics/xpose/issues">github</a>
+<li>Check on <a href="https://github.com/UUPharmacometrics/xpose/issues" class="external-link">github</a> that this issue has not yet been reported</li>
+<li>Read the <a href="https://github.com/UUPharmacometrics/xpose/blob/master/.github/CONTRIBUTING.md" class="external-link">CONTRIBUTING.md</a> document</li>
+<li>Open a new issue on <a href="https://github.com/UUPharmacometrics/xpose/issues" class="external-link">github</a>
 </li>
 </ol>
 </div>
@@ -200,11 +204,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/guiastrennec">Benjamin Guiastrennec</a>, <a href="https://github.com/andrewhooker">Andrew C. Hooker</a>, <a href="https://github.com/sebastianueckert">Sebastian Ueckert</a>, <a href="https://katalog.uu.se/profile/?id=XX3384">Mats O. Karlsson</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/guiastrennec" class="external-link">Benjamin Guiastrennec</a>, <a href="https://github.com/andrewhooker" class="external-link">Andrew C. Hooker</a>, <a href="https://github.com/sebastianueckert" class="external-link">Sebastian Ueckert</a>, <a href="https://katalog.uu.se/profile/?id=XX3384" class="external-link">Mats O. Karlsson</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -212,6 +218,8 @@
 
   
 
+
+  
 
   </body>
 </html>

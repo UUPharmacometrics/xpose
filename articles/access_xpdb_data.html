@@ -27,6 +27,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -39,21 +41,22 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xpose</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.13</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li class="divider">
-    <li class="dropdown-header">Getting started</li>
+    </li>
+<li class="dropdown-header">Getting started</li>
     <li>
       <a href="../reference/figures/cheatsheet.pdf">Cheat sheet (pdf)</a>
     </li>
@@ -67,7 +70,8 @@
       <a href="../articles/access_xpdb_data.html">Access xpdb data</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Going further</li>
+    </li>
+<li class="dropdown-header">Going further</li>
     <li>
       <a href="../articles/customize_plots.html">Customize plots</a>
     </li>
@@ -100,13 +104,13 @@
   <a href="../news/index.html">News</a>
 </li>
 <li>
-  <a href="https://github.com/UUPharmacometrics/xpose">
+  <a href="https://github.com/UUPharmacometrics/xpose" class="external-link">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/UUPharmacometrics/xpose/releases">
+  <a href="https://github.com/UUPharmacometrics/xpose/releases" class="external-link">
     <span class="fa fa-download"></span>
      
   </a>
@@ -125,11 +129,11 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Access the xpdb data</h1>
-                        <h4 class="author">Benjamin Guiastrennec</h4>
+                        <h4 data-toc-skip class="author">Benjamin Guiastrennec</h4>
             
-            <h4 class="date">30 June, 2021</h4>
+            <h4 data-toc-skip class="date">21 October, 2022</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/UUPharmacometrics/xpose/blob/master/vignettes/access_xpdb_data.Rmd"><code>vignettes/access_xpdb_data.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/UUPharmacometrics/xpose/blob/HEAD/vignettes/access_xpdb_data.Rmd" class="external-link"><code>vignettes/access_xpdb_data.Rmd</code></a></small>
       <div class="hidden name"><code>access_xpdb_data.Rmd</code></div>
 
     </div>
@@ -137,12 +141,12 @@
     
     
 <p>The xpose package was designed as a standardized interface between model outputs and R. Hence model output files can easily be imported in R and used to summarize data or create plots.</p>
-<div id="glimpse-at-the-xpdb" class="section level3">
-<h3 class="hasAnchor">
-<a href="#glimpse-at-the-xpdb" class="anchor"></a>Glimpse at the xpdb</h3>
-<p>The files attached to an xpdb object can be displayed to the console simply by writing the xpdb name to the console or by using the <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> function. Any of these files can be accessed from the xpdb using one of the functions listed below.</p>
+<div class="section level3">
+<h3 id="glimpse-at-the-xpdb">Glimpse at the xpdb<a class="anchor" aria-label="anchor" href="#glimpse-at-the-xpdb"></a>
+</h3>
+<p>The files attached to an xpdb object can be displayed to the console simply by writing the xpdb name to the console or by using the <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> function. Any of these files can be accessed from the xpdb using one of the functions listed below.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">xpdb</span> <span class="co"># or print(xpdb)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">xpdb</span> <span class="co"># or print(xpdb)</span></span></code></pre></div>
 <pre><code>run001.lst overview: 
  - Software: nonmem 7.3.0 
  - Attached files (memory usage 1.4 Mb): 
@@ -154,100 +158,101 @@
  - xp_theme: theme_xp_default 
  - Options: dir = data, quiet = FALSE, manual_import = NULL</code></pre>
 </div>
-<div id="access-the-model-code" class="section level3">
-<h3 class="hasAnchor">
-<a href="#access-the-model-code" class="anchor"></a>Access the model code</h3>
+<div class="section level3">
+<h3 id="access-the-model-code">Access the model code<a class="anchor" aria-label="anchor" href="#access-the-model-code"></a>
+</h3>
 <p>The <code><a href="../reference/get_code.html">get_code()</a></code> function can be used to access the parsed model code from the xpdb. This code was used to create the summary and find table names. The parsed code can be used to get additional information about the run. If the argument <code>.problem</code> is specified a subset of the code can be returned based on <code>$PROBLEM</code>.</p>
 <p><em>Note that general code warnings and PsN outputs appended are listed as problem 0.</em></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">code</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_code.html">get_code</a></span><span class="op">(</span><span class="va">xpdb</span><span class="op">)</span>
-<span class="va">code</span></code></pre></div>
-<pre><code># A tibble: 764 x 5
-   problem level subroutine code                                           comment                  
- *   &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;                                          &lt;chr&gt;                    
- 1       0     0 oth        "Mon Oct 16 13:34:28 CEST 2017"                ""                       
- 2       0     0 oth        ""                                             "; 1. Based on: 000"     
- 3       0     0 oth        ""                                             "; 2. Description: "     
- 4       0     0 oth        ""                                             "; NONMEM PK example for…
- 5       1     1 pro        "Parameter estimation"                         ""                       
- 6       1     2 inp        "ID DOSE DV SCR AGE SEX CLASS WT ACE MED1 MED… ""                       
- 7       1     2 inp        " CLCR AMT SS II EVID"                         ""                       
- 8       1     3 dat        "../../mx19_2.csv IGNORE=@"                    ""                       
- 9       1     4 abb        "DERIV2=NO"                                    ""                       
-10       1     5 sub        "ADVAN2 TRANS1"                                ""                       
-# … with 754 more rows</code></pre>
+<code class="sourceCode R"><span><span class="va">code</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_code.html">get_code</a></span><span class="op">(</span><span class="va">xpdb</span><span class="op">)</span></span>
+<span><span class="va">code</span></span></code></pre></div>
+<pre><code> [38;5;246m# A tibble: 764 × 5 [39m
+   problem level subroutine code                                                     comment        
+  [38;5;250m* [39m    [3m [38;5;246m&lt;int&gt; [39m [23m  [3m [38;5;246m&lt;int&gt; [39m [23m  [3m [38;5;246m&lt;chr&gt; [39m [23m       [3m [38;5;246m&lt;chr&gt; [39m [23m                                                     [3m [38;5;246m&lt;chr&gt; [39m [23m          
+ [38;5;250m 1 [39m       0     0 oth         [38;5;246m" [39mMon Oct 16 13:34:28 CEST 2017 [38;5;246m" [39m                           [38;5;246m" [39m [38;5;246m" [39m             
+ [38;5;250m 2 [39m       0     0 oth         [38;5;246m" [39m [38;5;246m" [39m                                                        [38;5;246m" [39m; 1. Based on…
+ [38;5;250m 3 [39m       0     0 oth         [38;5;246m" [39m [38;5;246m" [39m                                                        [38;5;246m" [39m; 2. Descript…
+ [38;5;250m 4 [39m       0     0 oth         [38;5;246m" [39m [38;5;246m" [39m                                                        [38;5;246m" [39m; NONMEM PK e…
+ [38;5;250m 5 [39m       1     1 pro         [38;5;246m" [39mParameter estimation [38;5;246m" [39m                                    [38;5;246m" [39m [38;5;246m" [39m             
+ [38;5;250m 6 [39m       1     2 inp         [38;5;246m" [39mID DOSE DV SCR AGE SEX CLASS WT ACE MED1 MED2 TAD TIME [38;5;246m" [39m  [38;5;246m" [39m [38;5;246m" [39m             
+ [38;5;250m 7 [39m       1     2 inp         [38;5;246m" [39m CLCR AMT SS II EVID [38;5;246m" [39m                                    [38;5;246m" [39m [38;5;246m" [39m             
+ [38;5;250m 8 [39m       1     3 dat         [38;5;246m" [39m../../mx19_2.csv IGNORE=@ [38;5;246m" [39m                               [38;5;246m" [39m [38;5;246m" [39m             
+ [38;5;250m 9 [39m       1     4 abb         [38;5;246m" [39mDERIV2=NO [38;5;246m" [39m                                               [38;5;246m" [39m [38;5;246m" [39m             
+ [38;5;250m10 [39m       1     5 sub         [38;5;246m" [39mADVAN2 TRANS1 [38;5;246m" [39m                                           [38;5;246m" [39m [38;5;246m" [39m             
+ [38;5;246m# … with 754 more rows [39m</code></pre>
 </div>
-<div id="access-the-output-data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#access-the-output-data" class="anchor"></a>Access the output data</h3>
+<div class="section level3">
+<h3 id="access-the-output-data">Access the output data<a class="anchor" aria-label="anchor" href="#access-the-output-data"></a>
+</h3>
 <p>The <code><a href="../reference/get_data.html">get_data()</a></code> function can be used to access the imported table files. Tables can be accessed by <code>table</code> name or by <code>.problem</code>. In the latter a single dataset containing all aggregated tables is returned. If more than one <code>table</code> name or <code>.problem</code> number is provided a named list is returned.</p>
 <p><em>Note when providing a table name it is not guaranteed that the table will be identical to its file (i.e. the order of the columns may have been changed and tables with <code>FIRSTONLY</code> will no longer be deduplicated).</em></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data.html">get_data</a></span><span class="op">(</span><span class="va">xpdb</span>, table <span class="op">=</span> <span class="st">'cotab001'</span><span class="op">)</span>
-<span class="va">data</span></code></pre></div>
-<pre><code># A tibble: 550 x 4
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data.html">get_data</a></span><span class="op">(</span><span class="va">xpdb</span>, table <span class="op">=</span> <span class="st">'cotab001'</span><span class="op">)</span></span>
+<span><span class="va">data</span></span></code></pre></div>
+<pre><code> [38;5;246m# A tibble: 550 × 4 [39m
    ID     CLCR   AGE    WT
-   &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1 110      66    68   105
- 2 110      66    68   105
- 3 110      66    68   105
- 4 110      66    68   105
- 5 110      66    68   105
- 6 110      66    68   105
- 7 110      66    68   105
- 8 112      47    73    80
- 9 112      47    73    80
-10 112      47    73    80
-# … with 540 more rows</code></pre>
+    [3m [38;5;246m&lt;fct&gt; [39m [23m  [3m [38;5;246m&lt;dbl&gt; [39m [23m  [3m [38;5;246m&lt;dbl&gt; [39m [23m  [3m [38;5;246m&lt;dbl&gt; [39m [23m
+ [38;5;250m 1 [39m 110      66    68   105
+ [38;5;250m 2 [39m 110      66    68   105
+ [38;5;250m 3 [39m 110      66    68   105
+ [38;5;250m 4 [39m 110      66    68   105
+ [38;5;250m 5 [39m 110      66    68   105
+ [38;5;250m 6 [39m 110      66    68   105
+ [38;5;250m 7 [39m 110      66    68   105
+ [38;5;250m 8 [39m 112      47    73    80
+ [38;5;250m 9 [39m 112      47    73    80
+ [38;5;250m10 [39m 112      47    73    80
+ [38;5;246m# … with 540 more rows [39m</code></pre>
 </div>
-<div id="access-the-run-files" class="section level3">
-<h3 class="hasAnchor">
-<a href="#access-the-run-files" class="anchor"></a>Access the run files</h3>
+<div class="section level3">
+<h3 id="access-the-run-files">Access the run files<a class="anchor" aria-label="anchor" href="#access-the-run-files"></a>
+</h3>
 <p>The <code><a href="../reference/get_file.html">get_file()</a></code> function can be used to access the imported output files. Files can be accessed by <code>file</code> name, by <code>.problem</code>, <code>.subprob</code> and/or <code>.method</code>. If more than one <code>file</code> name, <code>.problem</code>, <code>.subprob</code>, or <code>.method</code> is provided a named list is returned.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_file.html">get_file</a></span><span class="op">(</span><span class="va">xpdb</span>, file <span class="op">=</span> <span class="st">'run001.ext'</span><span class="op">)</span>
-<span class="va">file</span></code></pre></div>
-<pre><code># A tibble: 28 x 16
-   ITERATION THETA1 THETA2 THETA3 THETA4 THETA5  THETA6  THETA7 `SIGMA(1,1)` `OMEGA(1,1)`
-       &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
- 1         0   25.4   1.47   7.45  0.214  0.200 0.00983 0.00601            1       0.0740
- 2         1   26.3   1.26   7.35  0.219  0.217 0.00989 0.00602            1       0.0744
- 3         2   25.6   1.47   7.29  0.216  0.212 0.00987 0.00603            1       0.0741
- 4         3   26.8   1.49   5.76  0.213  0.213 0.00979 0.00628            1       0.0730
- 5         4   26.7   1.49   5.69  0.213  0.212 0.00979 0.00629            1       0.0730
- 6         5   26.7   1.49   5.66  0.213  0.212 0.00979 0.00630            1       0.0730
- 7         6   26.6   1.49   5.03  0.210  0.217 0.0100  0.00652            1       0.0724
- 8         7   26.6   1.49   4.93  0.205  0.217 0.0100  0.00658            1       0.0717
- 9         8   26.6   1.48   4.62  0.211  0.217 0.00951 0.00735            1       0.0633
-10         9   26.6   1.46   4.41  0.209  0.217 0.00903 0.00874            1       0.0766
-# … with 18 more rows, and 6 more variables: OMEGA(2,1) &lt;dbl&gt;, OMEGA(2,2) &lt;dbl&gt;, OMEGA(3,1) &lt;dbl&gt;,
-#   OMEGA(3,2) &lt;dbl&gt;, OMEGA(3,3) &lt;dbl&gt;, OBJ &lt;dbl&gt;</code></pre>
+<code class="sourceCode R"><span><span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_file.html">get_file</a></span><span class="op">(</span><span class="va">xpdb</span>, file <span class="op">=</span> <span class="st">'run001.ext'</span><span class="op">)</span></span>
+<span><span class="va">file</span></span></code></pre></div>
+<pre><code> [38;5;246m# A tibble: 28 × 16 [39m
+   ITERATION THETA1 THETA2 THETA3 THETA4 THETA5  THETA6  THETA7 `SIGMA(1,1)` OMEGA…¹ OMEGA…² OMEGA…³
+        [3m [38;5;246m&lt;dbl&gt; [39m [23m   [3m [38;5;246m&lt;dbl&gt; [39m [23m   [3m [38;5;246m&lt;dbl&gt; [39m [23m   [3m [38;5;246m&lt;dbl&gt; [39m [23m   [3m [38;5;246m&lt;dbl&gt; [39m [23m   [3m [38;5;246m&lt;dbl&gt; [39m [23m    [3m [38;5;246m&lt;dbl&gt; [39m [23m    [3m [38;5;246m&lt;dbl&gt; [39m [23m         [3m [38;5;246m&lt;dbl&gt; [39m [23m    [3m [38;5;246m&lt;dbl&gt; [39m [23m    [3m [38;5;246m&lt;dbl&gt; [39m [23m    [3m [38;5;246m&lt;dbl&gt; [39m [23m
+ [38;5;250m 1 [39m         0   25.4   1.47   7.45  0.214  0.200 0.009 [4m8 [24m [4m3 [24m 0.006 [4m0 [24m [4m1 [24m            1  0.074 [4m0 [24m       0  0.038 [4m9 [24m
+ [38;5;250m 2 [39m         1   26.3   1.26   7.35  0.219  0.217 0.009 [4m8 [24m [4m9 [24m 0.006 [4m0 [24m [4m2 [24m            1  0.074 [4m4 [24m       0  0.040 [4m8 [24m
+ [38;5;250m 3 [39m         2   25.6   1.47   7.29  0.216  0.212 0.009 [4m8 [24m [4m7 [24m 0.006 [4m0 [24m [4m3 [24m            1  0.074 [4m1 [24m       0  0.041 [4m1 [24m
+ [38;5;250m 4 [39m         3   26.8   1.49   5.76  0.213  0.213 0.009 [4m7 [24m [4m9 [24m 0.006 [4m2 [24m [4m8 [24m            1  0.073 [4m0 [24m       0  0.065 [4m2 [24m
+ [38;5;250m 5 [39m         4   26.7   1.49   5.69  0.213  0.212 0.009 [4m7 [24m [4m9 [24m 0.006 [4m2 [24m [4m9 [24m            1  0.073 [4m0 [24m       0  0.066 [4m4 [24m
+ [38;5;250m 6 [39m         5   26.7   1.49   5.66  0.213  0.212 0.009 [4m7 [24m [4m9 [24m 0.006 [4m3 [24m [4m0 [24m            1  0.073 [4m0 [24m       0  0.066 [4m4 [24m
+ [38;5;250m 7 [39m         6   26.6   1.49   5.03  0.210  0.217 0.010 [4m0 [24m  0.006 [4m5 [24m [4m2 [24m            1  0.072 [4m4 [24m       0  0.063 [4m3 [24m
+ [38;5;250m 8 [39m         7   26.6   1.49   4.93  0.205  0.217 0.010 [4m0 [24m  0.006 [4m5 [24m [4m8 [24m            1  0.071 [4m7 [24m       0  0.062 [4m3 [24m
+ [38;5;250m 9 [39m         8   26.6   1.48   4.62  0.211  0.217 0.009 [4m5 [24m [4m1 [24m 0.007 [4m3 [24m [4m5 [24m            1  0.063 [4m3 [24m       0  0.054 [4m7 [24m
+ [38;5;250m10 [39m         9   26.6   1.46   4.41  0.209  0.217 0.009 [4m0 [24m [4m3 [24m 0.008 [4m7 [24m [4m4 [24m            1  0.076 [4m6 [24m       0  0.049 [4m3 [24m
+ [38;5;246m# … with 18 more rows, 4 more variables: `OMEGA(3,1)` &lt;dbl&gt;, `OMEGA(3,2)` &lt;dbl&gt;, [39m
+ [38;5;246m#   `OMEGA(3,3)` &lt;dbl&gt;, OBJ &lt;dbl&gt;, and abbreviated variable names ¹​`OMEGA(1,1)`, ²​`OMEGA(2,1)`, [39m
+ [38;5;246m#   ³​`OMEGA(2,2)` [39m</code></pre>
 </div>
-<div id="access-the-parameter-estimates" class="section level3">
-<h3 class="hasAnchor">
-<a href="#access-the-parameter-estimates" class="anchor"></a>Access the parameter estimates</h3>
+<div class="section level3">
+<h3 id="access-the-parameter-estimates">Access the parameter estimates<a class="anchor" aria-label="anchor" href="#access-the-parameter-estimates"></a>
+</h3>
 <p>The <code><a href="../reference/get_prm.html">get_prm()</a></code> function can be used to access the parameter estimates. To get a nice parameter table printed to the console use the function <code><a href="../reference/prm_table.html">prm_table()</a></code> instead. The arguments <code>.problem</code>, <code>.subprob</code> and <code>.method</code> can be used to select the parameter estimates to output.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Raw output for editing</span>
-<span class="va">prm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_prm.html">get_prm</a></span><span class="op">(</span><span class="va">xpdb</span>, digits <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>
-<span class="va">prm</span></code></pre></div>
-<pre><code># A tibble: 11 x 10
+<code class="sourceCode R"><span><span class="co"># Raw output for editing</span></span>
+<span><span class="va">prm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_prm.html">get_prm</a></span><span class="op">(</span><span class="va">xpdb</span>, digits <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
+<span><span class="va">prm</span></span></code></pre></div>
+<pre><code> [38;5;246m# A tibble: 11 × 10 [39m
    type  name       label           value       se     rse fixed diagonal     m     n
- * &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;lgl&gt; &lt;lgl&gt;    &lt;dbl&gt; &lt;dbl&gt;
- 1 the   THETA1     "TVCL"       26.3      0.892    0.0339 FALSE NA           1    NA
- 2 the   THETA2     "TVV"         1.35     0.0438   0.0325 FALSE NA           2    NA
- 3 the   THETA3     "TVKA"        4.20     0.809    0.192  FALSE NA           3    NA
- 4 the   THETA4     "LAG"         0.208    0.0157   0.0755 FALSE NA           4    NA
- 5 the   THETA5     "Prop. Err"   0.205    0.0224   0.110  FALSE NA           5    NA
- 6 the   THETA6     "Add. Err"    0.0106   0.00366  0.347  FALSE NA           6    NA
- 7 the   THETA7     "CRCL on CL"  0.00717  0.00170  0.237  FALSE NA           7    NA
- 8 ome   OMEGA(1,1) "IIV CL"      0.270    0.0233   0.0862 FALSE TRUE         1     1
- 9 ome   OMEGA(2,2) "IIV V"       0.195    0.0320   0.164  FALSE TRUE         2     2
-10 ome   OMEGA(3,3) "IIV KA"      1.38     0.202    0.146  FALSE TRUE         3     3
-11 sig   SIGMA(1,1) ""            1       NA       NA      TRUE  TRUE         1     1</code></pre>
+  [38;5;250m* [39m  [3m [38;5;246m&lt;chr&gt; [39m [23m  [3m [38;5;246m&lt;chr&gt; [39m [23m       [3m [38;5;246m&lt;chr&gt; [39m [23m            [3m [38;5;246m&lt;dbl&gt; [39m [23m     [3m [38;5;246m&lt;dbl&gt; [39m [23m    [3m [38;5;246m&lt;dbl&gt; [39m [23m  [3m [38;5;246m&lt;lgl&gt; [39m [23m  [3m [38;5;246m&lt;lgl&gt; [39m [23m     [3m [38;5;246m&lt;dbl&gt; [39m [23m  [3m [38;5;246m&lt;dbl&gt; [39m [23m
+ [38;5;250m 1 [39m the   THETA1      [38;5;246m" [39mTVCL [38;5;246m" [39m       26.3      0.892    0.033 [4m9 [24m FALSE  [31mNA [39m           1     [31mNA [39m
+ [38;5;250m 2 [39m the   THETA2      [38;5;246m" [39mTVV [38;5;246m" [39m         1.35     0.043 [4m8 [24m   0.032 [4m5 [24m FALSE  [31mNA [39m           2     [31mNA [39m
+ [38;5;250m 3 [39m the   THETA3      [38;5;246m" [39mTVKA [38;5;246m" [39m        4.20     0.809    0.192  FALSE  [31mNA [39m           3     [31mNA [39m
+ [38;5;250m 4 [39m the   THETA4      [38;5;246m" [39mLAG [38;5;246m" [39m         0.208    0.015 [4m7 [24m   0.075 [4m5 [24m FALSE  [31mNA [39m           4     [31mNA [39m
+ [38;5;250m 5 [39m the   THETA5      [38;5;246m" [39mProp. Err [38;5;246m" [39m   0.205    0.022 [4m4 [24m   0.110  FALSE  [31mNA [39m           5     [31mNA [39m
+ [38;5;250m 6 [39m the   THETA6      [38;5;246m" [39mAdd. Err [38;5;246m" [39m    0.010 [4m6 [24m   0.003 [4m6 [24m [4m6 [24m  0.347  FALSE  [31mNA [39m           6     [31mNA [39m
+ [38;5;250m 7 [39m the   THETA7      [38;5;246m" [39mCRCL on CL [38;5;246m" [39m  0.007 [4m1 [24m [4m7 [24m  0.001 [4m7 [24m [4m0 [24m  0.237  FALSE  [31mNA [39m           7     [31mNA [39m
+ [38;5;250m 8 [39m ome   OMEGA(1,1)  [38;5;246m" [39mIIV CL [38;5;246m" [39m      0.270    0.023 [4m3 [24m   0.086 [4m2 [24m FALSE TRUE         1     1
+ [38;5;250m 9 [39m ome   OMEGA(2,2)  [38;5;246m" [39mIIV V [38;5;246m" [39m       0.195    0.032 [4m0 [24m   0.164  FALSE TRUE         2     2
+ [38;5;250m10 [39m ome   OMEGA(3,3)  [38;5;246m" [39mIIV KA [38;5;246m" [39m      1.38     0.202    0.146  FALSE TRUE         3     3
+ [38;5;250m11 [39m sig   SIGMA(1,1)  [38;5;246m" [39m [38;5;246m" [39m            1        [31mNA [39m        [31mNA [39m      TRUE  TRUE         1     1</code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Nicely formated table</span>
-<span class="fu"><a href="../reference/prm_table.html">prm_table</a></span><span class="op">(</span><span class="va">xpdb</span>, digits <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Nicely formated table</span></span>
+<span><span class="fu"><a href="../reference/prm_table.html">prm_table</a></span><span class="op">(</span><span class="va">xpdb</span>, digits <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 Reporting transformed parameters:
 For the OMEGA and SIGMA matrices, values are reported as standard deviations for the diagonal elements and as correlations for the off-diagonal elements. The relative standard errors (RSE) for OMEGA and SIGMA are reported on the approximate standard deviation scale (SE/variance estimate)/2. Use `transform = FALSE` to report untransformed parameters.
@@ -266,29 +271,29 @@ Estimates for $prob no.1, subprob no.0, method foce
  OMEGA(3,3) IIV KA     1.381        0.1463
  SIGMA(1,1)            1        fix  - </code></pre>
 </div>
-<div id="access-the-run-summary" class="section level3">
-<h3 class="hasAnchor">
-<a href="#access-the-run-summary" class="anchor"></a>Access the run summary</h3>
+<div class="section level3">
+<h3 id="access-the-run-summary">Access the run summary<a class="anchor" aria-label="anchor" href="#access-the-run-summary"></a>
+</h3>
 <p>The <code><a href="../reference/get_summary.html">get_summary()</a></code> function can be used to access the generated run summary from which the <code>template_titles</code>. If the argument <code>.problem</code> is specified a subset of the summary can be returned based on <code>$PROBLEM</code>.</p>
 <p><em>Note that general summary information are listed as problem 0.</em></p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">run_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_summary.html">get_summary</a></span><span class="op">(</span><span class="va">xpdb</span>, .problem <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
-<span class="va">run_sum</span></code></pre></div>
-<pre><code># A tibble: 12 x 5
+<code class="sourceCode R"><span><span class="va">run_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_summary.html">get_summary</a></span><span class="op">(</span><span class="va">xpdb</span>, .problem <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">run_sum</span></span></code></pre></div>
+<pre><code> [38;5;246m# A tibble: 12 × 5 [39m
    problem subprob descr               label       value                        
-     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;               &lt;chr&gt;       &lt;chr&gt;                        
- 1       0       0 Run description     descr       NONMEM PK example for xpose  
- 2       0       0 Run directory       dir         data                         
- 3       0       0 Run errors          errors      na                           
- 4       0       0 ESAMPLE seed number esampleseed na                           
- 5       0       0 Run file            file        run001.lst                   
- 6       0       0 Number of ESAMPLE   nesample    na                           
- 7       0       0 Reference model     ref         000                          
- 8       0       0 Run number          run         run001                       
- 9       0       0 Software            software    nonmem                       
-10       0       0 Run start time      timestart   Mon Oct 16 13:34:28 CEST 2017
-11       0       0 Run stop time       timestop    Mon Oct 16 13:34:35 CEST 2017
-12       0       0 Software version    version     7.3.0                        </code></pre>
+      [3m [38;5;246m&lt;dbl&gt; [39m [23m    [3m [38;5;246m&lt;dbl&gt; [39m [23m  [3m [38;5;246m&lt;chr&gt; [39m [23m                [3m [38;5;246m&lt;chr&gt; [39m [23m        [3m [38;5;246m&lt;chr&gt; [39m [23m                        
+ [38;5;250m 1 [39m       0       0 Run description     descr       NONMEM PK example for xpose  
+ [38;5;250m 2 [39m       0       0 Run directory       dir         data                         
+ [38;5;250m 3 [39m       0       0 Run errors          errors      na                           
+ [38;5;250m 4 [39m       0       0 ESAMPLE seed number esampleseed na                           
+ [38;5;250m 5 [39m       0       0 Run file            file        run001.lst                   
+ [38;5;250m 6 [39m       0       0 Number of ESAMPLE   nesample    na                           
+ [38;5;250m 7 [39m       0       0 Reference model     ref         000                          
+ [38;5;250m 8 [39m       0       0 Run number          run         run001                       
+ [38;5;250m 9 [39m       0       0 Software            software    nonmem                       
+ [38;5;250m10 [39m       0       0 Run start time      timestart   Mon Oct 16 13:34:28 CEST 2017
+ [38;5;250m11 [39m       0       0 Run stop time       timestop    Mon Oct 16 13:34:35 CEST 2017
+ [38;5;250m12 [39m       0       0 Software version    version     7.3.0                        </code></pre>
 </div>
   </div>
 
@@ -301,11 +306,13 @@ Estimates for $prob no.1, subprob no.0, method foce
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/guiastrennec">Benjamin Guiastrennec</a>, <a href="https://github.com/andrewhooker">Andrew C. Hooker</a>, <a href="https://github.com/sebastianueckert">Sebastian Ueckert</a>, <a href="https://katalog.uu.se/profile/?id=XX3384">Mats O. Karlsson</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/guiastrennec" class="external-link">Benjamin Guiastrennec</a>, <a href="https://github.com/andrewhooker" class="external-link">Andrew C. Hooker</a>, <a href="https://github.com/sebastianueckert" class="external-link">Sebastian Ueckert</a>, <a href="https://katalog.uu.se/profile/?id=XX3384" class="external-link">Mats O. Karlsson</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -313,6 +320,8 @@ Estimates for $prob no.1, subprob no.0, method foce
 
   
 
+
+  
 
   </body>
 </html>
