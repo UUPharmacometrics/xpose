@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xpose</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.13.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.14</span>
       </span>
     </div>
 
@@ -98,7 +98,7 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.4.13.9000" id="xpose-04139000">xpose 0.4.13.9000<a class="anchor" aria-label="anchor" href="#xpose-04139000"></a></h2>
+<h2 class="page-header" data-toc-text="0.4.14" id="xpose-0414">xpose 0.4.14<a class="anchor" aria-label="anchor" href="#xpose-0414"></a></h2>
 <ul><li>Compatibility fix with ggplot2 3.4.0</li>
 <li>Compatibility fix with stringr 1.5.0 (<a href="https://github.com/hadley" class="external-link">@hadley</a>, <a href="https://github.com/UUPharmacometrics/xpose/issues/207" class="external-link">#207</a>)</li>
 <li>xpose will now give a warning on windows if <code>options(readr.read_lazy = TRUE)</code> (<a href="https://github.com/AndreasCalvagone" class="external-link">@AndreasCalvagone</a> <a href="https://github.com/UUPharmacometrics/xpose/issues/198" class="external-link">#198</a>)</li>
@@ -113,22 +113,28 @@
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.12" id="xpose-0412">xpose 0.4.12<small>2021-01-12</small><a class="anchor" aria-label="anchor" href="#xpose-0412"></a></h2>
-<ul><li>Compatibility fix for R 4.1.x</li></ul></div>
+<ul><li>Compatibility fix for R 4.1.x</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.11" id="xpose-0411">xpose 0.4.11<small>2020-07-22</small><a class="anchor" aria-label="anchor" href="#xpose-0411"></a></h2>
-<ul><li>Improve <code>noLD</code> in tests</li></ul></div>
+<ul><li>Improve <code>noLD</code> in tests</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.10" id="xpose-0410">xpose 0.4.10<small>2020-06-08</small><a class="anchor" aria-label="anchor" href="#xpose-0410"></a></h2>
-<ul><li>Compatibility fix for vpc 1.2.1</li></ul></div>
+<ul><li>Compatibility fix for vpc 1.2.1</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.9" id="xpose-049">xpose 0.4.9<small>2020-05-25</small><a class="anchor" aria-label="anchor" href="#xpose-049"></a></h2>
-<ul><li>Compatibility fix for dplyr 1.0.0 and vpc 1.2.0</li></ul></div>
+<ul><li>Compatibility fix for dplyr 1.0.0 and vpc 1.2.0</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.8" id="xpose-048">xpose 0.4.8<small>2020-03-17</small><a class="anchor" aria-label="anchor" href="#xpose-048"></a></h2>
-<ul><li>Compatibility fix for ggplot 3.3.0 and tibble 3.0.0</li></ul></div>
+<ul><li>Compatibility fix for ggplot 3.3.0 and tibble 3.0.0</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.7" id="xpose-047">xpose 0.4.7<small>2020-02-04</small><a class="anchor" aria-label="anchor" href="#xpose-047"></a></h2>
-<ul><li>Fixed error in documentation check fail in R 4.0.0</li></ul></div>
+<ul><li>Fixed error in documentation check fail in R 4.0.0</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.6" id="xpose-046">xpose 0.4.6<small>2020-01-12</small><a class="anchor" aria-label="anchor" href="#xpose-046"></a></h2>
 <ul><li>Updated tests for compatibility with R 4.0.0</li>
@@ -206,7 +212,8 @@
 <li>Added <code><a href="../reference/get_special.html">get_special()</a></code> to access special data</li>
 <li>Improved <code><a href="../reference/get_prm.html">get_prm()</a></code> labeller parsing with OMEGA and SIGMA BLOCKS</li>
 <li>
-<code><a href="../reference/get_prm.html">get_prm()</a></code> and <code><a href="../reference/prm_table.html">prm_table()</a></code>:<ul><li>Both gained a <code>transform</code> argument to disable parameter transformation</li>
+<code><a href="../reference/get_prm.html">get_prm()</a></code> and <code><a href="../reference/prm_table.html">prm_table()</a></code>:
+<ul><li>Both gained a <code>transform</code> argument to disable parameter transformation</li>
 <li>RSE is now always reported (also for untransformed)</li>
 <li>Corrected RSE for off-diagonal elements from OMEGA and SIGMA when output as correlation and SE when output as standard deviation</li>
 </ul></li>
@@ -284,7 +291,8 @@
 </ul></div>
 <div class="section level5">
 <h5 id="read_nm_files-0-2-0"><code>read_nm_files()</code><a class="anchor" aria-label="anchor" href="#read_nm_files-0-2-0"></a></h5>
-<ul><li>Now imports multiple $PROB and sub-problems</li></ul></div>
+<ul><li>Now imports multiple $PROB and sub-problems</li>
+</ul></div>
 </div>
 <div class="section level4">
 <h4 id="summary-0-2-0">Summary<a class="anchor" aria-label="anchor" href="#summary-0-2-0"></a></h4>
@@ -308,14 +316,16 @@
 </ul></div>
 <div class="section level4">
 <h4 id="vpc-0-2-0">VPC<a class="anchor" aria-label="anchor" href="#vpc-0-2-0"></a></h4>
-<ul><li>Added wrapper around <a href="https://github.com/ronkeizer/vpc" class="external-link"><code>ronkeizer/vpc</code></a> inside <code><a href="../reference/vpc_data.html">vpc_data()</a></code>.</li></ul></div>
+<ul><li>Added wrapper around <a href="https://github.com/ronkeizer/vpc" class="external-link"><code>ronkeizer/vpc</code></a> inside <code><a href="../reference/vpc_data.html">vpc_data()</a></code>.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.0" id="ggxpose-010">ggxpose 0.1.0<a class="anchor" aria-label="anchor" href="#ggxpose-010"></a></h2>
 <div class="section level4">
 <h4 id="first-commit-0-1-0">First commit<a class="anchor" aria-label="anchor" href="#first-commit-0-1-0"></a></h4>
 <ul><li>Proof of concept pre-release around simple goodness-of-fit functions like <code><a href="../reference/dv_vs_pred.html">dv_vs_ipred()</a></code>
-</li></ul></div>
+</li>
+</ul></div>
 <div class="section level4">
 <h4 id="definition-of-core-functions-and-workflow-0-1-0">Definition of core functions and workflow<a class="anchor" aria-label="anchor" href="#definition-of-core-functions-and-workflow-0-1-0"></a></h4>
 <ul><li>Defined the <code>xpose_geom()</code> core function to specifically direct arguments to <a href="https://ggplot2.tidyverse.org" class="external-link"><code>ggplot2</code></a> layers</li>

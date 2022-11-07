@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xpose</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.13.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.14</span>
       </span>
     </div>
 
@@ -129,9 +129,10 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Access the xpdb data</h1>
-                        <h4 data-toc-skip class="author">Benjamin Guiastrennec</h4>
+                        <h4 data-toc-skip class="author">Benjamin
+Guiastrennec</h4>
             
-            <h4 data-toc-skip class="date">22 October, 2022</h4>
+            <h4 data-toc-skip class="date">07 November, 2022</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/UUPharmacometrics/xpose/blob/HEAD/vignettes/access_xpdb_data.Rmd" class="external-link"><code>vignettes/access_xpdb_data.Rmd</code></a></small>
       <div class="hidden name"><code>access_xpdb_data.Rmd</code></div>
@@ -140,11 +141,16 @@
 
     
     
-<p>The xpose package was designed as a standardized interface between model outputs and R. Hence model output files can easily be imported in R and used to summarize data or create plots.</p>
+<p>The xpose package was designed as a standardized interface between
+model outputs and R. Hence model output files can easily be imported in
+R and used to summarize data or create plots.</p>
 <div class="section level3">
 <h3 id="glimpse-at-the-xpdb">Glimpse at the xpdb<a class="anchor" aria-label="anchor" href="#glimpse-at-the-xpdb"></a>
 </h3>
-<p>The files attached to an xpdb object can be displayed to the console simply by writing the xpdb name to the console or by using the <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> function. Any of these files can be accessed from the xpdb using one of the functions listed below.</p>
+<p>The files attached to an xpdb object can be displayed to the console
+simply by writing the xpdb name to the console or by using the
+<code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> function. Any of these files can be accessed from
+the xpdb using one of the functions listed below.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">xpdb</span> <span class="co"># or print(xpdb)</span></span></code></pre></div>
 <pre><code>run001.lst overview: 
@@ -161,8 +167,14 @@
 <div class="section level3">
 <h3 id="access-the-model-code">Access the model code<a class="anchor" aria-label="anchor" href="#access-the-model-code"></a>
 </h3>
-<p>The <code><a href="../reference/get_code.html">get_code()</a></code> function can be used to access the parsed model code from the xpdb. This code was used to create the summary and find table names. The parsed code can be used to get additional information about the run. If the argument <code>.problem</code> is specified a subset of the code can be returned based on <code>$PROBLEM</code>.</p>
-<p><em>Note that general code warnings and PsN outputs appended are listed as problem 0.</em></p>
+<p>The <code><a href="../reference/get_code.html">get_code()</a></code> function can be used to access the parsed
+model code from the xpdb. This code was used to create the summary and
+find table names. The parsed code can be used to get additional
+information about the run. If the argument <code>.problem</code> is
+specified a subset of the code can be returned based on
+<code>$PROBLEM</code>.</p>
+<p><em>Note that general code warnings and PsN outputs appended are
+listed as problem 0.</em></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">code</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_code.html">get_code</a></span><span class="op">(</span><span class="va">xpdb</span><span class="op">)</span></span>
 <span><span class="va">code</span></span></code></pre></div>
@@ -184,8 +196,16 @@
 <div class="section level3">
 <h3 id="access-the-output-data">Access the output data<a class="anchor" aria-label="anchor" href="#access-the-output-data"></a>
 </h3>
-<p>The <code><a href="../reference/get_data.html">get_data()</a></code> function can be used to access the imported table files. Tables can be accessed by <code>table</code> name or by <code>.problem</code>. In the latter a single dataset containing all aggregated tables is returned. If more than one <code>table</code> name or <code>.problem</code> number is provided a named list is returned.</p>
-<p><em>Note when providing a table name it is not guaranteed that the table will be identical to its file (i.e. the order of the columns may have been changed and tables with <code>FIRSTONLY</code> will no longer be deduplicated).</em></p>
+<p>The <code><a href="../reference/get_data.html">get_data()</a></code> function can be used to access the
+imported table files. Tables can be accessed by <code>table</code> name
+or by <code>.problem</code>. In the latter a single dataset containing
+all aggregated tables is returned. If more than one <code>table</code>
+name or <code>.problem</code> number is provided a named list is
+returned.</p>
+<p><em>Note when providing a table name it is not guaranteed that the
+table will be identical to its file (i.e. the order of the columns may
+have been changed and tables with <code>FIRSTONLY</code> will no longer
+be deduplicated).</em></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data.html">get_data</a></span><span class="op">(</span><span class="va">xpdb</span>, table <span class="op">=</span> <span class="st">'cotab001'</span><span class="op">)</span></span>
 <span><span class="va">data</span></span></code></pre></div>
@@ -207,7 +227,12 @@
 <div class="section level3">
 <h3 id="access-the-run-files">Access the run files<a class="anchor" aria-label="anchor" href="#access-the-run-files"></a>
 </h3>
-<p>The <code><a href="../reference/get_file.html">get_file()</a></code> function can be used to access the imported output files. Files can be accessed by <code>file</code> name, by <code>.problem</code>, <code>.subprob</code> and/or <code>.method</code>. If more than one <code>file</code> name, <code>.problem</code>, <code>.subprob</code>, or <code>.method</code> is provided a named list is returned.</p>
+<p>The <code><a href="../reference/get_file.html">get_file()</a></code> function can be used to access the
+imported output files. Files can be accessed by <code>file</code> name,
+by <code>.problem</code>, <code>.subprob</code> and/or
+<code>.method</code>. If more than one <code>file</code> name,
+<code>.problem</code>, <code>.subprob</code>, or <code>.method</code> is
+provided a named list is returned.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_file.html">get_file</a></span><span class="op">(</span><span class="va">xpdb</span>, file <span class="op">=</span> <span class="st">'run001.ext'</span><span class="op">)</span></span>
 <span><span class="va">file</span></span></code></pre></div>
@@ -231,7 +256,11 @@
 <div class="section level3">
 <h3 id="access-the-parameter-estimates">Access the parameter estimates<a class="anchor" aria-label="anchor" href="#access-the-parameter-estimates"></a>
 </h3>
-<p>The <code><a href="../reference/get_prm.html">get_prm()</a></code> function can be used to access the parameter estimates. To get a nice parameter table printed to the console use the function <code><a href="../reference/prm_table.html">prm_table()</a></code> instead. The arguments <code>.problem</code>, <code>.subprob</code> and <code>.method</code> can be used to select the parameter estimates to output.</p>
+<p>The <code><a href="../reference/get_prm.html">get_prm()</a></code> function can be used to access the
+parameter estimates. To get a nice parameter table printed to the
+console use the function <code><a href="../reference/prm_table.html">prm_table()</a></code> instead. The arguments
+<code>.problem</code>, <code>.subprob</code> and <code>.method</code>
+can be used to select the parameter estimates to output.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Raw output for editing</span></span>
 <span><span class="va">prm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_prm.html">get_prm</a></span><span class="op">(</span><span class="va">xpdb</span>, digits <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
@@ -274,8 +303,12 @@ Estimates for $prob no.1, subprob no.0, method foce
 <div class="section level3">
 <h3 id="access-the-run-summary">Access the run summary<a class="anchor" aria-label="anchor" href="#access-the-run-summary"></a>
 </h3>
-<p>The <code><a href="../reference/get_summary.html">get_summary()</a></code> function can be used to access the generated run summary from which the <code>template_titles</code>. If the argument <code>.problem</code> is specified a subset of the summary can be returned based on <code>$PROBLEM</code>.</p>
-<p><em>Note that general summary information are listed as problem 0.</em></p>
+<p>The <code><a href="../reference/get_summary.html">get_summary()</a></code> function can be used to access the
+generated run summary from which the <code>template_titles</code>. If
+the argument <code>.problem</code> is specified a subset of the summary
+can be returned based on <code>$PROBLEM</code>.</p>
+<p><em>Note that general summary information are listed as problem
+0.</em></p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">run_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_summary.html">get_summary</a></span><span class="op">(</span><span class="va">xpdb</span>, .problem <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="va">run_sum</span></span></code></pre></div>

@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xpose</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.13.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.14</span>
       </span>
     </div>
 
@@ -129,9 +129,10 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Import model outputs</h1>
-                        <h4 data-toc-skip class="author">Benjamin Guiastrennec</h4>
+                        <h4 data-toc-skip class="author">Benjamin
+Guiastrennec</h4>
             
-            <h4 data-toc-skip class="date">22 October, 2022</h4>
+            <h4 data-toc-skip class="date">07 November, 2022</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/UUPharmacometrics/xpose/blob/HEAD/vignettes/import_model_outputs.Rmd" class="external-link"><code>vignettes/import_model_outputs.Rmd</code></a></small>
       <div class="hidden name"><code>import_model_outputs.Rmd</code></div>
@@ -143,7 +144,9 @@
 <div class="section level3">
 <h3 id="the-xpose_data-function">The <code>xpose_data</code> function<a class="anchor" aria-label="anchor" href="#the-xpose_data-function"></a>
 </h3>
-<p>The function <code><a href="../reference/xpose_data.html">xpose_data()</a></code> collects all model output files and table and organizes them into an R object commonly called <code>xpdb</code> for xpose data base.</p>
+<p>The function <code><a href="../reference/xpose_data.html">xpose_data()</a></code> collects all model output
+files and table and organizes them into an R object commonly called
+<code>xpdb</code> for xpose data base.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">xpdb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/xpose_data.html">xpose_data</a></span><span class="op">(</span>runno <span class="op">=</span> <span class="st">'001'</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -153,12 +156,18 @@
 <div class="section level4">
 <h4 id="nonmem-runs">NONMEM runs<a class="anchor" aria-label="anchor" href="#nonmem-runs"></a>
 </h4>
-<p>To make full use of the functionality offered by <code>xpose</code> the following NONMEM output files should be available:</p>
+<p>To make full use of the functionality offered by <code>xpose</code>
+the following NONMEM output files should be available:</p>
 <ul>
 <li>
-<code>.lst/.out/.res</code>: used to collect information on the run (<code>template_titles</code>) as well as the output table names. Alternatively a model file (<code>.mod/.ctl</code>) can be used but some of the information in <code>template_titles</code> may not be available.</li>
+<code>.lst/.out/.res</code>: used to collect information on the run
+(<code>template_titles</code>) as well as the output table names.
+Alternatively a model file (<code>.mod/.ctl</code>) can be used but some
+of the information in <code>template_titles</code> may not be
+available.</li>
 <li>
-<code>.ext</code>: used to collect final parameter estimates and residual standard error (RSE)</li>
+<code>.ext</code>: used to collect final parameter estimates and
+residual standard error (RSE)</li>
 <li>
 <code>.phi</code>: used for the random effects and iOFV</li>
 <li>
@@ -168,11 +177,13 @@
 <li>
 <code>.grd</code>: used for the estimation gradients</li>
 <li>
-<code>.shk</code>: used to compute random effect shrinkage <code>template_titles</code>
+<code>.shk</code>: used to compute random effect shrinkage
+<code>template_titles</code>
 </li>
 <li>output and simulation tables: for the actual data</li>
 </ul>
-<p>When importing the files, xpose will return messages to the console and inform of any issue encountered during the import.</p>
+<p>When importing the files, xpose will return messages to the console
+and inform of any issue encountered during the import.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>xpdb <span class="ot">&lt;-</span> <span class="fu">xpose_data</span>(<span class="at">runno =</span> <span class="st">'001'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Looking <span class="cf">for</span> nonmem output tables</span>
@@ -180,17 +191,25 @@
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>Looking <span class="cf">for</span> nonmem output files</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>Reading<span class="sc">:</span> run001.cor, run001.cov, run001.ext, run001.grd, run001.phi</span></code></pre></div>
-<p>These messages can be silenced with the option <code>quiet = TRUE</code>.</p>
+<p>These messages can be silenced with the option
+<code>quiet = TRUE</code>.</p>
 <div class="section level5">
 <h5 id="firstonly-tables">
 <code>FIRSTONLY</code> tables<a class="anchor" aria-label="anchor" href="#firstonly-tables"></a>
 </h5>
-<p>xpose is compatible with the <code>$TABLE FIRSTONLY</code> option of NONMEM. The option <code>FIRSTONLY</code> only output the first record for each <code>ID</code> and hence can be used to decrease the size of output tables having no time-varying columns. During tables import xpose will merge <code>FIRSTONLY</code> tables with regular tables allowing seamless use of columns from <code>FIRSTONLY</code> in plots.</p>
+<p>xpose is compatible with the <code>$TABLE FIRSTONLY</code> option of
+NONMEM. The option <code>FIRSTONLY</code> only output the first record
+for each <code>ID</code> and hence can be used to decrease the size of
+output tables having no time-varying columns. During tables import xpose
+will merge <code>FIRSTONLY</code> tables with regular tables allowing
+seamless use of columns from <code>FIRSTONLY</code> in plots.</p>
 </div>
 <div class="section level5">
 <h5 id="compressed-tables">Compressed tables<a class="anchor" aria-label="anchor" href="#compressed-tables"></a>
 </h5>
-<p>xpose makes use of the <a href="https://readr.tidyverse.org" class="external-link">readr</a> which offers the advantages of 1) rapidly import big tables and 2) automatically import compressed table (e.g. sdtab001.zip) to increase storage capacity.</p>
+<p>xpose makes use of the <a href="https://readr.tidyverse.org" class="external-link">readr</a> which offers the advantages
+of 1) rapidly import big tables and 2) automatically import compressed
+table (e.g. sdtab001.zip) to increase storage capacity.</p>
 </div>
 </div>
 <div class="section level4">
@@ -207,13 +226,17 @@
 <li>
 <code>code</code>: the parsed model code</li>
 <li>
-<code>summary</code>: contains key information regarding the model. All the information contained in the summary can be used as part of the <code>template_titles</code>.</li>
+<code>summary</code>: contains key information regarding the model.
+All the information contained in the summary can be used as part of the
+<code>template_titles</code>.</li>
 <li>
-<code>data</code>: contains all output and simulation tables as well as the column indexing</li>
+<code>data</code>: contains all output and simulation tables as well
+as the column indexing</li>
 <li>
 <code>files</code>: contains all output files</li>
 <li>
-<code>special</code>: contains post-processed datasets used by functions like <code><a href="../reference/vpc.html">vpc()</a></code>
+<code>special</code>: contains post-processed datasets used by
+functions like <code><a href="../reference/vpc.html">vpc()</a></code>
 </li>
 <li>
 <code>gg_theme</code>: an attached ggplot2 theme</li>

@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xpose</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.13.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.14</span>
       </span>
     </div>
 
@@ -129,9 +129,10 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Customize plots</h1>
-                        <h4 data-toc-skip class="author">Benjamin Guiastrennec</h4>
+                        <h4 data-toc-skip class="author">Benjamin
+Guiastrennec</h4>
             
-            <h4 data-toc-skip class="date">22 October, 2022</h4>
+            <h4 data-toc-skip class="date">07 November, 2022</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/UUPharmacometrics/xpose/blob/HEAD/vignettes/customize_plots.Rmd" class="external-link"><code>vignettes/customize_plots.Rmd</code></a></small>
       <div class="hidden name"><code>customize_plots.Rmd</code></div>
@@ -143,35 +144,56 @@
 <div class="section level3">
 <h3 id="plot-type">Plot type<a class="anchor" aria-label="anchor" href="#plot-type"></a>
 </h3>
-<p>The option <code>type</code> allows to control how the data should be represented.</p>
+<p>The option <code>type</code> allows to control how the data should be
+represented.</p>
 <div class="section level4">
 <h4 id="scatter-plots">Scatter plots<a class="anchor" aria-label="anchor" href="#scatter-plots"></a>
 </h4>
-<p>In scatter plots <code>type</code> can be any combination of: points <code>'p'</code>, lines <code>'l'</code>, smooth <code>'s'</code>, text <code>'t'</code>.</p>
+<p>In scatter plots <code>type</code> can be any combination of: points
+<code>'p'</code>, lines <code>'l'</code>, smooth <code>'s'</code>, text
+<code>'t'</code>.</p>
 <p><img src="customize_plots_files/figure-html/demo%20type%20scatter-1.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level4">
 <h4 id="distribution-plots">Distribution plots<a class="anchor" aria-label="anchor" href="#distribution-plots"></a>
 </h4>
-<p>In distribution plots <code>type</code> can be any combination of: histogram <code>'h'</code>, density <code>'d'</code>, or rug <code>'r'</code>.</p>
+<p>In distribution plots <code>type</code> can be any combination of:
+histogram <code>'h'</code>, density <code>'d'</code>, or rug
+<code>'r'</code>.</p>
 <p><img src="customize_plots_files/figure-html/demo%20type%20distrib-1.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level4">
 <h4 id="vpcs">VPCs<a class="anchor" aria-label="anchor" href="#vpcs"></a>
 </h4>
-<p>In visual predictive checks plots <code>type</code> can be any combination of: areas <code>'a'</code>, lines <code>'l'</code>, points <code>'p'</code>, text <code>'t'</code> or rug <code>'r'</code>.</p>
+<p>In visual predictive checks plots <code>type</code> can be any
+combination of: areas <code>'a'</code>, lines <code>'l'</code>, points
+<code>'p'</code>, text <code>'t'</code> or rug <code>'r'</code>.</p>
 <p><img src="customize_plots_files/figure-html/demo%20type%20vpc-1.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
 </div>
 <div class="section level3">
 <h3 id="visual-guide">Visual guide<a class="anchor" aria-label="anchor" href="#visual-guide"></a>
 </h3>
-<p>The option <code>guide</code> can enable (<code>TRUE</code>) or disable (<code>FALSE</code>) the visual guide on the graphs such as the line of identity on the <code><a href="../reference/dv_vs_pred.html">dv_vs_ipred()</a></code> type plot or horizontal lines on residual plots (e.g. <code><a href="../reference/res_vs_idv.html">res_vs_idv()</a></code>).</p>
+<p>The option <code>guide</code> can enable (<code>TRUE</code>) or
+disable (<code>FALSE</code>) the visual guide on the graphs such as the
+line of identity on the <code><a href="../reference/dv_vs_pred.html">dv_vs_ipred()</a></code> type plot or
+horizontal lines on residual plots (e.g. <code><a href="../reference/res_vs_idv.html">res_vs_idv()</a></code>).</p>
 </div>
 <div class="section level3">
 <h3 id="labels">Labels<a class="anchor" aria-label="anchor" href="#labels"></a>
 </h3>
-<p>All xpose plots have by default an informative title, subtitle and caption. For example all plots using individual model predictions (IPRED) will display the epsilons’ shrinkage. These titles can easily be edited as templates using <span class="citation">@keywords</span> which will be replaced by their actual value stored in the summary level of the <code>xpdb</code> object when rendering the plots. Keywords are defined by a word preceded by a <code>@</code> e.g. <code>'@ofv'</code>. A list of all available keyword can be accessed via <code><a href="../reference/template_titles.html">help('template_titles')</a></code>. The title, subtitle or caption can be disabled by setting them to <code>NULL</code>. Suffix can be automatically added to title, subtitle and caption of all plots. The suffixes can be defined in the <code>xp_theme</code>.</p>
+<p>All xpose plots have by default an informative title, subtitle and
+caption. For example all plots using individual model predictions
+(IPRED) will display the epsilons’ shrinkage. These titles can easily be
+edited as templates using <span class="citation">@keywords</span> which
+will be replaced by their actual value stored in the summary level of
+the <code>xpdb</code> object when rendering the plots. Keywords are
+defined by a word preceded by a <code>@</code> e.g. <code>'@ofv'</code>.
+A list of all available keyword can be accessed via
+<code><a href="../reference/template_titles.html">help('template_titles')</a></code>. The title, subtitle or caption can
+be disabled by setting them to <code>NULL</code>. Suffix can be
+automatically added to title, subtitle and caption of all plots. The
+suffixes can be defined in the <code>xp_theme</code>.</p>
 <div class="section level4">
 <h4 id="from-the-plot-functions">From the plot functions<a class="anchor" aria-label="anchor" href="#from-the-plot-functions"></a>
 </h4>
@@ -194,7 +216,9 @@
 <div class="section level4">
 <h4 id="using-the-labs-function">Using the <code>labs</code> function<a class="anchor" aria-label="anchor" href="#using-the-labs-function"></a>
 </h4>
-<p>Labels can also modified later on by using the <code><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggplot2::labs()</a></code> function in combination with the ggplot2 <code>+</code> operator.</p>
+<p>Labels can also modified later on by using the
+<code><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggplot2::labs()</a></code> function in combination with the ggplot2
+<code>+</code> operator.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title    <span class="op">=</span> <span class="st">'@descr'</span>,</span>
@@ -208,8 +232,23 @@
 <div class="section level3">
 <h3 id="modify-aesthetics">Modify aesthetics<a class="anchor" aria-label="anchor" href="#modify-aesthetics"></a>
 </h3>
-<p>By default the aesthetics are read from the <code>xp_theme</code> level in the xpdb object but these can be modified in any plot function. xpose makes use of the <code>ggplot2</code> functions mapping for any layer (e.g. points, lines, etc.) however to direct the mapping to a specific layer, a prefix appealing to the targeted layer should be used. The format is defined as <code>layer_aesthetic = value</code>. Hence to change the color of points in ggplot2 the argument <code>color = 'green'</code> could be used in <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point()</a></code>, while in xpose the same could be achieved with <code>point_color = 'green'</code>.</p>
-<p>In basic goodness-of-fit plots, the layers have been named as: <code>point_xxx</code>, <code>line_xxx</code>, <code>smooth_xxx</code>, <code>guide_xxx</code>, <code>xscale_xxx</code>, <code>yscale_xxx</code> where <code>xxx</code> can be any option available in the <code>ggplot2</code> layers: <code>geom_point</code>, <code>geom_line</code>, <code>geom_smooth</code>, <code>geom_abline</code>, <code>scale_x_continuous</code>, etc.</p>
+<p>By default the aesthetics are read from the <code>xp_theme</code>
+level in the xpdb object but these can be modified in any plot function.
+xpose makes use of the <code>ggplot2</code> functions mapping for any
+layer (e.g. points, lines, etc.) however to direct the mapping to a
+specific layer, a prefix appealing to the targeted layer should be used.
+The format is defined as <code>layer_aesthetic = value</code>. Hence to
+change the color of points in ggplot2 the argument
+<code>color = 'green'</code> could be used in <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point()</a></code>,
+while in xpose the same could be achieved with
+<code>point_color = 'green'</code>.</p>
+<p>In basic goodness-of-fit plots, the layers have been named as:
+<code>point_xxx</code>, <code>line_xxx</code>, <code>smooth_xxx</code>,
+<code>guide_xxx</code>, <code>xscale_xxx</code>, <code>yscale_xxx</code>
+where <code>xxx</code> can be any option available in the
+<code>ggplot2</code> layers: <code>geom_point</code>,
+<code>geom_line</code>, <code>geom_smooth</code>,
+<code>geom_abline</code>, <code>scale_x_continuous</code>, etc.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb</span>, </span>
 <span>            <span class="co"># Change points aesthetics</span></span>
@@ -221,7 +260,8 @@
 <span>            <span class="co"># Change smooth aesthetics</span></span>
 <span>            smooth_method <span class="op">=</span> <span class="st">'lm'</span><span class="op">)</span></span></code></pre></div>
 <p><img src="customize_plots_files/figure-html/demo%20aesthetics-1.png" width="50%" style="display: block; margin: auto;"></p>
-<p>Aesthetics can also be defined mapped to a variable using the ggplot2 <code><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes()</a></code> function.</p>
+<p>Aesthetics can also be defined mapped to a variable using the ggplot2
+<code><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes()</a></code> function.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb</span>, type <span class="op">=</span> <span class="st">'p'</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>point_color <span class="op">=</span> <span class="va">SEX</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="customize_plots_files/figure-html/demo%20mapping-1.png" width="50%" style="display: block; margin: auto;"></p>
@@ -229,15 +269,23 @@
 <div class="section level3">
 <h3 id="grouping-variable">Grouping variable<a class="anchor" aria-label="anchor" href="#grouping-variable"></a>
 </h3>
-<p>The argument group defines the grouping variable to be used in the dataset <strong>for the lines only</strong>, by default group is defined to the column <code>'ID'</code>. To apply a grouping variable on any other layer, a manual mapping can be made using the argument <code>xxx_group = variable</code></p>
+<p>The argument group defines the grouping variable to be used in the
+dataset <strong>for the lines only</strong>, by default group is defined
+to the column <code>'ID'</code>. To apply a grouping variable on any
+other layer, a manual mapping can be made using the argument
+<code>xxx_group = variable</code></p>
 </div>
 <div class="section level3">
 <h3 id="panels">Panels<a class="anchor" aria-label="anchor" href="#panels"></a>
 </h3>
-<p>Panels (or faceting) can be created by using the <code>facets</code> argument as follows:</p>
+<p>Panels (or faceting) can be created by using the <code>facets</code>
+argument as follows:</p>
 <ul>
-<li>If <code>facets</code> is a string e.g <code>facets = "SEX"</code>, <code><a href="https://ggforce.data-imaginist.com/reference/facet_wrap_paginate.html" class="external-link">ggforce::facet_wrap_paginate</a></code> will be used</li>
-<li>If <code>facets</code> is a formula e.g <code>facets = SEX~MED1</code>, <code><a href="https://ggforce.data-imaginist.com/reference/facet_grid_paginate.html" class="external-link">ggforce::facet_grid_paginate</a></code> will be used</li>
+<li>If <code>facets</code> is a string e.g <code>facets = "SEX"</code>,
+<code><a href="https://ggforce.data-imaginist.com/reference/facet_wrap_paginate.html" class="external-link">ggforce::facet_wrap_paginate</a></code> will be used</li>
+<li>If <code>facets</code> is a formula e.g
+<code>facets = SEX~MED1</code>,
+<code><a href="https://ggforce.data-imaginist.com/reference/facet_grid_paginate.html" class="external-link">ggforce::facet_grid_paginate</a></code> will be used</li>
 </ul>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Example with a string</span></span>
@@ -247,14 +295,32 @@
 <code class="sourceCode R"><span><span class="co"># Example with a formula</span></span>
 <span><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb</span>, facets <span class="op">=</span> <span class="va">SEX</span><span class="op">~</span><span class="va">MED1</span>, margins <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="customize_plots_files/figure-html/demo%20panels-2.png" width="75%" style="display: block; margin: auto;"></p>
-<p>All xpose plot functions accept arguments for <code>facet_wrap_pagninate</code> and <code>facet_grid_paginate</code> (e.g. <code>ncol = 2</code>, <code>labeller = 'label_both'</code>, etc.). With the default xpose theme scales are set to <code>'free'</code> from one panel to another (<code>scales = 'free'</code>), this behavior can be changed with <code>scales = 'fixed'</code>, <code>'free_y'</code> or <code>'free_x'</code>.</p>
-<p>For more information on the available faceting options read the help of <a href="https://www.rdocumentation.org/packages/ggforce/versions/0.1.1/topics/facet_wrap_paginate" class="external-link"><code>facet_wrap_paginate</code></a> and <a href="https://www.rdocumentation.org/packages/ggforce/versions/0.1.1/topics/facet_grid_paginate" class="external-link"><code>facet_grid_paginate</code></a> from the package ggforce.</p>
+<p>All xpose plot functions accept arguments for
+<code>facet_wrap_pagninate</code> and <code>facet_grid_paginate</code>
+(e.g. <code>ncol = 2</code>, <code>labeller = 'label_both'</code>,
+etc.). With the default xpose theme scales are set to
+<code>'free'</code> from one panel to another
+(<code>scales = 'free'</code>), this behavior can be changed with
+<code>scales = 'fixed'</code>, <code>'free_y'</code> or
+<code>'free_x'</code>.</p>
+<p>For more information on the available faceting options read the help
+of <a href="https://www.rdocumentation.org/packages/ggforce/versions/0.1.1/topics/facet_wrap_paginate" class="external-link"><code>facet_wrap_paginate</code></a>
+and <a href="https://www.rdocumentation.org/packages/ggforce/versions/0.1.1/topics/facet_grid_paginate" class="external-link"><code>facet_grid_paginate</code></a>
+from the package ggforce.</p>
 </div>
 <div class="section level3">
 <h3 id="additional-layers">Additional layers<a class="anchor" aria-label="anchor" href="#additional-layers"></a>
 </h3>
-<p><code>xpose</code> offers the opportunity to add any additional layers from <code>ggplot2</code>. Hence, a <code><a href="https://ggplot2.tidyverse.org/reference/geom_rug.html" class="external-link">ggplot2::geom_rug()</a></code> layer could be added to the <code><a href="../reference/dv_vs_pred.html">dv_vs_ipred()</a></code> plot along with some annotations (<code><a href="https://ggplot2.tidyverse.org/reference/annotate.html" class="external-link">ggplot2::annotate()</a></code>). Note: the additional layers do not inherit from the xpose aesthetic mapping (i.e. colors or other options need to be defined in each layer as shown below).</p>
-<p>Layers can also be used to modify the aesthetics scales for example <code><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">ggplot2::scale_color_manual()</a></code>, or remove a legend <code><a href="https://ggplot2.tidyverse.org/reference/scale_identity.html" class="external-link">ggplot2::scale_fill_identity()</a></code>.</p>
+<p><code>xpose</code> offers the opportunity to add any additional
+layers from <code>ggplot2</code>. Hence, a
+<code><a href="https://ggplot2.tidyverse.org/reference/geom_rug.html" class="external-link">ggplot2::geom_rug()</a></code> layer could be added to the
+<code><a href="../reference/dv_vs_pred.html">dv_vs_ipred()</a></code> plot along with some annotations
+(<code><a href="https://ggplot2.tidyverse.org/reference/annotate.html" class="external-link">ggplot2::annotate()</a></code>). Note: the additional layers do not
+inherit from the xpose aesthetic mapping (i.e. colors or other options
+need to be defined in each layer as shown below).</p>
+<p>Layers can also be used to modify the aesthetics scales for example
+<code><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">ggplot2::scale_color_manual()</a></code>, or remove a legend
+<code><a href="https://ggplot2.tidyverse.org/reference/scale_identity.html" class="external-link">ggplot2::scale_fill_identity()</a></code>.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_rug.html" class="external-link">geom_rug</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.2</span>, color <span class="op">=</span> <span class="st">'grey50'</span>,</span>
@@ -268,17 +334,25 @@
 <span>           alpha <span class="op">=</span> <span class="fl">0.2</span>, fill <span class="op">=</span> <span class="st">'red'</span>,</span>
 <span>           xmin <span class="op">=</span> <span class="fl">1</span>, xmax <span class="op">=</span> <span class="cn">Inf</span>,</span>
 <span>           ymin <span class="op">=</span> <span class="fl">1</span>, ymax <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span></code></pre></div>
+<pre><code>Warning:  [1m [22mUsing `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ [36mℹ [39m Please use `linewidth` instead.</code></pre>
 <p><img src="customize_plots_files/figure-html/demo%20layers-1.png" width="50%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level3">
 <h3 id="scales-options">Scales options<a class="anchor" aria-label="anchor" href="#scales-options"></a>
 </h3>
-<p>The argument <code>log</code> allows to log-transform the axes. Accepted values are <code>x</code>, <code>y</code> or <code>xy</code>.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<p>The argument <code>log</code> allows to log-transform the axes.
+Accepted values are <code>x</code>, <code>y</code> or
+<code>xy</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb</span>, log <span class="op">=</span> <span class="st">'xy'</span>, subtitle <span class="op">=</span> <span class="st">'Plot on log scale'</span><span class="op">)</span></span></code></pre></div>
 <p><img src="customize_plots_files/figure-html/log-scales%20demo-1.png" width="50%" style="display: block; margin: auto;"></p>
-<p>Additional arguments can be provided to the scales via the mapping by using the naming convention <code>xscale_xxx</code> or <code>yscale_xxx</code> where <code>xxx</code> is the name of a <code>ggplot2</code> scale argument such as <code>name</code>, <code>breaks</code>, <code>labels</code>, <code>expand</code>.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<p>Additional arguments can be provided to the scales via the mapping by
+using the naming convention <code>xscale_xxx</code> or
+<code>yscale_xxx</code> where <code>xxx</code> is the name of a
+<code>ggplot2</code> scale argument such as <code>name</code>,
+<code>breaks</code>, <code>labels</code>, <code>expand</code>.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb</span>, </span>
 <span>            xscale_breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.3</span>, <span class="fl">0.8</span>, <span class="fl">1.3</span><span class="op">)</span>,</span>
 <span>            xscale_labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'Low'</span>, <span class="st">'Med'</span>, <span class="st">'High'</span><span class="op">)</span>,</span>
@@ -289,14 +363,19 @@
 <div class="section level3">
 <h3 id="themes">Themes<a class="anchor" aria-label="anchor" href="#themes"></a>
 </h3>
-<p>Theme in <code>xpose</code> are easily customizable. Themes are made up of two parts:</p>
+<p>Theme in <code>xpose</code> are easily customizable. Themes are made
+up of two parts:</p>
 <ul>
-<li>A <code>ggplot2</code> (<code>gg_theme</code>) theme controlling the aspect of the plot window<br>
+<li>A <code>ggplot2</code> (<code>gg_theme</code>) theme controlling the
+aspect of the plot window<br>
 </li>
-<li>An <code>xpose</code> (<code>xp_theme</code>) theme controlling the aspect of the layers such as points or lines</li>
+<li>An <code>xpose</code> (<code>xp_theme</code>) theme controlling the
+aspect of the layers such as points or lines</li>
 </ul>
-<p>Themes can be attached to an <code>xpdb</code> when importing the data with <code><a href="../reference/xpose_data.html">xpose_data()</a></code> or using the function <code><a href="../reference/update_themes.html">update_themes()</a></code> on an xpdb object.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<p>Themes can be attached to an <code>xpdb</code> when importing the
+data with <code><a href="../reference/xpose_data.html">xpose_data()</a></code> or using the function
+<code><a href="../reference/update_themes.html">update_themes()</a></code> on an xpdb object.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># While creating the xpdb</span></span>
 <span><span class="va">xpdb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/xpose_data.html">xpose_data</a></span><span class="op">(</span>runno <span class="op">=</span> <span class="st">'001'</span>, </span>
 <span>                   gg_theme <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span>, </span>
@@ -310,7 +389,9 @@
 <div class="section level4">
 <h4 id="examples-of-gg_theme">Examples of <code>gg_theme</code>:<a class="anchor" aria-label="anchor" href="#examples-of-gg_theme"></a>
 </h4>
-<p>xpose brings two additional themes (<code><a href="../reference/gg_themes.html">theme_readable()</a></code> and <code><a href="../reference/gg_themes.html">theme_bw2()</a></code>), to those available in <code>ggplot2</code>.</p>
+<p>xpose brings two additional themes (<code><a href="../reference/gg_themes.html">theme_readable()</a></code> and
+<code><a href="../reference/gg_themes.html">theme_bw2()</a></code>), to those available in
+<code>ggplot2</code>.</p>
 <p><img src="customize_plots_files/figure-html/demo%20gg_theme-1.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level4">

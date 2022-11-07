@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xpose</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.13.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.14</span>
       </span>
     </div>
 
@@ -129,9 +129,10 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction</h1>
-                        <h4 data-toc-skip class="author">Benjamin Guiastrennec</h4>
+                        <h4 data-toc-skip class="author">Benjamin
+Guiastrennec</h4>
             
-            <h4 data-toc-skip class="date">22 October, 2022</h4>
+            <h4 data-toc-skip class="date">07 November, 2022</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/UUPharmacometrics/xpose/blob/HEAD/vignettes/introduction.Rmd" class="external-link"><code>vignettes/introduction.Rmd</code></a></small>
       <div class="hidden name"><code>introduction.Rmd</code></div>
@@ -150,14 +151,18 @@
 <div class="section level3">
 <h3 id="import-model-output">Import model output<a class="anchor" aria-label="anchor" href="#import-model-output"></a>
 </h3>
-<p>The function <code><a href="../reference/xpose_data.html">xpose_data()</a></code> collects all model output files and table and organizes them into an R object commonly called <code>xpdb</code> which stands for “xpose database”.</p>
+<p>The function <code><a href="../reference/xpose_data.html">xpose_data()</a></code> collects all model output
+files and table and organizes them into an R object commonly called
+<code>xpdb</code> which stands for “xpose database”.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">xpdb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/xpose_data.html">xpose_data</a></span><span class="op">(</span>runno <span class="op">=</span> <span class="st">'001'</span>, dir <span class="op">=</span> <span class="st">'analysis/model/pk/'</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="glimpse-at-the-xpdb">Glimpse at the xpdb<a class="anchor" aria-label="anchor" href="#glimpse-at-the-xpdb"></a>
 </h3>
-<p>The files attached to an xpdb object can be displayed to the console simply by writing its name to the console or by using the <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> function.</p>
+<p>The files attached to an xpdb object can be displayed to the console
+simply by writing its name to the console or by using the
+<code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> function.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">xpdb</span> <span class="co"># or print(xpdb)</span></span></code></pre></div>
 <pre><code>run001.lst overview: 
@@ -174,7 +179,8 @@
 <div class="section level3">
 <h3 id="model-summary">Model summary<a class="anchor" aria-label="anchor" href="#model-summary"></a>
 </h3>
-<p>A summary of a model run can be displayed to the console by using the <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> function on an xpdb object.</p>
+<p>A summary of a model run can be displayed to the console by using the
+<code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> function on an xpdb object.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">xpdb</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
@@ -218,7 +224,8 @@ Summary for problem no. 2 [Model simulations]
 <div class="section level3">
 <h3 id="parameter-estimates">Parameter estimates<a class="anchor" aria-label="anchor" href="#parameter-estimates"></a>
 </h3>
-<p>A table of parameter estimates can be displayed to the console by using the <code><a href="../reference/prm_table.html">prm_table()</a></code> function on an xpdb object.</p>
+<p>A table of parameter estimates can be displayed to the console by
+using the <code><a href="../reference/prm_table.html">prm_table()</a></code> function on an xpdb object.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/prm_table.html">prm_table</a></span><span class="op">(</span><span class="va">xpdb</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
@@ -242,7 +249,9 @@ Estimates for $prob no.1, subprob no.0, method foce
 <div class="section level3">
 <h3 id="listing-variables">Listing variables<a class="anchor" aria-label="anchor" href="#listing-variables"></a>
 </h3>
-<p>A list of available variables for plotting can be displayed to the console by using the <code><a href="../reference/list_vars.html">list_vars()</a></code> function on an xpdb object.</p>
+<p>A list of available variables for plotting can be displayed to the
+console by using the <code><a href="../reference/list_vars.html">list_vars()</a></code> function on an xpdb
+object.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_vars.html">list_vars</a></span><span class="op">(</span><span class="va">xpdb</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
@@ -274,7 +283,9 @@ List of available variables for problem no. 2
 <div class="section level3">
 <h3 id="pipes">Pipes<a class="anchor" aria-label="anchor" href="#pipes"></a>
 </h3>
-<p><code>xpose</code> makes use of the pipe operator <code>%&gt;%</code> from the package <a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a>. Pipes can be used to generate clear workflow.</p>
+<p><code>xpose</code> makes use of the pipe operator <code>%&gt;%</code>
+from the package <a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a>. Pipes
+can be used to generate clear workflow.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/xpose_data.html">xpose_data</a></span><span class="op">(</span>runno <span class="op">=</span> <span class="st">'001'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -283,7 +294,12 @@ List of available variables for problem no. 2
 <div class="section level3">
 <h3 id="editing-the-xpdb">Editing the xpdb<a class="anchor" aria-label="anchor" href="#editing-the-xpdb"></a>
 </h3>
-<p>Multiples edits can be made to the xpdb object. For instance the type (visible using the <code><a href="../reference/list_vars.html">list_vars()</a></code> function described above) of a variable can be changed. Hence the independent variable (idv) could be changed from <code>TIME</code> (default in NONMEM) to <code>TAD</code>. All plots using <code>idv</code> will then automatically use <code>TAD</code>.</p>
+<p>Multiples edits can be made to the xpdb object. For instance the type
+(visible using the <code><a href="../reference/list_vars.html">list_vars()</a></code> function described above) of
+a variable can be changed. Hence the independent variable (idv) could be
+changed from <code>TIME</code> (default in NONMEM) to <code>TAD</code>.
+All plots using <code>idv</code> will then automatically use
+<code>TAD</code>.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># With the TIME default</span></span>
 <span><span class="va">xpdb</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -312,8 +328,18 @@ List of available variables for problem no. 2
 <div class="section level3">
 <h3 id="saving-plots">Saving plots<a class="anchor" aria-label="anchor" href="#saving-plots"></a>
 </h3>
-<p>The <code>xpose_save</code> function was designed to facilitate the export of xpose plots. The file extension is guessed from the file name and must match one of .pdf (default), .jpeg, .png, .bmp or .tiff. If no extension is provided as part of the file name a .pdf will be generated. Finally, if the <code>plot</code> argument is left empty <code>xpose_save</code> will automatically save the last plot that was created or modified.</p>
-<p>The <code><a href="../reference/xpose_save.html">xpose_save()</a></code> function is compatible with templates titles and keywords such as <code>@run</code> for the run number and <code>@plotfun</code> for the name of the plotting function can be used to automatically name files. Learn more about the template titles keywords using <code><a href="../reference/template_titles.html">help('template_titles')</a></code>.</p>
+<p>The <code>xpose_save</code> function was designed to facilitate the
+export of xpose plots. The file extension is guessed from the file name
+and must match one of .pdf (default), .jpeg, .png, .bmp or .tiff. If no
+extension is provided as part of the file name a .pdf will be generated.
+Finally, if the <code>plot</code> argument is left empty
+<code>xpose_save</code> will automatically save the last plot that was
+created or modified.</p>
+<p>The <code><a href="../reference/xpose_save.html">xpose_save()</a></code> function is compatible with templates
+titles and keywords such as <code>@run</code> for the run number and
+<code>@plotfun</code> for the name of the plotting function can be used
+to automatically name files. Learn more about the template titles
+keywords using <code><a href="../reference/template_titles.html">help('template_titles')</a></code>.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Save the last generated plot</span></span>
 <span><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb</span><span class="op">)</span></span>
