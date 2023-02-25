@@ -99,7 +99,9 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.15" id="xpose-0415">xpose 0.4.15<a class="anchor" aria-label="anchor" href="#xpose-0415"></a></h2>
-<ul><li>Updated minimal requirements (<a href="https://github.com/sebastianueckert" class="external-link">@sebastianueckert</a>, <a href="https://github.com/UUPharmacometrics/xpose/issues/208" class="external-link">#208</a>)</li>
+<ul><li>Updated minimal requirements for <code>readr</code> (&gt;= 2.1.0) (<a href="https://github.com/sebastianueckert" class="external-link">@sebastianueckert</a>, <a href="https://github.com/UUPharmacometrics/xpose/issues/208" class="external-link">#208</a>)</li>
+<li>Updated minimal requirments for R (&gt;= 3.5.0) <code>because serialized objects in serialize/load version 3 cannot be read in older versions of R</code>
+</li>
 <li>Don’t summarize RANMETHOD as an estimation method (<a href="https://github.com/vrognas" class="external-link">@vrognas</a>, <a href="https://github.com/UUPharmacometrics/xpose/issues/213" class="external-link">#213</a>)</li>
 <li>Fix bug when a given estimation method is used several time in a single <code>$PROBLEM</code>. Sequential <code>$ESTIMATION</code> are now each attributed different <code>subprob</code> visible to the user using <code>list_files(xpdb)</code> (<a href="https://github.com/vrognas" class="external-link">@vrognas</a>, <a href="https://github.com/UUPharmacometrics/xpose/issues/213" class="external-link">#213</a>)</li>
 <li>Compatibility fix with ggplot2 3.4.0, all layers but <code>geom_point</code> and <code>geom_text</code> should now use <code>linewidth</code> instead of <code>size</code> for line width.</li>
