@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xpose</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.14.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.15</span>
       </span>
     </div>
 
@@ -160,7 +160,7 @@ last one for each file.</p></dd>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Single file (returns a tibble)</span></span></span>
 <span class="r-in"><span><span class="va">ext_file</span> <span class="op">&lt;-</span> <span class="fu">get_file</span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, file <span class="op">=</span> <span class="st">'run001.ext'</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Returning data from run001.ext, $prob no.1, subprob no.0, method foce</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Returning data from run001.ext, $prob no.1, subprob no.1, method foce</span>
 <span class="r-in"><span><span class="va">ext_file</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 28 × 16</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    ITERATION THETA1 THETA2 THETA3 THETA4 THETA5  THETA6  THETA7 SIGMA(…¹ OMEGA…²</span>
@@ -184,7 +184,7 @@ last one for each file.</p></dd>
 <span class="r-in"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu">get_file</span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'run001.ext'</span>, <span class="st">'run001.phi'</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Returning data from run001.ext, run001.phi</span>
 <span class="r-in"><span><span class="va">files</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $run001.ext_prob_1_subprob_0_foce</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $run001.ext_prob_1_subprob_1_foce</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 28 × 16</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    ITERATION THETA1 THETA2 THETA3 THETA4 THETA5  THETA6  THETA7 SIGMA(…¹ OMEGA…²</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -203,7 +203,7 @@ last one for each file.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `OMEGA(3,3)` &lt;dbl&gt;, OBJ &lt;dbl&gt;, and abbreviated variable names</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ¹​`SIGMA(1,1)`, ²​`OMEGA(1,1)`</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $run001.phi_prob_1_subprob_0_foce</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $run001.phi_prob_1_subprob_1_foce</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 74 × 12</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    SUBJECT_NO    ID `ETA(1)` `ETA(2)` `ETA(3)` ETC(1…¹ ETC(2,…² ETC(2…³ ETC(3,…⁴</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
