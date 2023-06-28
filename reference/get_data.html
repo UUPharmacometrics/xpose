@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xpose</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.16</span>
       </span>
     </div>
 
@@ -156,8 +156,9 @@ tables/problems or a named list for multiple tables/problems.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 112     200   100     0     0   0     0   0      0      0      0          1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 112     200     0     0     0   0.5   0.5 0.556  0.034<span style="text-decoration: underline;">1</span> 0.627 -<span style="color: #BB0000;">0.275</span>      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 112     200     0     0     0   1     1   0.712 -<span style="color: #BB0000;">0.417</span>  0.788  0.163      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 540 more rows, and 6 more variables: A1 &lt;dbl&gt;, A2 &lt;dbl&gt;, DV &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   PRED &lt;dbl&gt;, RES &lt;dbl&gt;, WRES &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 540 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: A1 &lt;dbl&gt;, A2 &lt;dbl&gt;, DV &lt;dbl&gt;, PRED &lt;dbl&gt;, RES &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   WRES &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># By problem</span></span></span>
 <span class="r-in"><span><span class="va">tables</span> <span class="op">&lt;-</span> <span class="fu">get_data</span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, .problem <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
@@ -175,10 +176,11 @@ tables/problems or a named list for multiple tables/problems.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 112   1     1     1       200   100     0     0   0     0   0      0     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 112   1     1     1       200     0     0     0   0.5   0.5 0.556  0.034<span style="text-decoration: underline;">1</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 112   1     1     1       200     0     0     0   1     1   0.712 -<span style="color: #BB0000;">0.417</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 540 more rows, and 19 more variables: CPRED &lt;dbl&gt;, IWRES &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   EVID &lt;dbl&gt;, A1 &lt;dbl&gt;, A2 &lt;dbl&gt;, DV &lt;dbl&gt;, PRED &lt;dbl&gt;, RES &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   WRES &lt;dbl&gt;, CLCR &lt;dbl&gt;, AGE &lt;dbl&gt;, WT &lt;dbl&gt;, KA &lt;dbl&gt;, CL &lt;dbl&gt;, V &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ALAG1 &lt;dbl&gt;, ETA1 &lt;dbl&gt;, ETA2 &lt;dbl&gt;, ETA3 &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 540 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 19 more variables: CPRED &lt;dbl&gt;, IWRES &lt;dbl&gt;, EVID &lt;dbl&gt;, A1 &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   A2 &lt;dbl&gt;, DV &lt;dbl&gt;, PRED &lt;dbl&gt;, RES &lt;dbl&gt;, WRES &lt;dbl&gt;, CLCR &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   AGE &lt;dbl&gt;, WT &lt;dbl&gt;, KA &lt;dbl&gt;, CL &lt;dbl&gt;, V &lt;dbl&gt;, ALAG1 &lt;dbl&gt;, ETA1 &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ETA2 &lt;dbl&gt;, ETA3 &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Tip to list available tables in the xpdb</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span><span class="op">)</span></span></span>

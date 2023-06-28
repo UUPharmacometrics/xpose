@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xpose</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.16</span>
       </span>
     </div>
 
@@ -132,7 +132,7 @@
                         <h4 data-toc-skip class="author">Benjamin
 Guiastrennec</h4>
             
-            <h4 data-toc-skip class="date">25 February, 2023</h4>
+            <h4 data-toc-skip class="date">28 June, 2023</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/UUPharmacometrics/xpose/blob/HEAD/vignettes/access_xpdb_data.Rmd" class="external-link"><code>vignettes/access_xpdb_data.Rmd</code></a></small>
       <div class="hidden name"><code>access_xpdb_data.Rmd</code></div>
@@ -191,7 +191,7 @@ listed as problem 0.</em></p>
  [38;5;250m 8 [39m       1     3 dat         [38;5;246m" [39m../../mx19_2.csv IGNORE=@ [38;5;246m" [39m                               [38;5;246m" [39m [38;5;246m" [39m             
  [38;5;250m 9 [39m       1     4 abb         [38;5;246m" [39mDERIV2=NO [38;5;246m" [39m                                               [38;5;246m" [39m [38;5;246m" [39m             
  [38;5;250m10 [39m       1     5 sub         [38;5;246m" [39mADVAN2 TRANS1 [38;5;246m" [39m                                           [38;5;246m" [39m [38;5;246m" [39m             
- [38;5;246m# … with 754 more rows [39m</code></pre>
+ [38;5;246m# ℹ 754 more rows [39m</code></pre>
 </div>
 <div class="section level3">
 <h3 id="access-the-output-data">Access the output data<a class="anchor" aria-label="anchor" href="#access-the-output-data"></a>
@@ -222,7 +222,7 @@ be deduplicated).</em></p>
  [38;5;250m 8 [39m 112      47    73    80
  [38;5;250m 9 [39m 112      47    73    80
  [38;5;250m10 [39m 112      47    73    80
- [38;5;246m# … with 540 more rows [39m</code></pre>
+ [38;5;246m# ℹ 540 more rows [39m</code></pre>
 </div>
 <div class="section level3">
 <h3 id="access-the-run-files">Access the run files<a class="anchor" aria-label="anchor" href="#access-the-run-files"></a>
@@ -237,21 +237,21 @@ provided a named list is returned.</p>
 <code class="sourceCode R"><span><span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_file.html">get_file</a></span><span class="op">(</span><span class="va">xpdb</span>, file <span class="op">=</span> <span class="st">'run001.ext'</span><span class="op">)</span></span>
 <span><span class="va">file</span></span></code></pre></div>
 <pre><code> [38;5;246m# A tibble: 28 × 16 [39m
-   ITERATION THETA1 THETA2 THETA3 THETA4 THETA5  THETA6  THETA7 `SIGMA(1,1)` OMEGA…¹ OMEGA…² OMEGA…³
-        [3m [38;5;246m&lt;dbl&gt; [39m [23m   [3m [38;5;246m&lt;dbl&gt; [39m [23m   [3m [38;5;246m&lt;dbl&gt; [39m [23m   [3m [38;5;246m&lt;dbl&gt; [39m [23m   [3m [38;5;246m&lt;dbl&gt; [39m [23m   [3m [38;5;246m&lt;dbl&gt; [39m [23m    [3m [38;5;246m&lt;dbl&gt; [39m [23m    [3m [38;5;246m&lt;dbl&gt; [39m [23m         [3m [38;5;246m&lt;dbl&gt; [39m [23m    [3m [38;5;246m&lt;dbl&gt; [39m [23m    [3m [38;5;246m&lt;dbl&gt; [39m [23m    [3m [38;5;246m&lt;dbl&gt; [39m [23m
- [38;5;250m 1 [39m         0   25.4   1.47   7.45  0.214  0.200 0.009 [4m8 [24m [4m3 [24m 0.006 [4m0 [24m [4m1 [24m            1  0.074 [4m0 [24m       0  0.038 [4m9 [24m
- [38;5;250m 2 [39m         1   26.3   1.26   7.35  0.219  0.217 0.009 [4m8 [24m [4m9 [24m 0.006 [4m0 [24m [4m2 [24m            1  0.074 [4m4 [24m       0  0.040 [4m8 [24m
- [38;5;250m 3 [39m         2   25.6   1.47   7.29  0.216  0.212 0.009 [4m8 [24m [4m7 [24m 0.006 [4m0 [24m [4m3 [24m            1  0.074 [4m1 [24m       0  0.041 [4m1 [24m
- [38;5;250m 4 [39m         3   26.8   1.49   5.76  0.213  0.213 0.009 [4m7 [24m [4m9 [24m 0.006 [4m2 [24m [4m8 [24m            1  0.073 [4m0 [24m       0  0.065 [4m2 [24m
- [38;5;250m 5 [39m         4   26.7   1.49   5.69  0.213  0.212 0.009 [4m7 [24m [4m9 [24m 0.006 [4m2 [24m [4m9 [24m            1  0.073 [4m0 [24m       0  0.066 [4m4 [24m
- [38;5;250m 6 [39m         5   26.7   1.49   5.66  0.213  0.212 0.009 [4m7 [24m [4m9 [24m 0.006 [4m3 [24m [4m0 [24m            1  0.073 [4m0 [24m       0  0.066 [4m4 [24m
- [38;5;250m 7 [39m         6   26.6   1.49   5.03  0.210  0.217 0.010 [4m0 [24m  0.006 [4m5 [24m [4m2 [24m            1  0.072 [4m4 [24m       0  0.063 [4m3 [24m
- [38;5;250m 8 [39m         7   26.6   1.49   4.93  0.205  0.217 0.010 [4m0 [24m  0.006 [4m5 [24m [4m8 [24m            1  0.071 [4m7 [24m       0  0.062 [4m3 [24m
- [38;5;250m 9 [39m         8   26.6   1.48   4.62  0.211  0.217 0.009 [4m5 [24m [4m1 [24m 0.007 [4m3 [24m [4m5 [24m            1  0.063 [4m3 [24m       0  0.054 [4m7 [24m
- [38;5;250m10 [39m         9   26.6   1.46   4.41  0.209  0.217 0.009 [4m0 [24m [4m3 [24m 0.008 [4m7 [24m [4m4 [24m            1  0.076 [4m6 [24m       0  0.049 [4m3 [24m
- [38;5;246m# … with 18 more rows, 4 more variables: `OMEGA(3,1)` &lt;dbl&gt;, `OMEGA(3,2)` &lt;dbl&gt;, [39m
- [38;5;246m#   `OMEGA(3,3)` &lt;dbl&gt;, OBJ &lt;dbl&gt;, and abbreviated variable names ¹​`OMEGA(1,1)`, ²​`OMEGA(2,1)`, [39m
- [38;5;246m#   ³​`OMEGA(2,2)` [39m</code></pre>
+   ITERATION THETA1 THETA2 THETA3 THETA4 THETA5  THETA6  THETA7 `SIGMA(1,1)` `OMEGA(1,1)`
+        [3m [38;5;246m&lt;dbl&gt; [39m [23m   [3m [38;5;246m&lt;dbl&gt; [39m [23m   [3m [38;5;246m&lt;dbl&gt; [39m [23m   [3m [38;5;246m&lt;dbl&gt; [39m [23m   [3m [38;5;246m&lt;dbl&gt; [39m [23m   [3m [38;5;246m&lt;dbl&gt; [39m [23m    [3m [38;5;246m&lt;dbl&gt; [39m [23m    [3m [38;5;246m&lt;dbl&gt; [39m [23m         [3m [38;5;246m&lt;dbl&gt; [39m [23m         [3m [38;5;246m&lt;dbl&gt; [39m [23m
+ [38;5;250m 1 [39m         0   25.4   1.47   7.45  0.214  0.200 0.009 [4m8 [24m [4m3 [24m 0.006 [4m0 [24m [4m1 [24m            1       0.074 [4m0 [24m
+ [38;5;250m 2 [39m         1   26.3   1.26   7.35  0.219  0.217 0.009 [4m8 [24m [4m9 [24m 0.006 [4m0 [24m [4m2 [24m            1       0.074 [4m4 [24m
+ [38;5;250m 3 [39m         2   25.6   1.47   7.29  0.216  0.212 0.009 [4m8 [24m [4m7 [24m 0.006 [4m0 [24m [4m3 [24m            1       0.074 [4m1 [24m
+ [38;5;250m 4 [39m         3   26.8   1.49   5.76  0.213  0.213 0.009 [4m7 [24m [4m9 [24m 0.006 [4m2 [24m [4m8 [24m            1       0.073 [4m0 [24m
+ [38;5;250m 5 [39m         4   26.7   1.49   5.69  0.213  0.212 0.009 [4m7 [24m [4m9 [24m 0.006 [4m2 [24m [4m9 [24m            1       0.073 [4m0 [24m
+ [38;5;250m 6 [39m         5   26.7   1.49   5.66  0.213  0.212 0.009 [4m7 [24m [4m9 [24m 0.006 [4m3 [24m [4m0 [24m            1       0.073 [4m0 [24m
+ [38;5;250m 7 [39m         6   26.6   1.49   5.03  0.210  0.217 0.010 [4m0 [24m  0.006 [4m5 [24m [4m2 [24m            1       0.072 [4m4 [24m
+ [38;5;250m 8 [39m         7   26.6   1.49   4.93  0.205  0.217 0.010 [4m0 [24m  0.006 [4m5 [24m [4m8 [24m            1       0.071 [4m7 [24m
+ [38;5;250m 9 [39m         8   26.6   1.48   4.62  0.211  0.217 0.009 [4m5 [24m [4m1 [24m 0.007 [4m3 [24m [4m5 [24m            1       0.063 [4m3 [24m
+ [38;5;250m10 [39m         9   26.6   1.46   4.41  0.209  0.217 0.009 [4m0 [24m [4m3 [24m 0.008 [4m7 [24m [4m4 [24m            1       0.076 [4m6 [24m
+ [38;5;246m# ℹ 18 more rows [39m
+ [38;5;246m# ℹ 6 more variables: `OMEGA(2,1)` &lt;dbl&gt;, `OMEGA(2,2)` &lt;dbl&gt;, `OMEGA(3,1)` &lt;dbl&gt;, [39m
+ [38;5;246m#   `OMEGA(3,2)` &lt;dbl&gt;, `OMEGA(3,3)` &lt;dbl&gt;, OBJ &lt;dbl&gt; [39m</code></pre>
 </div>
 <div class="section level3">
 <h3 id="access-the-parameter-estimates">Access the parameter estimates<a class="anchor" aria-label="anchor" href="#access-the-parameter-estimates"></a>
