@@ -152,30 +152,13 @@ off diagonal elements be transformed to correlations.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Store the parameter table</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Store the parameter table</span></span></span>
 <span class="r-in"><span><span class="va">prm</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_prm.html">get_prm</a></span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, .problem <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Returning parameter estimates from $prob no.1, subprob no.1, method foce</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Display parameters to the console</span></span></span>
 <span class="r-in"><span><span class="fu">prm_table</span><span class="op">(</span><span class="va">xpdb_ex_pk</span>, .problem <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Reporting transformed parameters:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> For the OMEGA and SIGMA matrices, values are reported as standard deviations for the diagonal elements and as correlations for the off-diagonal elements. The relative standard errors (RSE) for OMEGA and SIGMA are reported on the approximate standard deviation scale (SE/variance estimate)/2. Use `transform = FALSE` to report untransformed parameters.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Estimates for $prob no.1, subprob no.1, method foce</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Parameter  Label      Value        RSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  THETA1     TVCL       26.29        0.03391</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  THETA2     TVV        1.348        0.0325</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  THETA3     TVKA       4.204        0.1925</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  THETA4     LAG        0.208        0.07554</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  THETA5     Prop. Err  0.2046       0.1097</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  THETA6     Add. Err   0.01055      0.3466</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  THETA7     CRCL on CL 0.007172     0.2366</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  OMEGA(1,1) IIV CL     0.2701       0.08616</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  OMEGA(2,2) IIV V      0.195        0.1643</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  OMEGA(3,3) IIV KA     1.381        0.1463</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  SIGMA(1,1)            1        fix  - </span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
