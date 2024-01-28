@@ -99,41 +99,44 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.17.9000" id="xpose-04179000">xpose 0.4.17.9000<a class="anchor" aria-label="anchor" href="#xpose-04179000"></a></h2>
-<ul><li>Compatibility fix for <code>roxygen2</code>(7.3.1)</li>
-<li>Small documentation fixes</li>
+<ul><li>Compatibility fix for <code>roxygen2</code> 7.3.1</li>
+<li>Fix bug when reading a control stream and using <code>$PROB</code> instead of <code>$PROBLEM</code> (<a href="https://github.com/AndreasCalvagone" class="external-link">@AndreasCalvagone</a>, <a href="https://github.com/UUPharmacometrics/xpose/issues/222" class="external-link">#222</a>)</li>
+<li>Introduced <code>check_ext</code> argument in <code><a href="../reference/xpose_data.html">xpose_data()</a></code>, <code><a href="../reference/read_nm_model.html">read_nm_model()</a></code>, to bypass the strict NONMEM model format check if needed.</li>
+<li>Small documentation fixes and improvements</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.17" id="xpose-0417">xpose 0.4.17<small>2023-06-29</small><a class="anchor" aria-label="anchor" href="#xpose-0417"></a></h2>
-<ul><li>Updated tests for <code>ggplot2</code>(<a href="https://github.com/hadley" class="external-link">@hadley</a>, <a href="https://github.com/UUPharmacometrics/xpose/issues/220" class="external-link">#220</a>)</li>
+<ul><li>Updated tests for <code>ggplot2</code> (<a href="https://github.com/hadley" class="external-link">@hadley</a>, <a href="https://github.com/UUPharmacometrics/xpose/issues/220" class="external-link">#220</a>)</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.16" id="xpose-0416">xpose 0.4.16<small>2023-04-18</small><a class="anchor" aria-label="anchor" href="#xpose-0416"></a></h2>
-<ul><li>Updated tests for <code>ggplot2</code>(3.4.2)</li>
+<ul><li>Updated tests for <code>ggplot2</code> 3.4.2</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.15" id="xpose-0415">xpose 0.4.15<small>2023-02-25</small><a class="anchor" aria-label="anchor" href="#xpose-0415"></a></h2>
 <ul><li>Updated minimal requirements for <code>readr</code> (&gt;= 2.1.0) (<a href="https://github.com/sebastianueckert" class="external-link">@sebastianueckert</a>, <a href="https://github.com/UUPharmacometrics/xpose/issues/208" class="external-link">#208</a>)</li>
-<li>Updated minimal requirments for R (&gt;= 3.5.0) <code>because serialized objects in serialize/load version 3 cannot be read in older versions of R</code>
+<li>Updated minimal requirements for R (&gt;= 3.5.0) <code>because serialized objects in serialize/load version 3 cannot be read in older versions of R</code>
 </li>
 <li>Don’t summarize RANMETHOD as an estimation method (<a href="https://github.com/vrognas" class="external-link">@vrognas</a>, <a href="https://github.com/UUPharmacometrics/xpose/issues/213" class="external-link">#213</a>)</li>
 <li>Fix bug when a given estimation method is used several time in a single <code>$PROBLEM</code>. Sequential <code>$ESTIMATION</code> are now each attributed different <code>subprob</code> visible to the user using <code>list_files(xpdb)</code> (<a href="https://github.com/vrognas" class="external-link">@vrognas</a>, <a href="https://github.com/UUPharmacometrics/xpose/issues/213" class="external-link">#213</a>)</li>
-<li>Compatibility fix with ggplot2 3.4.0, all layers but <code>geom_point</code> and <code>geom_text</code> should now use <code>linewidth</code> instead of <code>size</code> for line width.</li>
-<li>Compatibility fix with dplyr 1.1.0</li>
+<li>Compatibility fix with <code>ggplot2</code> 3.4.0, all layers but <code>geom_point</code> and <code>geom_text</code> should now use <code>linewidth</code> instead of <code>size</code> for line width.</li>
+<li>Compatibility fix with <code>dplyr</code> 1.1.0</li>
 <li>Small fixes and improvements</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.14" id="xpose-0414">xpose 0.4.14<small>2022-11-07</small><a class="anchor" aria-label="anchor" href="#xpose-0414"></a></h2>
-<ul><li>Compatibility fix with ggplot2 3.4.0</li>
-<li>Compatibility fix with stringr 1.5.0 (<a href="https://github.com/hadley" class="external-link">@hadley</a>, <a href="https://github.com/UUPharmacometrics/xpose/issues/207" class="external-link">#207</a>)</li>
-<li>xpose will now give a warning on windows if <code>options(readr.read_lazy = TRUE)</code> (<a href="https://github.com/AndreasCalvagone" class="external-link">@AndreasCalvagone</a> <a href="https://github.com/UUPharmacometrics/xpose/issues/198" class="external-link">#198</a>)</li>
+<ul><li>Compatibility fix with <code>ggplot2</code> 3.4.0</li>
+<li>Compatibility fix with <code>stringr</code> 1.5.0 (<a href="https://github.com/hadley" class="external-link">@hadley</a>, <a href="https://github.com/UUPharmacometrics/xpose/issues/207" class="external-link">#207</a>)</li>
+<li>
+<code>xpose</code> will now give a warning on windows if <code>options(readr.read_lazy = TRUE)</code> (<a href="https://github.com/AndreasCalvagone" class="external-link">@AndreasCalvagone</a> <a href="https://github.com/UUPharmacometrics/xpose/issues/198" class="external-link">#198</a>)</li>
 <li>Fixed errors in plots when calling function with <code>xpose::</code> (<a href="https://github.com/mattfidler" class="external-link">@mattfidler</a> <a href="https://github.com/UUPharmacometrics/xpose/issues/95" class="external-link">#95</a>)</li>
 <li>Updated continuous integration workflow</li>
 <li>Small fixes and improvements</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.13" id="xpose-0413">xpose 0.4.13<small>2021-06-30</small><a class="anchor" aria-label="anchor" href="#xpose-0413"></a></h2>
-<ul><li>Compatibility fix with ggplot2 3.3.4</li>
-<li>Compatibility fix with readr 2.0.0 (<a href="https://github.com/jimhester" class="external-link">@jimhester</a>, <a href="https://github.com/UUPharmacometrics/xpose/issues/194" class="external-link">#194</a>)</li>
+<ul><li>Compatibility fix with <code>ggplot2</code> 3.3.4</li>
+<li>Compatibility fix with <code>readr</code> 2.0.0 (<a href="https://github.com/jimhester" class="external-link">@jimhester</a>, <a href="https://github.com/UUPharmacometrics/xpose/issues/194" class="external-link">#194</a>)</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.12" id="xpose-0412">xpose 0.4.12<small>2021-01-12</small><a class="anchor" aria-label="anchor" href="#xpose-0412"></a></h2>
@@ -145,15 +148,15 @@
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.10" id="xpose-0410">xpose 0.4.10<small>2020-06-08</small><a class="anchor" aria-label="anchor" href="#xpose-0410"></a></h2>
-<ul><li>Compatibility fix for vpc 1.2.1</li>
+<ul><li>Compatibility fix for <code>vpc</code> 1.2.1</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.9" id="xpose-049">xpose 0.4.9<small>2020-05-25</small><a class="anchor" aria-label="anchor" href="#xpose-049"></a></h2>
-<ul><li>Compatibility fix for dplyr 1.0.0 and vpc 1.2.0</li>
+<ul><li>Compatibility fix for <code>dplyr</code> 1.0.0 and <code>vpc</code> 1.2.0</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.8" id="xpose-048">xpose 0.4.8<small>2020-03-17</small><a class="anchor" aria-label="anchor" href="#xpose-048"></a></h2>
-<ul><li>Compatibility fix for ggplot 3.3.0 and tibble 3.0.0</li>
+<ul><li>Compatibility fix for <code>ggplot</code> 3.3.0 and <code>tibble</code> 3.0.0</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.7" id="xpose-047">xpose 0.4.7<small>2020-02-04</small><a class="anchor" aria-label="anchor" href="#xpose-047"></a></h2>
@@ -169,8 +172,8 @@
 <h2 class="page-header" data-toc-text="0.4.5" id="xpose-045">xpose 0.4.5<small>2019-10-07</small><a class="anchor" aria-label="anchor" href="#xpose-045"></a></h2>
 <div class="section level3">
 <h3 id="general-0-4-5">General<a class="anchor" aria-label="anchor" href="#general-0-4-5"></a></h3>
-<ul><li>The <code>gg_theme</code> argument in <code>xpose_data</code>, <code>update_themes</code> or plots now accepts a function returning a complete ggplot2 theme. In addition theme <code>gg_theme</code> can now accept theme elements in <code>update_themes</code> and plots. (<a href="https://github.com/UUPharmacometrics/xpose/issues/157" class="external-link">#157</a>)</li>
-<li>Added compatibility with tidyr 1.0.0 (<a href="https://github.com/UUPharmacometrics/xpose/issues/166" class="external-link">#166</a>)</li>
+<ul><li>The <code>gg_theme</code> argument in <code>xpose_data</code>, <code>update_themes</code> or plots now accepts a function returning a complete <code>ggplot2</code> theme. In addition theme <code>gg_theme</code> can now accept theme elements in <code>update_themes</code> and plots. (<a href="https://github.com/UUPharmacometrics/xpose/issues/157" class="external-link">#157</a>)</li>
+<li>Added compatibility with <code>tidyr</code> 1.0.0 (<a href="https://github.com/UUPharmacometrics/xpose/issues/166" class="external-link">#166</a>)</li>
 <li>Small fixes to vignettes, documentations and website</li>
 </ul></div>
 </div>
@@ -189,9 +192,9 @@
 <div class="section level4">
 <h4 id="general-0-4-3">General<a class="anchor" aria-label="anchor" href="#general-0-4-3"></a></h4>
 <ul><li>Fixed bug in <code><a href="../reference/get_prm.html">get_prm()</a></code>/<code><a href="../reference/prm_table.html">prm_table()</a></code> where off diagonal correlations were improperly computed.</li>
-<li>Fixed bug in <code><a href="../reference/print.xpose_data.html">print.xpose_data()</a></code>where a warning from stringi was returned.</li>
-<li>Fixed multiple bugs introduced by the new versions of tidyverse packages</li>
-<li>Added compatibility to ggplot2 v3.0.0</li>
+<li>Fixed bug in <code><a href="../reference/print.xpose_data.html">print.xpose_data()</a></code>where a warning from <code>stringi</code> was returned.</li>
+<li>Fixed multiple bugs introduced by the new versions of <code>tidyverse</code> packages</li>
+<li>Added compatibility to <code>ggplot2</code> v3.0.0</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -200,14 +203,14 @@
 <h4 id="general-0-4-2">General<a class="anchor" aria-label="anchor" href="#general-0-4-2"></a></h4>
 <ul><li>Address CRAN requests</li>
 <li>Improved internal structure of VPC</li>
-<li>Fixed bug with vpc 1.0.1</li>
+<li>Fixed bug with <code>vpc</code> 1.0.1</li>
 </ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.1" id="xpose-041">xpose 0.4.1<small>2018-01-09</small><a class="anchor" aria-label="anchor" href="#xpose-041"></a></h2>
 <div class="section level4">
 <h4 id="general-0-4-1">General<a class="anchor" aria-label="anchor" href="#general-0-4-1"></a></h4>
-<ul><li>Improved integration of the xpose.nlmixr package</li>
+<ul><li>Improved integration of the <code>xpose.nlmixr</code> package</li>
 <li>Prevented a problem in the <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> function with the upcoming ggplot2 version</li>
 <li>Fixed bug in <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> where missing estimation method was reported if NM code written as METH=… instead of METHOD=…</li>
 <li>Fixed bug where labels in <code><a href="../reference/prm_table.html">prm_table()</a></code>, <code><a href="../reference/get_prm.html">get_prm()</a></code> were missing with a commented row in $THETA, $OMEGA or $SIGMA</li>
