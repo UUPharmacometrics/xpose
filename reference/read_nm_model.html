@@ -143,14 +143,14 @@ arguments.</p></dd>
     <h2>Value</h2>
     
 
-<p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> of class <code>model</code> containing the following columns:</p><ul><li><p><strong>problem</strong>: a numeric identifier for the $PROBLEM associated with the code.</p></li>
-<li><p><strong>level</strong>: a unique numeric identifier to each subroutine block associated with the code.</p></li>
-<li><p><strong>subroutine</strong>: a character identifier named after the 3 first letters of the subroutine name e.g. '$THETA' and 
+<p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> of class <code>model</code> containing the following columns:</p><ul><li><p>problem: a numeric identifier for the $PROBLEM associated with the code.</p></li>
+<li><p>level: a unique numeric identifier to each subroutine block associated with the code.</p></li>
+<li><p>subroutine: a character identifier named after the 3 first letters of the subroutine name e.g. '$THETA' and 
  '$TABLE' will become 'the' and 'tab' respectively. In addition all output from the .lst is labeled 'lst', the general nonmem 
  output e.g. NM-TRAN messages are labelled 'oth'. With priors thp, tpv, omp, opd, sip, spd abbreviations are given to the THETAP, 
  THETAPV, OMEGAP, etc.</p></li>
-<li><p><strong>code</strong>: the code without comments or subroutine names e.g. '$THETA 0.5 ; TVCL' will return '0.5'.</p></li>
-<li><p><strong>comment</strong>: the last comment of a record e.g. '0.5 ; Clearance (L/h) ; TVCL' will return 'TVCL'.</p></li>
+<li><p>code: the code without comments or subroutine names e.g. '$THETA 0.5 ; TVCL' will return '0.5'.</p></li>
+<li><p>comment: the last comment of a record e.g. '0.5 ; Clearance (L/h) ; TVCL' will return 'TVCL'.</p></li>
 </ul></div>
     <div id="details">
     <h2>Details</h2>
