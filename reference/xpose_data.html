@@ -114,6 +114,7 @@
 <span>  simtab <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  manual_import <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  ignore <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  check_ext <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  <span class="va">extra_files</span>,</span>
 <span>  <span class="va">quiet</span>,</span>
 <span>  <span class="va">...</span></span>
@@ -133,7 +134,7 @@ combination with <code>runno</code> and <code>ext</code>.</p></dd>
 
 
 <dt>ext</dt>
-<dd><p>Extension to be used to generate model file name.Should be one of
+<dd><p>Extension to be used to generate model file name. Should be one of
 '.lst' (default), '.out', '.res', '.mod' or '.ctl' for NONMEM.</p></dd>
 
 
@@ -176,20 +177,13 @@ in previous versions of xpose, the check the function
 'data', 'files', 'summary' or any combination of the three.</p></dd>
 
 
-<dt>extra_files</dt>
-<dd><p>A vector of additional output file extensions to be
-imported. Default is '.ext', '.cov', '.cor', '.phi', ".grd" for NONMEM.</p></dd>
-
-
-<dt>quiet</dt>
-<dd><p>Logical, if <code>FALSE</code> messages are printed to the console.</p></dd>
-
-
-<dt>...</dt>
-<dd><p>Additional arguments to be passed to the
-<code><a href="read_nm_tables.html">read_nm_tables</a></code> functions.</p></dd>
-
-</dl></div>
+<dt>check_ext</dt>
+<dd><p>Logical, if <code>TRUE</code> will provide an error message if the
+extension of the NONMEM input file is not one of '.lst', '.out', '.res',
+'.mod' or '.ctl' for NONMEM. If  {FALSE</p></dd>
+</dl><p>any file extension can be
+used.</p>
+    </div>
     <div id="file-path-generation">
     <h2>File path generation</h2>
     <p>The rules for model file names generation are
