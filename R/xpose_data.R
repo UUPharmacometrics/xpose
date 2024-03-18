@@ -185,9 +185,20 @@ xpose_data <- function(runno         = NULL,
   attr(xp_theme, 'theme') <- as.character(substitute(xp_theme)) 
   
   # Output xpose_data
-  list(code = model_code, summary = summary, data = data,
-       files = out_files, gg_theme = gg_theme, xp_theme = xp_theme,
-       options = list(dir = dirname(full_path), quiet = quiet, 
-                      manual_import = manual_import)) %>% 
+  list(
+    code = model_code,
+    summary = summary, 
+    data = data,
+    files = out_files, 
+    gg_theme = gg_theme,
+    xp_theme = xp_theme,
+    options = list(dir = dirname(full_path),
+                   quiet = quiet, 
+                   manual_import = manual_import,
+                   use_labelunit = TRUE,
+                   square_bracket = FALSE),
+    label_units = NULL,
+    formats = NULL
+  ) %>% 
     structure(class = c('xpose_data', 'uneval'))
 }
