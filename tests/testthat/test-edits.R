@@ -74,6 +74,9 @@ test_that('irep works properly', {
   expect_message(irep_out <- irep(rep(1:5, time = 3), quiet = FALSE),
                  regexp = '3 simulations found')
   expect_equal(irep_out, rep(1:3, each = 5))
+  expect_message(irep_out2 <- irep(rep(c(10,5,6), time = 7), quiet = FALSE),
+                 regexp = '7 simulations found')
+  expect_equal(irep_out2, rep(1:7, each = 3))
 })
 
 test_that('n() works', {

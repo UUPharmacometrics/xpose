@@ -364,8 +364,12 @@ check_quo_vars <- function(xpdb, ..., .source, .problem) {
 irep <- function(x, quiet = FALSE) {
   if (missing(x)) stop('argument "x" is missing, with no default', call. = FALSE)
   if (is.factor(x)) x <- as.numeric(as.character(x))
-  x <- dplyr::if_else(dplyr::lag(x, default = x[1]) > x, 1, 0)
-  x <- cumsum(x) + 1
+  lagcheck <- dplyr::lag(x, default = x[1]) != x
+  dupcheck <- duplicated(x)
+  check <- dplyr::if_else(lagcheck & dupcheck, 1, 0)
+  ilen <- which(check==1)[1] - 1
+  if (length(ilen)==0 || is.na(ilen)) ilen <- length(x)
+  x <- rep(1:(length(x)/ilen), each=ilen)
   msg(c('irep: ', max(x), ' simulations found.'), quiet)
   x
 }
