@@ -219,7 +219,7 @@ vpc <- function(xpdb,
   
   # Define scales
   xp <- xp + 
-    labs(x = vpc_dat$obs_cols[['idv']], y = vpc_dat$obs_cols[['dv']]) +
+    # labs(x = vpc_dat$obs_cols[['idv']], y = vpc_dat$obs_cols[['dv']]) +
     xp_geoms(mapping  = mapping,
              xp_theme = xpdb$xp_theme,
              name     = 'xscale',
@@ -260,6 +260,23 @@ vpc <- function(xpdb,
   
   if (utils::packageVersion('ggplot2') >= '3.0.0') {
     xp <- xp + labs(tag = tag)
+  }
+  
+  if ( isTRUE(xpdb$options$use_labelunit) ){
+    
+    xvar <- vpc_dat$obs_cols[['idv']]
+    yvar <- vpc_dat$obs_cols[['dv']]
+    
+    if ( !is.null(xvar) && xvar != '' ){
+      xp  <- xp + xlab(
+        get_var_labels_units( xpdb = xpdb, xvar )
+      )
+    }
+    if ( !is.null(yvar) && yvar != '' ){
+      xp  <- xp + ylab(
+        get_var_labels_units( xpdb = xpdb, yvar )
+      )
+    }
   }
   
   # Add limits whenever needed

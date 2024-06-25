@@ -23,8 +23,9 @@ list_vars <- function(xpdb, .problem = NULL) {
     x <- x[x$problem %in% .problem, ]
   }
   
-  order <- c('id', 'dv', 'idv', 'dvid', 'occ', 'amt', 'evid', 'mdv', 'pred', 'ipred', 
-             'param', 'eta', 'res', 'catcov', 'contcov', 'a', 'na')
+  order <- c('id', 'dv', 'idv', 'tad', 'dvid', 'occ', 'amt', 'evid', 'mdv', 
+             'pred', 'ipred', 'param', 'eta', 'res', 'catcov', 'contcov', 'a',
+             'na')
   
   x <- x %>% 
     dplyr::mutate(grouping = as.integer(.$problem)) %>% 
@@ -43,6 +44,7 @@ list_vars <- function(xpdb, .problem = NULL) {
                                                .$type == 'na' ~ 'Not attributed (na)',
                                                .$type == 'amt' ~ 'Dose amount (amt)',
                                                .$type == 'idv' ~ 'Independent variable (idv)',
+                                               .$type == 'tad' ~ 'Time after dose (tad)',
                                                .$type == 'ipred' ~ 'Model individual predictions (ipred)',
                                                .$type == 'pred' ~ 'Model typical predictions (pred)',
                                                .$type == 'res' ~ 'Residuals (res)',

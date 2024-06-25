@@ -2,6 +2,7 @@ xpdb_NULL       <- xpdb_ex_pk
 xpdb_NULL$data  <- NULL
 xpdb_NULL$files <- NULL
 xpdb_NULL       <- as.xpdb(xpdb_NULL)
+mapping <- aes(x = TIME)
 
 # Tests start here --------------------------------------------------------
 # test_that('Check check_vars', {
@@ -106,3 +107,9 @@ test_that('Check add_facets_var', {
   expect_equal(add_facet_var(facets = as.formula('OCC~SEX'), variable = 'variable'),
                as.formula('OCC~SEX+variable'))
 })
+
+test_that('Check get_aes', {
+  expect_error(get_aes(mapping))
+  expect_equal(get_aes(mapping, x), 'TIME')
+})
+
