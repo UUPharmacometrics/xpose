@@ -191,6 +191,23 @@ xplot_scatter <- function(xpdb,
     xp <- xp + labs(tag = tag)
   }
   
+  if ( isTRUE(xpdb$options$use_labelunit) ){
+    
+    xvar <- get_aes(mapping, 'x')
+    yvar <- get_aes(mapping, 'y')
+    
+    if ( !is.null(xvar) && xvar != '' ){
+      xp  <- xp + xlab(
+        get_var_labels_units( xpdb = xpdb, xvar )
+      )
+    }
+    if ( !is.null(yvar) && yvar != '' ){
+      xp  <- xp + ylab(
+        get_var_labels_units( xpdb = xpdb, yvar )
+      )
+    }
+  }
+  
   # Add metadata to plots
   xp$xpose <- list(fun      = plot_name,
                    summary  = xpdb$summary,
@@ -198,9 +215,9 @@ xplot_scatter <- function(xpdb,
                    subprob  = attr(data, 'subprob'),
                    method   = attr(data, 'method'),
                    quiet    = quiet,
-                   xp_theme = xpdb$xp_theme[stringr::str_c(c('title', 'subtitle', 
+                   xp_theme = xpdb$xp_theme[stringr::str_c(c('title', 'subtitle',
                                                              'caption', 'tag'), '_suffix')])
   
-  # Ouptut the plot
+  # Output the plot
   as.xpose.plot(xp)
 }

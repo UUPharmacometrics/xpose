@@ -419,12 +419,15 @@ merge_firstonly <- function(x, quiet) {
 #' 
 #' @keywords internal
 #' @export
-index_table <- function(x) {
+index_table <- function(x) { 
   tab_type <- dplyr::case_when(
     stringr::str_detect(tolower(x$name), 'patab') ~ 'param',   # model parameters
     stringr::str_detect(tolower(x$name), 'catab') ~ 'catcov',  # categorical covariate
     stringr::str_detect(tolower(x$name), 'cotab') ~ 'contcov', # continuous covariate
     TRUE ~ 'na')
+  
+  tad.var <- c('TSPD', 'TSLD', 'TAD', 'TPD')
+  tad.var <- tad.var[ tad.var %in% (x$data[[1]] %>% colnames()) ][1]
   
   x$data[[1]] %>% 
     colnames() %>% 
@@ -437,6 +440,7 @@ index_table <- function(x) {
       .$col == 'ID' ~ 'id',
       .$col == 'DV' ~ 'dv',
       .$col == 'TIME' ~ 'idv',
+      .$col == tad.var ~ 'tad',
       .$col == 'OCC' ~ 'occ',
       .$col == 'DVID' ~ 'dvid',
       .$col == 'AMT' ~ 'amt',
@@ -448,4 +452,5 @@ index_table <- function(x) {
       stringr::str_detect(.$col, 'ETA\\d+|ET\\d+') ~ 'eta',
       stringr::str_detect(.$col, '^A\\d+$') ~ 'a',
       TRUE ~ tab_type))
+  
 }

@@ -5,6 +5,7 @@
 \alias{set_var_types}
 \alias{set_var_labels}
 \alias{set_var_units}
+\alias{set_var_labels_units}
 \title{Set variable type, label or units}
 \usage{
 set_var_types(xpdb, .problem = NULL, ..., auto_factor = TRUE, quiet)
@@ -12,6 +13,8 @@ set_var_types(xpdb, .problem = NULL, ..., auto_factor = TRUE, quiet)
 set_var_labels(xpdb, .problem = NULL, ..., quiet)
 
 set_var_units(xpdb, .problem = NULL, ..., quiet)
+
+set_var_labels_units(xpdb, .problem = NULL, info = NULL)
 }
 \arguments{
 \item{xpdb}{An \code{xpose_data} object.}
@@ -25,9 +28,13 @@ type and variable pairs e.g. idv = 'TAD' will assign TAD to the type idv (indepe
 factor.}
 
 \item{quiet}{Logical, if \code{FALSE} messages are printed to the console.}
+
+\item{info}{A data frame of variable names, labels, and units.}
 }
 \value{
 An xpose_data object
+
+A xpose object
 }
 \description{
 Function designed to change the type, label or unit associated with variables.
@@ -45,6 +52,7 @@ Function designed to change the type, label or unit associated with variables.
   \item evid: Event identifier
   \item id: Subject identifier
   \item idv: Independent variable
+  \item tad: Time after dose
   \item ipred: Individual model predictions
   \item mdv: Missing dependent variable
   \item na: Not attributed
@@ -57,13 +65,21 @@ Function designed to change the type, label or unit associated with variables.
 
 \examples{
 # Change variable type
-xpdb_2 <- set_var_types(xpdb_ex_pk, .problem = 1, idv = 'TAD')
+xpdb_2 <- set_var_types(xpdb_ex_pk, .problem = 1, catcov = 'DOSE')
 
 # Change labels
 xpdb_2 <- set_var_labels(xpdb_2, .problem = 1, ALAG1 = 'Lag time', CL = 'Clearance', V = 'Volume')
 
 # Change units
 xpdb_2 <- set_var_units(xpdb_2, .problem = 1, ALAG1 = 'h', CL = 'L/h', V = 'L')
+
+labels_units <- data.frame(
+  col = c('ALAG1', 'CL', 'V'),
+  label = c('Lag time', 'Clearance', 'Volume'),
+  units = c('h', 'L/h', 'L')
+)
+
+xpdb_2 <- set_var_labels_units(xpdb_ex_pk, .problem = 1, info = labels_units)
 
 }
 \seealso{
