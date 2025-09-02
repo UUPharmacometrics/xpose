@@ -25,7 +25,7 @@ Description: Diagnostics for non-linear mixed-effects (population)
     diagnostics.
 Depends:
     R (>= 4.2.0),
-    ggplot2 (>= 3.5.2.9001)
+    ggplot2 (>= 3.5.2)
 Imports:
     dplyr (>= 1.1.4),
     ggforce (>= 0.5.0),

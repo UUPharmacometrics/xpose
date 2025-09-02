@@ -39,6 +39,10 @@ test_that('full xp_themes are properly added', {
 })
 
 test_that('parial xp_themes are properly added', {
+  ### TEMPORARY: Ignore test for older ggplot2 versions ############
+  skip_if_not_installed(pkg = "ggplot2", minimum_version = "4.0.0")
+  ##################################################################
+  
   test <- update_themes(xpdb = xpdb_ex_pk, xp_theme = c(point_color = 'green'))$xp_theme
   test_class <- class(test)
   test$labeller <- NULL ## Reduce sensibility to ggplot2 updates

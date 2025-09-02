@@ -81,7 +81,12 @@ test_that('layers of xplot_density', {
 
 test_that('layers of xplot_qq', {
   expect_equal(class(q1$layers[[1]]$geom)[1], 'GeomPoint')
-  expect_equal(class(q1$layers[[2]]$geom)[1], 'GeomAbline')
+  
+  ### TEMPORARY: Ignore test for older ggplot2 versions ############
+  expect_equal(class(q1$layers[[2]]$geom)[1], ifelse(packageVersion("ggplot2") > "3.5.2", 'GeomAbline', "GeomPath"))
+  # expect_equal(class(q1$layers[[2]]$geom)[1], 'GeomAbline')
+  ##################################################################
+  
 })
 
 
