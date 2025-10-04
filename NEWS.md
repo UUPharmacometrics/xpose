@@ -1,3 +1,6 @@
+# xpose 0.4.21
+* Compatibility fix for `testthat` > v3.2.3
+
 # xpose 0.4.20
 * Compatibility fix for `ggplot2` v4.0.0
 
