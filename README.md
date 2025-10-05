@@ -3,10 +3,10 @@
 
 # xpose <a href="https://UUPharmacometrics.github.io/xpose/"><img src="man/figures/logo.png" align="right" /></a>
 
-[![R-CMD-check](https://github.com/UUPharmacometrics/xpose/workflows/R-CMD-check/badge.svg)](https://github.com/UUPharmacometrics/xpose/actions)
+[![R-CMD-check](https://github.com/UUPharmacometrics/xpose/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/UUPharmacometrics/xpose/actions/workflows/R-CMD-check.yaml)
 [![cran_version](https://www.r-pkg.org/badges/version/xpose)](https://CRAN.R-project.org/package=xpose)
 [![Codecov test
-coverage](https://codecov.io/gh/UUPharmacometrics/xpose/branch/master/graph/badge.svg)](https://app.codecov.io/gh/UUPharmacometrics/xpose?branch=master)
+coverage](https://codecov.io/gh/UUPharmacometrics/xpose/graph/badge.svg)](https://app.codecov.io/gh/UUPharmacometrics/xpose)
 [![downloads](https://cranlogs.r-pkg.org/badges/grand-total/xpose)](https://CRAN.R-project.org/package=xpose)
 
 ## Overview
