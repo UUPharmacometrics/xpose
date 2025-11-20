@@ -269,15 +269,9 @@ read_nm_tables <- function(file          = NULL,
 #' @keywords internal
 #' @export
 read_funs <- function(fun) {
-  if (utils::packageVersion("readr") > "1.4.0") {
   c(csv   = readr::read_csv,
     csv2  = readr::read_csv2,
     table = readr::read_table)[fun]
-  } else {
-    c(csv   = readr::read_csv,
-      csv2  = readr::read_csv2,
-      table = readr::read_table2)[fun]
-  }
 }
 
 
