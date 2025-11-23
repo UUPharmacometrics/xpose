@@ -129,7 +129,7 @@
                         <h4 data-toc-skip class="author">Benjamin
 Guiastrennec</h4>
             
-            <h4 data-toc-skip class="date">05 October, 2025</h4>
+            <h4 data-toc-skip class="date">23 November, 2025</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/UUPharmacometrics/xpose/blob/master/vignettes/introduction.Rmd" class="external-link"><code>vignettes/introduction.Rmd</code></a></small>
       <div class="hidden name"><code>introduction.Rmd</code></div>
@@ -301,13 +301,13 @@ All plots using <code>idv</code> will then automatically use
 <code class="sourceCode R"><span><span class="co"># With the TIME default</span></span>
 <span><span class="va">xpdb</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/pred_vs_idv.html">dv_vs_idv</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="introduction_files/figure-html/change%20idv-1.png" width="50%" style="display: block; margin: auto;"></p>
+<p><img src="introduction_files/figure-html/change%20idv-1.png" class="r-plt" width="50%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># After IDV reassignment</span></span>
 <span><span class="va">xpdb</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/set_vars.html">set_var_types</a></span><span class="op">(</span>idv <span class="op">=</span> <span class="st">'TAD'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/pred_vs_idv.html">dv_vs_idv</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="introduction_files/figure-html/change%20idv-2.png" width="50%" style="display: block; margin: auto;"></p>
+<p><img src="introduction_files/figure-html/change%20idv-2.png" class="r-plt" width="50%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level3">
 <h3 id="generating-plots">Generating plots<a class="anchor" aria-label="anchor" href="#generating-plots"></a>
@@ -316,11 +316,11 @@ All plots using <code>idv</code> will then automatically use
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># DV vs. IPRED plot</span></span>
 <span><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb</span><span class="op">)</span></span></code></pre></div>
-<p><img src="introduction_files/figure-html/demo%20basic%20gof-1.png" width="50%" style="display: block; margin: auto;"></p>
+<p><img src="introduction_files/figure-html/demo%20basic%20gof-1.png" class="r-plt" width="50%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># CWRES vs. PRED plot</span></span>
 <span><span class="fu"><a href="../reference/res_vs_pred.html">res_vs_pred</a></span><span class="op">(</span><span class="va">xpdb</span>, res <span class="op">=</span> <span class="st">'CWRES'</span><span class="op">)</span></span></code></pre></div>
-<p><img src="introduction_files/figure-html/demo%20basic%20gof-2.png" width="50%" style="display: block; margin: auto;"></p>
+<p><img src="introduction_files/figure-html/demo%20basic%20gof-2.png" class="r-plt" width="50%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level3">
 <h3 id="saving-plots">Saving plots<a class="anchor" aria-label="anchor" href="#saving-plots"></a>
@@ -364,7 +364,7 @@ keywords using <code><a href="../reference/template_titles.html">help('template_
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>

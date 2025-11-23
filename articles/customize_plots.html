@@ -129,7 +129,7 @@
                         <h4 data-toc-skip class="author">Benjamin
 Guiastrennec</h4>
             
-            <h4 data-toc-skip class="date">05 October, 2025</h4>
+            <h4 data-toc-skip class="date">23 November, 2025</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/UUPharmacometrics/xpose/blob/master/vignettes/customize_plots.Rmd" class="external-link"><code>vignettes/customize_plots.Rmd</code></a></small>
       <div class="hidden name"><code>customize_plots.Rmd</code></div>
@@ -149,7 +149,7 @@ represented.</p>
 <p>In scatter plots <code>type</code> can be any combination of: points
 <code>'p'</code>, lines <code>'l'</code>, smooth <code>'s'</code>, text
 <code>'t'</code>.</p>
-<p><img src="customize_plots_files/figure-html/demo%20type%20scatter-1.png" width="75%" style="display: block; margin: auto;"></p>
+<p><img src="customize_plots_files/figure-html/demo%20type%20scatter-1.png" class="r-plt" width="75%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level4">
 <h4 id="distribution-plots">Distribution plots<a class="anchor" aria-label="anchor" href="#distribution-plots"></a>
@@ -157,7 +157,7 @@ represented.</p>
 <p>In distribution plots <code>type</code> can be any combination of:
 histogram <code>'h'</code>, density <code>'d'</code>, or rug
 <code>'r'</code>.</p>
-<p><img src="customize_plots_files/figure-html/demo%20type%20distrib-1.png" width="75%" style="display: block; margin: auto;"></p>
+<p><img src="customize_plots_files/figure-html/demo%20type%20distrib-1.png" class="r-plt" width="75%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level4">
 <h4 id="vpcs">VPCs<a class="anchor" aria-label="anchor" href="#vpcs"></a>
@@ -165,7 +165,7 @@ histogram <code>'h'</code>, density <code>'d'</code>, or rug
 <p>In visual predictive checks plots <code>type</code> can be any
 combination of: areas <code>'a'</code>, lines <code>'l'</code>, points
 <code>'p'</code>, text <code>'t'</code> or rug <code>'r'</code>.</p>
-<p><img src="customize_plots_files/figure-html/demo%20type%20vpc-1.png" width="75%" style="display: block; margin: auto;"></p>
+<p><img src="customize_plots_files/figure-html/demo%20type%20vpc-1.png" class="r-plt" width="75%" style="display: block; margin: auto;"></p>
 </div>
 </div>
 <div class="section level3">
@@ -200,15 +200,15 @@ suffixes can be defined in the <code>xp_theme</code>.</p>
 <span>            title    <span class="op">=</span> <span class="st">'@y vs. @x (@run, obj: @ofv)'</span>,</span>
 <span>            subtitle <span class="op">=</span> <span class="st">'Based on: @nind subjects and @nobs records'</span>,</span>
 <span>            caption  <span class="op">=</span> <span class="st">'Dir: @dir'</span><span class="op">)</span></span></code></pre></div>
-<p><img src="customize_plots_files/figure-html/demo%20titles-1.png" width="50%" style="display: block; margin: auto;"></p>
+<p><img src="customize_plots_files/figure-html/demo%20titles-1.png" class="r-plt" width="50%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Disabling all titles</span></span>
 <span><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb</span>, title <span class="op">=</span> <span class="cn">NULL</span>, subtitle <span class="op">=</span> <span class="cn">NULL</span>, caption <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
-<p><img src="customize_plots_files/figure-html/demo%20titles-2.png" width="50%" style="display: block; margin: auto;"></p>
+<p><img src="customize_plots_files/figure-html/demo%20titles-2.png" class="r-plt" width="50%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Edit title suffix from the xp_theme for a specific plot</span></span>
 <span><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb</span>, title <span class="op">=</span> <span class="st">'A title'</span>, xp_theme <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>title_suffix <span class="op">=</span> <span class="st">' | a suffix for @run'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="customize_plots_files/figure-html/demo%20titles-3.png" width="50%" style="display: block; margin: auto;"></p>
+<p><img src="customize_plots_files/figure-html/demo%20titles-3.png" class="r-plt" width="50%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level4">
 <h4 id="using-the-labs-function">Using the <code>labs</code> function<a class="anchor" aria-label="anchor" href="#using-the-labs-function"></a>
@@ -223,7 +223,7 @@ suffixes can be defined in the <code>xp_theme</code>.</p>
 <span>       caption  <span class="op">=</span> <span class="st">'Based on @nobs observations'</span>,</span>
 <span>       x        <span class="op">=</span> <span class="st">'Individual model predictions (@x)'</span>,</span>
 <span>       y        <span class="op">=</span> <span class="st">'Observations (@y) for @nind subjects'</span><span class="op">)</span></span></code></pre></div>
-<p><img src="customize_plots_files/figure-html/demo%20xpose_labs-1.png" width="50%" style="display: block; margin: auto;"></p>
+<p><img src="customize_plots_files/figure-html/demo%20xpose_labs-1.png" class="r-plt" width="50%" style="display: block; margin: auto;"></p>
 </div>
 </div>
 <div class="section level3">
@@ -256,12 +256,12 @@ where <code>xxx</code> can be any option available in the
 <span>            line_color <span class="op">=</span> <span class="st">'orange'</span>, line_linetype <span class="op">=</span> <span class="st">'solid'</span>, </span>
 <span>            <span class="co"># Change smooth aesthetics</span></span>
 <span>            smooth_method <span class="op">=</span> <span class="st">'lm'</span><span class="op">)</span></span></code></pre></div>
-<p><img src="customize_plots_files/figure-html/demo%20aesthetics-1.png" width="50%" style="display: block; margin: auto;"></p>
+<p><img src="customize_plots_files/figure-html/demo%20aesthetics-1.png" class="r-plt" width="50%" style="display: block; margin: auto;"></p>
 <p>Aesthetics can also be defined mapped to a variable using the ggplot2
 <code><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes()</a></code> function.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb</span>, type <span class="op">=</span> <span class="st">'p'</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>point_color <span class="op">=</span> <span class="va">SEX</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="customize_plots_files/figure-html/demo%20mapping-1.png" width="50%" style="display: block; margin: auto;"></p>
+<p><img src="customize_plots_files/figure-html/demo%20mapping-1.png" class="r-plt" width="50%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level3">
 <h3 id="grouping-variable">Grouping variable<a class="anchor" aria-label="anchor" href="#grouping-variable"></a>
@@ -287,11 +287,11 @@ argument as follows:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Example with a string</span></span>
 <span><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb</span>, facets <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'SEX'</span>, <span class="st">'MED1'</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span>, nrow <span class="op">=</span> <span class="fl">1</span>, page <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<p><img src="customize_plots_files/figure-html/demo%20panels-1.png" width="75%" style="display: block; margin: auto;"></p>
+<p><img src="customize_plots_files/figure-html/demo%20panels-1.png" class="r-plt" width="75%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Example with a formula</span></span>
 <span><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb</span>, facets <span class="op">=</span> <span class="va">SEX</span><span class="op">~</span><span class="va">MED1</span>, margins <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="customize_plots_files/figure-html/demo%20panels-2.png" width="75%" style="display: block; margin: auto;"></p>
+<p><img src="customize_plots_files/figure-html/demo%20panels-2.png" class="r-plt" width="75%" style="display: block; margin: auto;"></p>
 <p>All xpose plot functions accept arguments for
 <code>facet_wrap_pagninate</code> and <code>facet_grid_paginate</code>
 (e.g. <code>ncol = 2</code>, <code>labeller = 'label_both'</code>,
@@ -331,7 +331,7 @@ need to be defined in each layer as shown below).</p>
 <span>           alpha <span class="op">=</span> <span class="fl">0.2</span>, fill <span class="op">=</span> <span class="st">'red'</span>,</span>
 <span>           xmin <span class="op">=</span> <span class="fl">1</span>, xmax <span class="op">=</span> <span class="cn">Inf</span>,</span>
 <span>           ymin <span class="op">=</span> <span class="fl">1</span>, ymax <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span></code></pre></div>
-<p><img src="customize_plots_files/figure-html/demo%20layers-1.png" width="50%" style="display: block; margin: auto;"></p>
+<p><img src="customize_plots_files/figure-html/demo%20layers-1.png" class="r-plt" width="50%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level3">
 <h3 id="scales-options">Scales options<a class="anchor" aria-label="anchor" href="#scales-options"></a>
@@ -341,7 +341,7 @@ Accepted values are <code>x</code>, <code>y</code> or
 <code>xy</code>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dv_vs_pred.html">dv_vs_ipred</a></span><span class="op">(</span><span class="va">xpdb</span>, log <span class="op">=</span> <span class="st">'xy'</span>, subtitle <span class="op">=</span> <span class="st">'Plot on log scale'</span><span class="op">)</span></span></code></pre></div>
-<p><img src="customize_plots_files/figure-html/log-scales%20demo-1.png" width="50%" style="display: block; margin: auto;"></p>
+<p><img src="customize_plots_files/figure-html/log-scales%20demo-1.png" class="r-plt" width="50%" style="display: block; margin: auto;"></p>
 <p>Additional arguments can be provided to the scales via the mapping by
 using the naming convention <code>xscale_xxx</code> or
 <code>yscale_xxx</code> where <code>xxx</code> is the name of a
@@ -353,7 +353,7 @@ using the naming convention <code>xscale_xxx</code> or
 <span>            xscale_labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'Low'</span>, <span class="st">'Med'</span>, <span class="st">'High'</span><span class="op">)</span>,</span>
 <span>            xscale_expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0</span><span class="op">)</span>,</span>
 <span>            xscale_name <span class="op">=</span> <span class="st">'Individual model predictions'</span><span class="op">)</span></span></code></pre></div>
-<p><img src="customize_plots_files/figure-html/scales-options%20demo-1.png" width="50%" style="display: block; margin: auto;"></p>
+<p><img src="customize_plots_files/figure-html/scales-options%20demo-1.png" class="r-plt" width="50%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level3">
 <h3 id="themes">Themes<a class="anchor" aria-label="anchor" href="#themes"></a>
@@ -387,12 +387,12 @@ data with <code><a href="../reference/xpose_data.html">xpose_data()</a></code> o
 <p>xpose brings two additional themes (<code><a href="../reference/gg_themes.html">theme_readable()</a></code> and
 <code><a href="../reference/gg_themes.html">theme_bw2()</a></code>), to those available in
 <code>ggplot2</code>.</p>
-<p><img src="customize_plots_files/figure-html/demo%20gg_theme-1.png" width="75%" style="display: block; margin: auto;"></p>
+<p><img src="customize_plots_files/figure-html/demo%20gg_theme-1.png" class="r-plt" width="75%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level4">
 <h4 id="examples-of-xp_theme">Examples of <code>xp_theme</code>:<a class="anchor" aria-label="anchor" href="#examples-of-xp_theme"></a>
 </h4>
-<p><img src="customize_plots_files/figure-html/demo%20xp_theme-1.png" width="75%" style="display: block; margin: auto;"></p>
+<p><img src="customize_plots_files/figure-html/demo%20xp_theme-1.png" class="r-plt" width="75%" style="display: block; margin: auto;"></p>
 </div>
 </div>
   </div>
@@ -412,7 +412,7 @@ data with <code><a href="../reference/xpose_data.html">xpose_data()</a></code> o
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>
