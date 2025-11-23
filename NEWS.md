@@ -1,3 +1,6 @@
+# xpose 0.4.22
+* Omit special handling for readr <2.0.0 (@jennybc, #237)
+
 # xpose 0.4.21
 * Compatibility fix for `testthat` > v3.2.3
 

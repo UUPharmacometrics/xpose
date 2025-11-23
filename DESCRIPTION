@@ -1,7 +1,7 @@
 Package: xpose
 Type: Package
 Title: Diagnostics for Pharmacometric Models
-Version: 0.4.21
+Version: 0.4.22
 Authors@R: c(
       person('Benjamin', 'Guiastrennec',
              role  = c('aut', 'cre', 'cph'),
