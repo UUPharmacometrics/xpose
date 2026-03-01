@@ -151,10 +151,10 @@ vpc_data <- function(xpdb,
   
   # Format vpc output
   xpdb$special <- vpc_dat %>%
-    purrr::discard(names(.) %in% c('sim', 'stratify_original', 
-                                   'stratify_color', 'facet', 
-                                   'as_percentage', 'xlab', 
-                                   'ylab', 'labeller')) %>%
+    purrr::keep_at(at = c(
+      'vpc_dat', 'smooth', 'stratify', 'aggr_obs', 'obs', 
+      'bins', 'lloq', 'uloq', 'show', 'type', 'scales'
+      )) %>%
     purrr::map_at('vpc_dat', function(x) {
       x <- x %>% 
         dplyr::ungroup() %>% 
@@ -214,8 +214,8 @@ vpc_data <- function(xpdb,
            vpc_dir = ifelse(!is.null(psn_folder), psn_folder, xpdb$options$dir), 
            facets = facets, obs_problem = obs_problem, sim_problem = sim_problem, 
            obs_cols = obs_cols, sim_cols = sim_cols, nsim = vpc_nsim)) %>%
-           {dplyr::tibble(problem = vpc_prob, method = 'vpc', type = vpc_type, data = list(.), modified = FALSE)} %>%
-           {dplyr::bind_rows(xpdb$special, .)} %>% 
+    {dplyr::tibble(problem = vpc_prob, method = 'vpc', type = vpc_type, data = list(.), modified = FALSE)} %>%
+    {dplyr::bind_rows(xpdb$special, .)} %>% 
     dplyr::distinct(!!!rlang::syms(c('problem', 'method', 'type')), .keep_all = TRUE)
   
   msg('\nVPC done', quiet)

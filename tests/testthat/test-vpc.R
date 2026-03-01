@@ -27,7 +27,7 @@ test_that('vpc_opt works properly', {
 test_that('vpc_data properly check input', {
   expect_error(vpc_data(), regexp = 'argument \"xpdb\" is missing')
   expect_error(vpc_data(xpdb_ex_pk, psn_folder = '.', quiet = TRUE), 
-                 regexp = 'No table files could be found')
+               regexp = 'No table files could be found')
   expect_error(vpc_data(xpdb_ex_pk, psn_folder = 'fake', quiet = TRUE), 
                regexp = 'fake could not be found')
 })
@@ -42,7 +42,19 @@ test_that('vpc_data works properly with xpdb tables', {
     vpc_data(vpc_type = 'cens', opt = vpc_opt(n_bins = 3, lloq = 0.4), quiet = TRUE)
   
   expect_true(is.xpdb(xpdb_vpc_test))
-  expect_equivalent(xpdb_vpc_test$special, ctrl_special$special)
+  
+  ## Make test more robust toward minor changes in vpc::vpc generated output
+  #expect_equivalent(xpdb_vpc_test$special, ctrl_special$special)
+  list_elements <- c('vpc_dat', 'smooth', 'stratify', 'aggr_obs', 'obs', 
+                     'bins', 'lloq', 'uloq', 'show', 'type', 'scales')
+  
+  for (x in list_elements) {
+    expect_equal(
+      purrr::map(.x = xpdb_vpc_test$special$data, .f = ~.[x]),
+      purrr::map(.x = ctrl_special$special$data, .f = ~.[x]),
+      check.attributes = FALSE
+    )
+  }
 })
 
 test_that('vpc_data works properly with psn_folder', {
@@ -95,6 +107,6 @@ test_that('vpc plot are properly generated', {
   expect_equal(p_cont$xpose$problem, 3)
   expect_equal(p_cens$xpose$problem, 4)
   expect_equal(p_cont$xpose$summary$value[p_cont$xpose$summary$label %in% c('vpcdir', 'vpcnsim', 'vpcci', 'vpcpi')], 
-              c('data', '20', '95', '95'))
+               c('data', '20', '95', '95'))
 })
 

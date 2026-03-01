@@ -1,3 +1,6 @@
+# xpose 0.4.23
+* Updated tests for `vpc` 1.2.4
+
 # xpose 0.4.22
 * Omit special handling for readr <2.0.0 (@jennybc, #237)
 
@@ -8,7 +11,7 @@
 * Compatibility fix for `ggplot2` v4.0.0
 
 # xpose 0.4.19
-* Fixed bug in condition number when eigen values outputted on multiple records in .lst file (@billdenney & @marianklose, #128)
+* Fixed bug in condition number when Eigen values outputted on multiple records in .lst file (@billdenney & @marianklose, #128)
 
 # xpose 0.4.18
 * Compatibility fix for `roxygen2` 7.3.1
@@ -201,4 +204,4 @@
 * Defined the `xpose_geom()` core function to specifically direct arguments to [`ggplot2`](https://ggplot2.tidyverse.org) layers
 * Defined the concept of template titles
 * Define the templates for `xpose_theme()`
-* Makes use of the [`tidyverse`](https://www.tidyverse.org/) and pipes `%>%`
+* Makes use of the [`tidyverse`](https://tidyverse.org/) and pipes `%>%`
